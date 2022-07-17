@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+
+#      - name: Install dependencies
+#        uses: php-actions/composer@v6
+#        with:
+#          php_version: "8.1"
+#          version: 2.x
+
+      - name: Generate shortcuts
+        run: bin/generate-shortcuts
+
+      - name: Import CV from Google Drive
+        run: bin/import-cv
+
+      - name: Tag build
+        run: |
+          cp -Rv public/ _site/
+          echo "OK" > _site/health-check.html
+          echo $(date) >> _site/health-check.html
+
+      - name: Push artefact
+        uses: actions/upload-pages-artifact@v0
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-20.04
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

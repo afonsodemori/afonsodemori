@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://afonso.dev/en</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://afonso.dev/en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://afonso.dev/es"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://afonso.dev/pt"/>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://afonso.dev/contact/en</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://afonso.dev/contact/en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://afonso.dev/contact/es"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://afonso.dev/contact/pt"/>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://afonso.dev/cv/en</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://afonso.dev/cv/en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://afonso.dev/cv/es"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://afonso.dev/cv/pt"/>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://afonso.dev/courses/en</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://afonso.dev/courses/en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://afonso.dev/courses/es"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://afonso.dev/courses/pt"/>
+        <priority>0.8</priority>
+    </url>
+</urlset>

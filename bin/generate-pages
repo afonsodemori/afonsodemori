@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+// TODO: Using composer is failing in GitHub. Don't know why...
+require __DIR__ . '/../src/Model/HtmlPage.php';
+require __DIR__ . '/../src/Helper/CliHelper.php';
+
+use App\Helper\CliHelper;
+use App\Model\HtmlPage;
+
+$pages = [
+    new HtmlPage('home', '/'),
+    new HtmlPage('contact', '/contact'),
+    new HtmlPage('cv', '/cv'),
+    new HtmlPage('courses', '/courses'),
+];
+
+foreach (HtmlPage::LANGUAGES as $lang) {
+    $locale = $lang;
+    foreach ($pages as $page) {
+        $page->setLang($lang);
+
+        ob_start();
+        require $page->getTranslations();
+        require $page->getTemplate();
+        $html = ob_get_clean();
+
+        echo $page->getOutputPath() . PHP_EOL;
+
+        CliHelper::writeFile($page->getOutputPath(), $html);
+    }
+    echo PHP_EOL;
+}

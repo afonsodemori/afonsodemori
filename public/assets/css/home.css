@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@600;800&family=Inter:wght@300;500&display=swap');
+
+:root {
+    --primary: #039be5;
+    --primary-lighter: #4fc3f7;
+    --primary-darker: #005b9f;
+    /*--primary: #d81b60;*/
+    /*--primary-lighter: #f06292;*/
+    /*--primary-darker: #8c0032;*/
+    /*--primary: #fb8c00;*/
+    /*--primary-lighter: #ffb74d;*/
+    /*--primary-darker: #bb4d00;*/
+}
+
+::selection {
+    background: var(--primary) !important;
+    -webkit-text-fill-color: initial !important;
+    -moz-text-fill-color: initial !important;
+    color: #000 !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #101010;
+    color: #fff;
+    font: 300 1.2em/140% 'Inter', sans-serif;
+    text-rendering: geometricPrecision;
+}
+
+a {
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--primary-lighter);
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+section {
+    min-height: 100vh;
+    padding: 3em;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+}
+
+.greet {
+    font: 600 4em/110% 'Exo', sans-serif;
+    margin: auto 0 0 0;
+}
+
+.me {
+    font-weight: 800;
+    color: #fff;
+}
+
+.gradient {
+    background: linear-gradient(86deg, var(--primary), var(--primary-darker));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.about {
+    margin: 2em 0;
+    color: rgba(255,255,255, .8);
+}
+
+.links {
+    padding: 0;
+    margin: 0 auto auto -5px;
+}
+
+.links a {
+    display: inline-block;
+    margin-right: .2em;
+    padding: 2px 5px;
+}
+
+.links li {
+    display: inline-block;
+}
+
+@media only screen and (max-width: 1100px) {
+    body {
+        font-size: 1.1em;
+    }
+
+    section {
+        padding: 2em;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .greet {
+        font-size: 3.5em;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .greet {
+        font-size: 3em;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    body {
+        font-size: 1em;
+    }
+
+    section {
+        padding: 1em;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .greet {
+        font-size: 3em;
+    }
+
+    .me {
+        font-size: 150%;
+        line-height: 110%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .greet {
+        font-size: 2em;
+    }
+
+    .me {
+        font-size: 200%;
+        line-height: 110%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .me {
+        font-size: 150%;
+        line-height: 110%;
+    }
+}

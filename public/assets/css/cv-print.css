@@ -1,0 +1,33 @@
+@page {
+    size: A4 portrait;
+    margin: .5in;
+}
+
+body {
+    line-height: 1.15rem;
+}
+
+nav {
+    display: none;
+}
+
+.page h4 span {
+    /* fix printing when in dark mode */
+    color: #000;
+}
+
+footer {
+    font-size: var(--g-docs-size-normal);
+    margin-top: 5rem;
+    color: #999;
+    font-style: italic;
+    text-align: right;
+}
+
+footer a {
+    color: inherit;
+}
+
+.screen-only, .modal {
+    display: none;
+}

@@ -1,0 +1,134 @@
+/* variables */
+
+:root {
+    --g-docs-text-margin: 5pt;
+    --g-docs-size-normal: 10pt;
+    --g-docs-size-h1: 20pt;
+    --g-docs-size-h2: 13pt;
+    --g-docs-size-h3: 11pt;
+    --g-docs-gray: #999;
+
+    --body-background: #f8f9fa;
+    --body-color: #000;
+
+    --article-background-color: #fff;
+    --article-box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+    --a-color: #3d85c6;
+
+    --modal-boder-color: rgba(0, 0, 0, .2);
+    --modal-hover-background: rgba(0, 0, 0, .1);
+
+    --section-border-color: rgba(0, 0, 0, .1);
+
+    --footer-text-color: #fff;
+    --footer-background-color: rgba(0, 0, 0, .3);
+}
+
+/* Dark mode only in small screens for now */
+@media (prefers-color-scheme: dark) and (max-width: 215mm) {
+    :root {
+        --g-docs-gray: #999;
+
+        --body-background: #121212;
+        --body-color: #bdc1c6;
+
+        --article-background-color: #101010;
+        --article-box-shadow: none;
+        --a-color: #5786f4;
+
+        --modal-boder-color: rgba(255, 255, 255, .2);
+        --modal-hover-background: rgba(255, 255, 255, .1);
+
+        --section-border-color: #000;
+
+        --footer-text-color: rgba(255, 255, 255, .5);
+        --footer-background-color: rgba(0, 0, 0, .5);
+    }
+}
+
+/* generic tags */
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-rendering: geometricPrecision;
+    background: #fff;
+    color: #000;
+}
+
+h1, h2, h3, h4, p, ul {
+    margin: 0;
+}
+
+/* .page - MUST be like paper in colors and sizes */
+
+.page {
+    font: normal var(--g-docs-size-normal) Arial, sans-serif;
+    line-height: 1.4;
+}
+
+.page:first-of-type {
+    page-break-after: right;
+}
+
+.page a {
+    color: var(--a-color);
+}
+
+.page h1 {
+    font-weight: normal;
+    font-size: var(--g-docs-size-h1);
+}
+
+.page h2 {
+    font-size: var(--g-docs-size-h2);
+    margin: var(--g-docs-text-margin) 0 var(--g-docs-text-margin) 0;
+}
+
+.page h3 {
+    font-size: var(--g-docs-size-h3);
+    margin-top: var(--g-docs-text-margin);
+}
+
+.page h3 span {
+    font-weight: normal;
+}
+
+.page h3 span.gray {
+    color: var(--g-docs-gray);
+}
+
+.page h4 {
+    font-size: var(--g-docs-size-normal);
+    font-weight: normal;
+    color: var(--g-docs-gray);
+    margin: var(--g-docs-text-margin) 0;
+}
+
+.page h4 span {
+    text-decoration: underline;
+    color: var(--body-color);
+}
+
+.page .contact span {
+    margin-right: 1em;
+    white-space: nowrap;
+}
+
+.page .contact svg {
+    height: 10pt;
+    fill: currentColor;
+}
+
+.page .period {
+    color: var(--g-docs-gray);
+    margin-bottom: var(--g-docs-text-margin);
+}
