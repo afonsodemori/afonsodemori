@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;600;800&family=Inter:wght@300;500&display=swap');
+
+body {
+    background: var(--body-background);
+    color: var(--body-color);
+    padding: 0 0 5em 0;
+    cursor: default;
+}
+
+#top-bar {
+    background: linear-gradient(86deg, #2977f3, #4f2cd2);
+    font-size: 12pt;
+}
+
+#top-bar.fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+#top-bar ul {
+    padding: 0;
+}
+
+#top-bar .left {
+    float: left;
+    padding-left: 10px;
+}
+
+#top-bar .right {
+    float: right;
+    padding-right: 10px;
+}
+
+#top-bar svg {
+    height: 10pt;
+    vertical-align: middle;
+}
+
+#top-bar li {
+    display: inline-block;
+}
+
+#top-bar a {
+    display: inline-block;
+    padding: 17px;
+    text-decoration: none;
+    color: #fff;
+    opacity: .5;
+}
+
+#top-bar a:hover, #top-bar a.active {
+    transition: 200ms;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    background-color: var(--article-background-color);
+    width: 200px;
+    border: 1px solid var(--modal-boder-color);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    z-index: 1;
+}
+
+.modal ul {
+    margin: .5em 0;
+    padding: 0;
+    list-style: none;
+}
+
+.modal a {
+    transition: 200ms;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 1em;
+    display: inline-block;
+    width: 100%;
+    color: var(--body-color);
+}
+
+.modal a:hover {
+    background: var(--modal-hover-background);
+    padding: 1em;
+    display: inline-block;
+}
+
+.page { /* Same as Google Docs */
+    box-sizing: border-box;
+    background-color: var(--article-background-color);
+    margin: 1em auto 0 auto;
+    padding: .5in;
+    width: 210mm;
+    height: 297mm;
+    box-shadow: var(--article-box-shadow);
+}
+
+.page:first-of-type {
+    margin-top: 5em;
+}
+
+.page a:hover {
+    text-decoration-color: var(--a-color);
+    text-decoration-thickness: 2px;
+}
+
+.page .gray {
+    color: var(--g-docs-gray);
+}
+
+.page .screen-mobile {
+    display: none;
+}
+
+footer {
+    position: fixed;
+    background-color: var(--footer-background-color);
+    padding: .25rem .5rem;
+    bottom: .5em;
+    right: .5em;
+    border-radius: 5px;
+    color: var(--footer-text-color);
+    font-size: .8rem;
+}
+
+@media only screen and (max-width: 215mm) {
+    body {
+        background-color: var(--article-background-color);
+    }
+
+    .page {
+        padding: 0;
+        box-shadow: none;
+        width: 100%;
+        height: unset;
+        font: 300 1.1em/1.5em 'Inter', sans-serif;
+    }
+
+    .page:first-of-type {
+        margin-top: 3em;
+    }
+
+    section.experience:last-of-type {
+        padding-bottom: 0;
+    }
+
+    section.experience:first-of-type {
+        padding-top: 0;
+    }
+
+    section.experience hr {
+        margin: 1em 0 3em 0;
+        border: 0;
+        border-bottom: 1px solid #000;
+    }
+
+    .page strong {
+        font-weight: 500;
+    }
+
+    .page h1, .page h2, .page h3 {
+        font-family: inherit;
+    }
+
+    .page h1 {
+        font: 300 2.2em 'Exo', sans-serif;
+    }
+
+    .page h2 {
+        font: 600 1.3em 'Exo', sans-serif;
+        margin-bottom: 1em;
+    }
+
+    .page h3 {
+        font: 600 1.2em 'Exo', sans-serif;
+    }
+
+    .page h3 span {
+        font-weight: 300;
+    }
+
+    .page h4 {
+        font-size: 1em;
+        font-family: 'Inter', sans-serif;
+        font-weight: 300;
+    }
+
+    .page ul {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .page ul li {
+        padding-bottom: .5em;
+    }
+
+    .page ul li:before {
+        content: "• ";
+    }
+
+    .page .screen-desktop {
+        display: none;
+    }
+
+    .page .screen-mobile {
+        display: block;
+    }
+
+    .page p.div {
+        display: none;
+    }
+
+    .page .contact span {
+        display: block;
+        margin: .5em auto;
+    }
+
+    section {
+        padding: 3em 1em;
+        border-bottom: 6px solid var(--section-border-color);
+    }
+
+    section:last-child {
+        border: 0;
+        min-height: 70vh;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #nav-print {
+        display: none !important;
+    }
+
+    #top-bar a {
+        padding: 13px 10px;
+        font-size: 11pt;
+    }
+
+    .page {
+        margin-top: 2rem;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    #nav-modal-download {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 240mm) {
+    .page {
+        zoom: 110%;
+    }
+}
+
+.print {
+    display: none;
+}
