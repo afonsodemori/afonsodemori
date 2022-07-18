@@ -28,9 +28,12 @@ jobs:
       - name: Import CV from Google Drive
         run: bin/import-cv
 
+      - name: Generate pages
+        run: bin/generate-pages
+
       - name: Tag build
         run: |
-          cp -Rv public/ _site/
+          cp -Rv public/* _site/
           echo "OK" > _site/health-check.html
           echo $(date) >> _site/health-check.html
 
