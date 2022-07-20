@@ -11,7 +11,12 @@ class Url
 
     public function __toString(): string
     {
-        return $this->getScheme() . $this->getHost() . $this->getFullPath();
+        return sprintf(
+            '%s://%s%s',
+            $this->getScheme(),
+            $this->getHost(),
+            $this->getFullPath()
+        );
     }
 
     public function getScheme(): string
