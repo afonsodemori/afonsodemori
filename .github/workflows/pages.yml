@@ -1,22 +1,28 @@
-name: Build
+name: Build and deploy Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   schedule:
     - cron: "10 0 1 * *"
+
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
 #      - name: Install dependencies
 #        uses: php-actions/composer@v6
@@ -33,23 +39,23 @@ jobs:
       - name: Generate pages
         run: bin/generate-pages
 
-      - name: Tag build
+      - name: Move generated files
         run: |
-          cp -Rv public/* _site/
+          cp -Rv ./public/* ./_site/
           echo "<h1>OK</h1>" > _site/health-check.html
           echo "<address>Last build: $(date)</address>" >> _site/health-check.html
 
-      - name: Push artefact
-        uses: actions/upload-pages-artifact@v0
+      - name: Upload artefact
+        uses: actions/upload-pages-artifact@v1
 
   deploy:
-    name: Deploy
-    runs-on: ubuntu-20.04
-    needs: build
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url:
+        ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
     steps:
-      - name: Deploy GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
