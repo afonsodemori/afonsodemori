@@ -12,7 +12,7 @@ $pages = [
     new HtmlPage('home', '/'),
     new HtmlPage('contact', '/contact'),
     new HtmlPage('cv', '/cv'),
-    new HtmlPage('courses', '/courses'),
+    //new HtmlPage('courses', '/courses'), TODO: Review layout. Temporary redirecting to LinkedIn
 ];
 
 foreach (HtmlPage::LANGUAGES as $lang) {
