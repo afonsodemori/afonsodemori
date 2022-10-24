@@ -37,7 +37,7 @@
 <div id="top-bar">
     <nav>
         <ul class="left">
-            <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../public/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
+            <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
         </ul>
         <ul class="right">
             <li><a id="link-cv" href="/cv/<?= $locale ?>">Curriculum</a></li>

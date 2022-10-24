@@ -30,6 +30,9 @@ jobs:
 #          php_version: "8.1"
 #          version: 2.x
 
+      - name: Install assets
+        run: bin/install-assets
+
       - name: Generate shortcuts
         run: bin/generate-shortcuts
 

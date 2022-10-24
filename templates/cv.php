@@ -45,12 +45,12 @@
 <div id="top-bar" class="fixed">
     <nav>
         <ul class="left">
-            <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../public/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
+            <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
         </ul>
         <ul class="right">
             <li><a id="nav-print" href="javascript:"><?= $trans->topBar->print ?></a></li>
-            <li><a id="nav-modal-download" href="javascript:"><?= $trans->topBar->download ?> <?= file_get_contents(__DIR__ . '/../public/assets/images/angle-down-solid.svg') ?></a></li>
-            <li><a id="nav-modal-languages" href="javascript:"><?= $trans->topBar->locale ?> <?= file_get_contents(__DIR__ . '/../public/assets/images/angle-down-solid.svg') ?></a></li>
+            <li><a id="nav-modal-download" href="javascript:"><?= $trans->topBar->download ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a></li>
+            <li><a id="nav-modal-languages" href="javascript:"><?= $trans->topBar->locale ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a></li>
         </ul>
     </nav>
     <div style="clear: both;"></div>
