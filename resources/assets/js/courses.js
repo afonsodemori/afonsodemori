@@ -14,7 +14,7 @@ $(document).ready(() => {
                     left: 0,
                     behavior: 'smooth'
                 });
-            }, 300);
+            }, 500);
 
         }, 200);
     }
@@ -51,7 +51,7 @@ $('.tags a').on('click', function (event) {
     window.history.replaceState(null, null, `#${course}`);
 });
 
-$('li a').on('click', function (event) {
+$('.course li a').on('click', function (event) {
     let parts = this.href.split('#');
 
     if (parts.length === 2) {
