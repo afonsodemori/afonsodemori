@@ -44,7 +44,6 @@ jobs:
 
       - name: Move generated files
         run: |
-          cp -Rv ./public/* ./_site/
           echo "<h1>OK</h1>" > _site/health-check.html
           echo "<address>Last build: $(date)</address>" >> _site/health-check.html
 
