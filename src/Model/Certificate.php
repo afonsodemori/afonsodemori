@@ -5,11 +5,13 @@ namespace App\Model;
 // TODO: THIS IS A MODEL, NOT A SERVICE!!! REFACTOR THE HELL OUT OF IT.
 class Certificate implements \JsonSerializable
 {
-    private string $title;
+    public string $id;
+    public string $title;
     private \DateInterval $duration;
+    public string $durationString;
     /** @var string[] */
-    private array $images;
-    private string $link;
+    public array $images;
+    public string $link;
 
     public function __construct(string $title, string $duration, array $images, string $link)
     {
@@ -19,12 +21,15 @@ class Certificate implements \JsonSerializable
 
         [$hh, $mm, $ss] = explode(':', $duration);
         $this->duration = new \DateInterval(sprintf('PT%dH%dM%dS', $hh, $mm, $ss));
+
+        $this->fillId();
+        $this->fillDurationString();
     }
 
-    public function getId(): string
+    public function fillId(): void
     {
         $parts = explode('/', $this->link);
-        return end($parts);
+        $this->id = end($parts);
     }
 
     public function getTitle(): string
@@ -52,13 +57,15 @@ class Certificate implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
             'images' => $this->images,
             'link' => $this->link,
+            'durationString' => $this->durationString,
         ];
     }
 
-    public function getDurationString(): string
+    private function fillDurationString(): void
     {
         $hours = $this->duration->d * 24 + $this->duration->h;
         $minutes = $this->duration->i;
@@ -73,6 +80,6 @@ class Certificate implements \JsonSerializable
             $duration[] = "{$minutes}m";
         }
 
-        return implode(' ', $duration);
+        $this->durationString = implode(' ', $duration);
     }
 }

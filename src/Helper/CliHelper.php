@@ -49,8 +49,8 @@ abstract class CliHelper
         // remove final space in case of 0 months
         $period = trim($period);
 
-        $startMonthName = $trans->footer->months[((int) $startMonth) - 1];
-        $endMonthName = $trans->footer->months[((int) $endMonth) - 1];
+        $startMonthName = $trans->footer->months[((int)$startMonth) - 1];
+        $endMonthName = $trans->footer->months[((int)$endMonth) - 1];
 
         $final = "$startMonthName $startYear – ";
         if ($isCurrentJob) {
@@ -67,16 +67,37 @@ abstract class CliHelper
         $dir = dirname($path);
 
         if (!is_dir($dir)) {
-            echo "Creating directory `$dir`...\n";
+            self::log("Creating directory `$dir`...");
             if (!mkdir($dir, 0755, true) && !is_dir($dir)) {
                 throw new \RuntimeException(sprintf('Can not create "%s". Check your permissions.', $dir));
             }
         }
 
         // TODO: Control overwriting
-        echo "Writing $path... ";
+        self::log("Writing $path... ", false);
         file_put_contents($path, $content);
         $fileSize = number_format(filesize($path) / 1024, 2);
-        echo "$fileSize KB\n";
+        self::log("$fileSize KB", timestamp: false);
+    }
+
+    public static function ln(): void
+    {
+        echo PHP_EOL;
+    }
+
+    public static function log(
+        string $message,
+        $linebreak = true,
+        $timestamp = true,
+    ): void {
+        if ($timestamp) {
+            echo sprintf("[%s] ", date('H:i:s'));
+        }
+
+        echo $message;
+
+        if ($linebreak) {
+            self::ln();
+        }
     }
 }

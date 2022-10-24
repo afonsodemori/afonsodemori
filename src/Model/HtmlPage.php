@@ -21,11 +21,6 @@ class HtmlPage
         return $this->id;
     }
 
-    public function getName(): string
-    {
-        return "$this->id.html";
-    }
-
     public function getTranslations(): string
     {
         return sprintf(

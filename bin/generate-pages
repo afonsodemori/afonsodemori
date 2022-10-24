@@ -5,7 +5,7 @@
 require __DIR__ . '/../src/Model/HtmlPage.php';
 require __DIR__ . '/../src/Helper/CliHelper.php';
 
-use App\Helper\CliHelper;
+use App\Helper\CliHelper as Cli;
 use App\Model\HtmlPage;
 
 $pages = [
@@ -16,18 +16,27 @@ $pages = [
 ];
 
 foreach (HtmlPage::LANGUAGES as $lang) {
+    Cli::log("Creating pages for lang '$lang'...");
     $locale = $lang;
     foreach ($pages as $page) {
+        Cli::log("=> Page: {$page->getId()}");
         $page->setLang($lang);
 
+        $translations = $page->getTranslations();
+        Cli::log("=> Translations: $translations");
+
+        $template = $page->getTemplate();
+        Cli::log("=> Template: $template");
+
         ob_start();
-        require $page->getTranslations();
-        require $page->getTemplate();
+        require $translations;
+        require $template;
         $html = ob_get_clean();
 
-        echo $page->getOutputPath() . PHP_EOL;
+        Cli::log("Output => {$page->getOutputPath()}");
 
-        CliHelper::writeFile($page->getOutputPath(), $html);
+        Cli::writeFile($page->getOutputPath(), $html);
+        Cli::ln();
     }
-    echo PHP_EOL;
+    Cli::ln();
 }

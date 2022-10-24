@@ -34,48 +34,48 @@
     <h1 class="drac-text-pink-purple"><?= $trans->page->title ?></h1>
     <ul class="tags">
         <?php foreach ($trans->courses as $course): ?>
-            <li><a href="#<?= $course->getId() ?>" class="<?= $course->getId() ?>"><?= $course->getName() ?></a></li>
+            <li><a href="#<?= $course->id ?>" class="<?= $course->id ?>"><?= $course->name ?></a></li>
         <?php endforeach; ?>
     </ul>
 </header>
 
 <?php foreach ($trans->courses as $course): ?>
 
-    <section id="<?= $course->getId() ?>" class="course course-<?= $course->getId() ?> header" style="background: #111">
-        <h2 class="drac-text-purple-cyan"><?= $course->getName() ?></h2>
+    <section id="<?= $course->id ?>" class="course course-<?= $course->id ?> header" style="background: #111">
+        <h2 class="drac-text-purple-cyan"><?= $course->name ?></h2>
     </section>
 
-    <?php if ($course->getTopics()): ?>
-    <section class="course course-<?= $course->getId() ?> header">
+    <?php if ($course->topics): ?>
+    <section class="course course-<?= $course->id ?> header">
         <h3><?= $trans->page->syllabus ?></h3>
         <ol class="summary">
-            <?php foreach ($course->getTopics() as $topic): ?>
+            <?php foreach ($course->topics as $topic): ?>
             <li><?= $topic ?></li>
             <?php endforeach; ?>
         </ol>
     </section>
     <?php endif; ?>
 
-    <section class="course course-<?= $course->getId() ?> header">
+    <section class="course course-<?= $course->id ?> header">
         <h3><?= $trans->page->certificates ?></h3>
         <ol class="summary">
-            <?php foreach ($course->getCertificates() as $certificate): ?>
-                <li><a href="#<?= $certificate->getId() ?>"><?= $certificate->getTitle() ?></a> (<?= $certificate->getDurationString() ?>)</li>
+            <?php foreach ($course->certificates as $certificate): ?>
+                <li><a href="#<?= $certificate->id ?>"><?= $certificate->title ?></a> (<?= $certificate->durationString ?>)</li>
             <?php endforeach; ?>
         </ol>
     </section>
 
-    <?php foreach ($course->getCertificates() as $certificate): ?>
-        <section id="<?= $certificate->getId() ?>" class="course course-<?= $course->getId() ?>">
-            <h3><?= $certificate->getTitle() ?></h3>
-            <?php foreach ($certificate->getImages() as $image): ?>
+    <?php foreach ($course->certificates as $certificate): ?>
+        <section id="<?= $certificate->id ?>" class="course course-<?= $course->id ?>">
+            <h3><?= $certificate->title ?></h3>
+            <?php foreach ($certificate->images as $image): ?>
             <figure class="certificate">
-                <a href="<?= $certificate->getLink() ?>" target="_blank">
-                    <img src="" data-src="<?= $image ?>" class="placeholder" alt="Certificado: <?= $certificate->getTitle() ?>" title="Comprobar autenticidad">
+                <a href="<?= $certificate->link ?>" target="_blank">
+                    <img src="" data-src="<?= $image ?>" class="placeholder" alt="Certificado: <?= $certificate->title ?>" title="Comprobar autenticidad">
                 </a>
                 <figcaption>
                     <strong><?= $trans->page->authenticity ?>:</strong>
-                    <a href="<?= $certificate->getLink() ?>" target="_blank"><?= $certificate->getLink() ?></a>
+                    <a href="<?= $certificate->link ?>" target="_blank"><?= $certificate->link ?></a>
                 </figcaption>
             </figure>
             <?php endforeach; ?>
