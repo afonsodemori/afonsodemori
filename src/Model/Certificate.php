@@ -7,13 +7,14 @@ class Certificate implements \JsonSerializable
 {
     private string $title;
     private \DateInterval $duration;
-    private string $image;
+    /** @var string[] */
+    private array $images;
     private string $link;
 
-    public function __construct(string $title, string $duration, string $image, string $link)
+    public function __construct(string $title, string $duration, array $images, string $link)
     {
         $this->title = $title;
-        $this->image = $image;
+        $this->images = $images;
         $this->link = $link;
 
         [$hh, $mm, $ss] = explode(':', $duration);
@@ -36,9 +37,10 @@ class Certificate implements \JsonSerializable
         return $this->duration;
     }
 
-    public function getImage(): string
+    /** @return string[] */
+    public function getImages(): array
     {
-        return $this->image;
+        return $this->images;
     }
 
     public function getLink(): string
@@ -51,7 +53,7 @@ class Certificate implements \JsonSerializable
     {
         return [
             'title' => $this->title,
-            'image' => $this->image,
+            'images' => $this->images,
             'link' => $this->link,
         ];
     }

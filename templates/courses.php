@@ -31,41 +31,57 @@
 </head>
 <body>
 <header>
-    <h1>Cursos</h1>
+    <h1 class="drac-text-pink-purple"><?= $trans->page->title ?></h1>
     <ul class="tags">
         <?php foreach ($trans->courses as $course): ?>
-            <li><a href="#<?= $course->getId(); ?>" class="<?= $course->getId(); ?>"><?= $course->getName(); ?></a></li>
+            <li><a href="#<?= $course->getId() ?>" class="<?= $course->getId() ?>"><?= $course->getName() ?></a></li>
         <?php endforeach; ?>
     </ul>
 </header>
 
 <?php foreach ($trans->courses as $course): ?>
 
-    <section id="<?= $course->getId(); ?>" class="course course-<?= $course->getId() ?> header">
-        <h2><?= $course->getName(); ?></h2>
+    <section id="<?= $course->getId() ?>" class="course course-<?= $course->getId() ?> header" style="background: #111">
+        <h2 class="drac-text-purple-cyan"><?= $course->getName() ?></h2>
+    </section>
 
+    <?php if ($course->getTopics()): ?>
+    <section class="course course-<?= $course->getId() ?> header">
+        <h3><?= $trans->page->syllabus ?></h3>
+        <ol class="summary">
+            <?php foreach ($course->getTopics() as $topic): ?>
+            <li><?= $topic ?></li>
+            <?php endforeach; ?>
+        </ol>
+    </section>
+    <?php endif; ?>
+
+    <section class="course course-<?= $course->getId() ?> header">
+        <h3><?= $trans->page->certificates ?></h3>
         <ol class="summary">
             <?php foreach ($course->getCertificates() as $certificate): ?>
-                <li><a href="#<?= $certificate->getId(); ?>"><?= $certificate->getTitle(); ?></a> (<?= $certificate->getDurationString(); ?>)</li>
+                <li><a href="#<?= $certificate->getId() ?>"><?= $certificate->getTitle() ?></a> (<?= $certificate->getDurationString() ?>)</li>
             <?php endforeach; ?>
         </ol>
     </section>
 
     <?php foreach ($course->getCertificates() as $certificate): ?>
-        <section id="<?= $certificate->getId(); ?>" class="course course-<?= $course->getId() ?>">
-            <h3><?= $certificate->getTitle(); ?></h3>
-            <figure>
-                <a href="<?= $certificate->getLink(); ?>" target="_blank">
-                    <img src="" data-src="<?= $certificate->getImage(); ?>" class="placeholder" alt="Certificado: <?= $certificate->getTitle() ?>" title="Comprobar autenticidad">
+        <section id="<?= $certificate->getId() ?>" class="course course-<?= $course->getId() ?>">
+            <h3><?= $certificate->getTitle() ?></h3>
+            <?php foreach ($certificate->getImages() as $image): ?>
+            <figure class="certificate">
+                <a href="<?= $certificate->getLink() ?>" target="_blank">
+                    <img src="" data-src="<?= $image ?>" class="placeholder" alt="Certificado: <?= $certificate->getTitle() ?>" title="Comprobar autenticidad">
                 </a>
                 <figcaption>
-                    <strong>Autenticidad:</strong>
-                    <a href="<?= $certificate->getLink(); ?>" target="_blank"><?= $certificate->getLink() ?></a>
+                    <strong><?= $trans->page->authenticity ?>:</strong>
+                    <a href="<?= $certificate->getLink() ?>" target="_blank"><?= $certificate->getLink() ?></a>
                 </figcaption>
             </figure>
+            <?php endforeach; ?>
         </section>
-    <?php endforeach; ?>
-<?php endforeach; ?>
+    <?php endforeach ?>
+<?php endforeach ?>
 
 <footer>
     Afonso de Mori Ayres da Silva<br>

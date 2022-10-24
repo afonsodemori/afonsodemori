@@ -10,6 +10,9 @@ class Course implements \JsonSerializable
 {
     private string $id;
     private string $name;
+    private string $about = "";
+    /** @var string[]  */
+    private array $topics = [];
     /** @var Certificate[] $certificates */
     private array $certificates = [];
 
@@ -17,6 +20,29 @@ class Course implements \JsonSerializable
     {
         $this->id = $id;
         $this->name = $name;
+    }
+
+    public function setAbout(string $about): self
+    {
+        $this->about = $about;
+        return $this;
+    }
+
+    public function getAbout(): string
+    {
+        return $this->about;
+    }
+
+    public function addTopic(string $topic): self
+    {
+        $this->topics[] = $topic;
+        return $this;
+    }
+
+    /** @return string[] */
+    public function getTopics(): array
+    {
+        return $this->topics;
     }
 
     public function addCertificate(Certificate $certificate): self
