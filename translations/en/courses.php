@@ -48,7 +48,7 @@ $trans->courses = [
         ->addTopic('TDD: Pruebas automatizadas con JUnit')
         ->addCertificate(new Certificate(
             'Formación Java',
-            '126:00:00',
+            '121:00:00',
             [
                 '/assets/certificates/java-training/alura-java-training-front.png',
                 '/assets/certificates/java-training/alura-java-training-back.png',
