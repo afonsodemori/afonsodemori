@@ -1,55 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300,400;600&display=swap');
 
-body {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 100;
-    font-size: 1em;
-    margin: 0;
-    padding: 0;
-    background-color: #1d1e26;
-    text-align: center;
-    color: #ddd;
+:root {
+    --blue: #03c2e0;
+    --green: #3bc86f;
+    --text-color-primary: #8992a1;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 100;
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25em;
+    margin: 0;
+    padding: 0;
+    background-color: #080f1b;
+    text-align: center;
+    color: var(--text-color-primary);
+}
+
+h1, h2 {
+    font-weight: 600;
     line-height: 140%;
     margin: 0;
     padding: 0;
     transition: 200ms;
+    color: #fff;
 }
 
 h1 {
-    font-weight: 400;
+    font-size: 3em;
+    background-image: linear-gradient(to right, #39f6eb, #1184ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h2 {
-    font-size: 3em;
-}
-
-h3 {
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 header, section {
-    padding: 3em 1em;
-    border-bottom: 2px solid #000;
+    padding: 3em 2em;
+    border-bottom: 1px solid #000;
 }
 
-.course {
-    display: none;
+header {
+    background-image: linear-gradient(#0f1825 0%, #010a11 62.08%);
+}
+
+header p {
+    max-width: 800px;
+    margin: auto;
+    padding-top: 2em;
 }
 
 a {
     transition: 200ms;
 }
 
+.course {
+    display: none;
+}
+
 figure {
-    margin: 1em 0;
+    margin: 2em 0 1em 0;
+}
+
+section.last-courses {
+    color: #fff;
+    background-color: #051931;
+    font-size: .8em;
+}
+
+section.last-courses p {
+    font-size: 1.5em;
+    margin: 1em;
 }
 
 .tags {
-    margin: 2em 0 0 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -61,28 +88,26 @@ figure {
 .tags li a {
     background-color: #000;
     padding: .2em .5em;
-    border-radius: 0.25rem;
-    color: #9580ff;
+    border-radius: 0.4rem;
+    color: #f16166;
     text-decoration: none;
 }
 
 .tags .active, .tags li a:hover {
-    background-color: #9580ff;
-    font-weight: 400;
+    background-color: #f16166;
     color: #000;
 }
 
 .tags .active {
     list-style: none;
     box-sizing: border-box;
-    background: linear-gradient(135deg, #ff80bf 0, #9580ff 100%);
+    background-image: linear-gradient(135deg, #f16166 0, #793133 100%);
 }
 
 .summary {
     display: inline-block;
     margin: 1em 0 0 0;
     text-align: left;
-    line-height: 1.5em;
 }
 
 .summary li {
@@ -91,38 +116,20 @@ figure {
 }
 
 .summary a, figcaption a {
-    color: #80ffea;
+    color: var(--blue);
     text-decoration: none;
     border-bottom: 2px solid rgba(0, 0, 0, .5);
 }
 
 .summary a:hover, figcaption a:hover {
-    border-bottom-color: #80ffea;
+    border-bottom-color: var(--blue);
 }
 
 img.placeholder {
-    min-height: 400px;
-    background: linear-gradient(90deg, #282a36, #383a59);
+    min-height: 500px;
+    background: linear-gradient(90deg, #08192f, #0a3b75);
     background-size: 200% 100%;
     animation: Animation 1s normal infinite;
-}
-
-.certificate {
-    margin-top: 2em;
-}
-
-.drac-text-pink-purple {
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-image: linear-gradient(135deg, #ff80bf 0, #9580ff 100%);
-    background-size: 100%;
-}
-
-.drac-text-purple-cyan {
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-image: linear-gradient(135deg, #9580ff 0, #80ffea 100%);
-    background-size: 100%;
 }
 
 @keyframes Animation {
@@ -134,16 +141,19 @@ img.placeholder {
     }
 }
 
-img {
-    max-width: 100%;
-    width: 800px;
+.certificate img, .certificate figcaption {
     opacity: .7;
     transition: 400ms;
-    border-radius: 3px;
 }
 
-img:hover {
+.certificate img:hover, .certificate figcaption:hover {
     opacity: 1;
+}
+
+.certificate img {
+    max-width: 100%;
+    width: 800px;
+    border-radius: 5px;
 }
 
 figcaption {
@@ -163,13 +173,13 @@ footer {
 
 footer a {
     display: inline-block;
-    color: #8aff80;
+    color: var(--green);
     text-decoration: none;
     border-bottom: 2px solid rgba(0, 0, 0, .5);
 }
 
 footer a:hover {
-    border-bottom-color: #8aff80;
+    border-bottom-color: var(--green);
 }
 
 @media only screen and (max-width: 900px) {

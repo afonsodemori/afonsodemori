@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    let course = window.location.hash.substr(1);
+    let course = window.location.hash.substring(1);
 
     if (window.location.hash !== '') {
         window.setTimeout(() => {
@@ -27,12 +27,13 @@ $('.tags a').on('click', function (event) {
         return false;
     }
 
-    let course = $(this).attr('href').substr(1);
+    let course = $(this).attr('href').substring(1);
     $('.tags a').removeClass('active');
     $(this).addClass('active');
 
+    $('header.course').hide();
     $('section.course').hide();
-    $(`section.header.course-${course}`).slideDown(200);
+    $(`header.course-${course}`).slideDown(200);
 
     $(`section.course-${course} img`).each(function () {
         let $img = $(this);
@@ -46,7 +47,7 @@ $('.tags a').on('click', function (event) {
     });
 
     window.setTimeout(() => {
-        $(`section.course-${course}`).slideDown();
+        $(`section.course-${course}`).slideDown(400);
     }, 200);
     window.history.replaceState(null, null, `#${course}`);
 });

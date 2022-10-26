@@ -30,24 +30,26 @@
     <link rel="stylesheet" href="/assets/css/courses-print.css?v=<?= time() ?>" media="print">
 </head>
 <body>
-<header>
-    <h1 class="drac-text-pink-purple"><?= $trans->page->title ?></h1>
+
+<section class="last-courses">
+    <p><strong><?= $trans->page->title ?></strong></p>
     <ul class="tags">
         <?php foreach ($trans->courses as $course): ?>
             <li><a href="#<?= $course->id ?>" class="<?= $course->id ?>"><?= $course->name ?></a></li>
         <?php endforeach; ?>
     </ul>
-</header>
+</section>
 
 <?php foreach ($trans->courses as $course): ?>
 
-    <section id="<?= $course->id ?>" class="course course-<?= $course->id ?> header" style="background: #111">
-        <h2 class="drac-text-purple-cyan"><?= $course->name ?></h2>
-    </section>
+    <header id="<?= $course->id ?>" class="course course-<?= $course->id ?>">
+        <h1><?= $course->name ?></h1>
+        <?php if ($course->about): ?><p><?= $course->about ?></p><?php endif; ?>
+    </header>
 
     <?php if ($course->topics): ?>
-    <section class="course course-<?= $course->id ?> header">
-        <h3><?= $trans->page->syllabus ?></h3>
+    <section class="course course-<?= $course->id ?>">
+        <h2><?= $trans->page->syllabus ?></h2>
         <ol class="summary">
             <?php foreach ($course->topics as $topic): ?>
             <li><?= $topic ?></li>
@@ -56,8 +58,8 @@
     </section>
     <?php endif; ?>
 
-    <section class="course course-<?= $course->id ?> header">
-        <h3><?= $trans->page->certificates ?></h3>
+    <section class="course course-<?= $course->id ?>">
+        <h2><?= $trans->page->certificates ?></h2>
         <ol class="summary">
             <?php foreach ($course->certificates as $certificate): ?>
                 <li><a href="#<?= $certificate->id ?>"><?= $certificate->title ?></a> (<?= $certificate->durationString ?>)</li>
@@ -67,7 +69,7 @@
 
     <?php foreach ($course->certificates as $certificate): ?>
         <section id="<?= $certificate->id ?>" class="course course-<?= $course->id ?>">
-            <h3><?= $certificate->title ?></h3>
+            <h2><?= $certificate->title ?></h2>
             <?php foreach ($certificate->images as $image): ?>
             <figure class="certificate">
                 <a href="<?= $certificate->link ?>" target="_blank">
