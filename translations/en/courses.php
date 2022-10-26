@@ -9,24 +9,28 @@ use App\Model\Certificate;
 use App\Model\Course;
 
 $trans = new stdClass();
+$trans->metas = new stdClass();
+$trans->metas->title = 'Courses';
 $trans->page = new stdClass();
-$trans->page->title = 'Últimos Cursos';
-$trans->page->syllabus = 'Temario';
-$trans->page->certificates = 'Certificados';
-$trans->page->authenticity = 'Autenticidad';
+$trans->page->title = 'Last courses';
+$trans->page->syllabus = 'Syllabus';
+$trans->page->certificates = 'Certificates';
+$trans->page->certificate = 'Certificate';
+$trans->page->checkAuthenticity = 'Check authenticity';
+$trans->page->authenticity = 'Authenticity';
 
 $trans->courses = [
-    (new Course('java-oca', 'Formación: Certificación Java (OCA)'))
-        ->addTopic("Tipos de Datos")
-        ->addTopic("Operadores y condicionales")
-        ->addTopic("Creando y usando Arrays")
-        ->addTopic("Crear y usar bucles")
-        ->addTopic("Métodos y encapsulación")
-        ->addTopic("Herencia, Interfaz y Polimorfismo")
-        ->addTopic("Lidiando com excepciones")
-        ->addTopic("Lambdas, nueva API java.time, wrappers y autoboxing")
+    (new Course('java-oca', 'Training: Java Certification (OCA)'))
+        ->addTopic("Data Types")
+        ->addTopic("Operators and conditionals")
+        ->addTopic("Creating and using Arrays")
+        ->addTopic("Using loops")
+        ->addTopic("Methods and encapsulation")
+        ->addTopic("Inheritance, Interface and Polymorphism")
+        ->addTopic("Exception handling")
+        ->addTopic("Lambdas, new java.time API, wrappers and autoboxing")
         ->addCertificate(new Certificate(
-            'Formación: Certificación Java',
+            'Training: Java Certification (OCA)',
             '76:00:00',
             [
                 '/assets/certificates/java-oca/alura-java-oca-front.png',
@@ -35,19 +39,19 @@ $trans->courses = [
             'https://cursos.alura.com.br/certificate/d4a8a0ec-93af-4a30-83cf-d752ef7cfc85',
         )),
 
-    (new Course('java', 'Formación Java'))
-        ->addTopic('JRE y JDK: compila y ejecuta tu programa')
-        ->addTopic('Comprendiendo la Orientación de Objetos')
-        ->addTopic('Polimorfismo, Herencia e Interfaces')
-        ->addTopic('Crear, lanzar y manejar Excepciones')
-        ->addTopic('Java y java.lang')
-        ->addTopic('Java y java.util')
-        ->addTopic('java.io: Streams, Reader y Writers')
-        ->addTopic('Colecciones: Lists, Sets y Maps')
-        ->addTopic('Novedades en Java 8 y 9')
-        ->addTopic('TDD: Pruebas automatizadas con JUnit')
+    (new Course('java', 'Java training'))
+        ->addTopic('JRE and JDK: Compile and run your program')
+        ->addTopic('Understanding Object Orientation')
+        ->addTopic('Polymorphism, Inheritance and Interfaces')
+        ->addTopic('Create, Throw, and Handle Exceptions')
+        ->addTopic('Java and java.lang')
+        ->addTopic('Java and java.util')
+        ->addTopic('java.io: Streams, Reader and Writers')
+        ->addTopic('Collections: Lists, Sets and Maps')
+        ->addTopic('What\'s New in Java 8 and 9')
+        ->addTopic('TDD: Automated Testing with JUnit')
         ->addCertificate(new Certificate(
-            'Formación Java',
+            'Java training',
             '121:00:00',
             [
                 '/assets/certificates/java-training/alura-java-training-front.png',

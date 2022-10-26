@@ -8,11 +8,11 @@
 ?><!DOCTYPE html>
 <html lang="<?= $locale ?>">
 <head>
-    <title><?= $trans->page->title ?> ‹ Afonso de Mori</title>
+    <title><?= $trans->metas->title ?> ‹ Afonso de Mori</title>
 
     <!-- le metatags -->
     <meta name="description" content="">
-    <meta name="keywords" content="afonso, alfonso, mori, ayres, silva, demori, afonsodemori, afonsosilva89, php, software">
+    <meta name="keywords" content="">
     <meta charset="utf-8">
     <link rel="canonical" href="https://afonso.dev/courses/es">
 
@@ -73,11 +73,18 @@
             <?php foreach ($certificate->images as $image): ?>
             <figure class="certificate">
                 <a href="<?= $certificate->link ?>" target="_blank">
-                    <img src="" data-src="<?= $image ?>" class="placeholder" alt="Certificado: <?= $certificate->title ?>" title="Comprobar autenticidad">
+                    <img src=""
+                         data-src="<?= $image ?>"
+                         class="placeholder"
+                         alt="<?= $trans->page->certificate ?>: <?= $certificate->title ?>"
+                         title="<?= $trans->page->checkAuthenticity ?>">
                 </a>
                 <figcaption>
                     <strong><?= $trans->page->authenticity ?>:</strong>
-                    <a href="<?= $certificate->link ?>" target="_blank"><?= $certificate->link ?></a>
+                    <a
+                            href="<?= $certificate->link ?>"
+                            target="_blank"
+                            title="<?= $trans->page->checkAuthenticity ?>"><?= $certificate->link ?></a>
                 </figcaption>
             </figure>
             <?php endforeach; ?>

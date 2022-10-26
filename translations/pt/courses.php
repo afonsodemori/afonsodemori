@@ -10,10 +10,14 @@ use App\Model\Course;
 $default = json_decode(json_encode($trans), true);
 
 $trans = array_replace_recursive($default, [
-    'page' => [
-        'title' => 'Últimos Cursos',
+    'metas' => [
+        'title' => 'Cursos',
+    ],'page' => [
+        'title' => 'Últimos cursos',
         'syllabus' => 'Sumário',
         'certificates' => 'Certificados',
+        'certificate' => 'Certificado',
+        'checkAuthenticity' => 'Comprovar autenticidade',
         'authenticity' => 'Autenticidade',
     ],
     'courses' => [
