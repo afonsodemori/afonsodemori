@@ -24,6 +24,12 @@ $('.tags a').on('click', function (event) {
     event.preventDefault();
 
     if ($(this).hasClass('active')) {
+        $('.tags a').removeClass('active');
+        $('section.course').slideUp(200);
+        window.setTimeout(() => {
+            $('header.course').slideUp(200);
+        }, 100);
+        window.history.replaceState(null, null, window.location.pathname);
         return false;
     }
 
@@ -31,9 +37,12 @@ $('.tags a').on('click', function (event) {
     $('.tags a').removeClass('active');
     $(this).addClass('active');
 
-    $('header.course').hide();
-    $('section.course').hide();
+    $('.course').hide();
     $(`header.course-${course}`).slideDown(200);
+
+    window.setTimeout(() => {
+        $(`section.course-${course}`).slideDown(400);
+    }, 200);
 
     $(`section.course-${course} img`).each(function () {
         let $img = $(this);
@@ -46,9 +55,6 @@ $('.tags a').on('click', function (event) {
         }
     });
 
-    window.setTimeout(() => {
-        $(`section.course-${course}`).slideDown(400);
-    }, 200);
     window.history.replaceState(null, null, `#${course}`);
 });
 
