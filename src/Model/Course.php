@@ -22,6 +22,12 @@ class Course implements \JsonSerializable
         $this->name = $name;
     }
 
+    public function setAbout(string $about): self
+    {
+        $this->about = $about;
+        return $this;
+    }
+
     public function addTopic(string $topic): self
     {
         $this->topics[] = $topic;

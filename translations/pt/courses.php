@@ -54,6 +54,9 @@ $trans = array_replace_recursive($default, [
                 "TDD: Testes automatizados com JUnit",
             ],
         ],
+        2 => [
+            "name" => 'Formação Android',
+        ],
     ],
 ]);
 

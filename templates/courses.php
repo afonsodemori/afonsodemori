@@ -96,6 +96,9 @@
     Afonso de Mori Ayres da Silva<br>
     <a href="/">afonso.dev</a>
 </footer>
+
+<div class="backlight"></div>
+
 <script src="/assets/js/jquery.js"></script>
 <script src="/assets/js/courses.js?v=<?= time() ?>"></script>
 </body>
