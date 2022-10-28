@@ -1,3 +1,5 @@
+let timeouts = [];
+
 function isValidHash(hash = null) {
     if (hash === null) hash = window.location.hash.substring(1);
     if (hash === "") return false;
@@ -27,17 +29,20 @@ onhashchange = () => {
 function hideCourses() {
     console.debug(`Hiding courses...`);
     $(".tags a").removeClass("active");
-    $("section.course").slideUp(200);
+    $("section.course").stop().slideUp(200);
 
-    window.setTimeout(() => {
-        $("header.course").slideUp(200);
-    }, 100);
+    timeouts.push(window.setTimeout(() => {
+        $("header.course").stop().slideUp(200);
+    }, 100));
 
     window.history.replaceState(null, null, window.location.pathname);
 }
 
 function toggleCourse(course, scrollToContent = false) {
     console.debug("Course:", course);
+
+    (timeouts ?? []).forEach(timeout => clearTimeout(timeout));
+    timeouts = [];
 
     let $tagLi = $(`.tags li.${course}`);
     let $tagAnchor = $(`.tags li.${course} a`);
@@ -56,11 +61,11 @@ function toggleCourse(course, scrollToContent = false) {
     $('.tags a').removeClass("active");
     $tagAnchor.addClass("active");
     $(".course").hide();
-    $(`header.course-${course}`).slideDown(200);
+    $(`header.course-${course}`).stop().slideDown(200);
 
-    window.setTimeout(() => {
-        $(`section.course-${course}`).slideDown(400);
-    }, 200);
+    timeouts.push(window.setTimeout(() => {
+        $(`section.course-${course}`).stop().slideDown(400);
+    }, 200));
 
     if (scrollToContent) {
         // TODO: Refactor to scroll to course and certificates with the same code
