@@ -1,7 +1,14 @@
-$(document).ready(() => {
-    let course = window.location.hash.substring(1);
+function isValidHash(hash = null) {
+    if (hash === null) hash = window.location.hash.substring(1);
+    if (hash === "") return false;
+    // Look for a header for the course
+    return $(`#${hash}`).length === 1;
+}
 
-    if (window.location.hash !== '') {
+$(document).ready(() => {
+    if (isValidHash()) {
+        let course = window.location.hash.substring(1);
+
         window.setTimeout(() => {
             $(`.tags a.${course}`).trigger('click');
 
