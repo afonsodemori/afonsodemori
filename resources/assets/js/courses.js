@@ -10,28 +10,41 @@ function isValidHash(hash = null) {
 $(document).ready(() => {
     if (isValidHash()) {
         let course = window.location.hash.substring(1);
-        displayCourse(course, true);
+        toggleCourse(course, true);
     }
 });
 
-function displayCourse(course, scrollToContent = false) {
+onhashchange = () => {
+    console.debug("Location hash has changed");
+    if (isValidHash()) {
+        let course = window.location.hash.substring(1);
+        toggleCourse(course);
+    } else {
+        hideCourses();
+    }
+};
+
+function hideCourses() {
+    console.debug(`Hiding courses...`);
+    $(".tags a").removeClass("active");
+    $("section.course").slideUp(200);
+
+    window.setTimeout(() => {
+        $("header.course").slideUp(200);
+    }, 100);
+
+    window.history.replaceState(null, null, window.location.pathname);
+}
+
+function toggleCourse(course, scrollToContent = false) {
     console.debug("Course:", course);
 
     let $tagLi = $(`.tags li.${course}`);
     let $tagAnchor = $(`.tags li.${course} a`);
 
     if ($tagAnchor.hasClass("active")) {
-        console.debug(`Hiding ${course}...`);
-        $tagAnchor.removeClass("active");
-        $("section.course").slideUp(200);
-
-        window.setTimeout(() => {
-            $("header.course").slideUp(200);
-        }, 100);
-
-        window.history.replaceState(null, null, window.location.pathname);
-
-        return false;
+        hideCourses();
+        return;
     }
 
     if ($tagLi.hasClass("hidden")) {
@@ -83,7 +96,7 @@ $(".tags a").on("click", function (event) {
     event.preventDefault();
     let course = $(this).attr("href").substring(1);
     console.debug(`Clicked: ${course}`);
-    displayCourse(course);
+    toggleCourse(course);
 });
 
 $('.course li a').on('click', function (event) {
