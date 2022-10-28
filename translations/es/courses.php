@@ -1,47 +1,44 @@
 <?php
 /** @noinspection JsonEncodingApiUsageInspection */
 
-require __DIR__ . '/../en/courses.php';
-
-use App\Model\Certificate;
-use App\Model\Course;
+require __DIR__ . "/../en/courses.php";
 
 /** @var stdClass $trans */
 $default = json_decode(json_encode($trans), true);
 
 $trans = array_replace_recursive($default, [
-    'metas' => [
-        'title' => 'Cursos',
+    "metas" => [
+        "title" => "Cursos",
     ],
-    'page' => [
-        'title' => 'Últimos cursos',
-        'syllabus' => 'Temario',
-        'certificates' => 'Certificados',
-        'certificate' => 'Certificado',
-        'checkAuthenticity' => 'Comprobar autenticidad',
-        'authenticity' => 'Autenticidad',
+    "page" => [
+        "title" => "Últimos cursos",
+        "syllabus" => "Temario",
+        "certificates" => "Certificados",
+        "certificate" => "Certificado",
+        "checkAuthenticity" => "Comprobar autenticidad",
+        "authenticity" => "Autenticidad",
     ],
-    'courses' => [
-        (new Course('java-oca', 'Formación: Certificación Java (OCA)'))
-            ->addTopic("Tipos de Datos")
-            ->addTopic("Operadores y condicionales")
-            ->addTopic("Creando y usando Arrays")
-            ->addTopic("Crear y usar bucles")
-            ->addTopic("Métodos y encapsulación")
-            ->addTopic("Herencia, Interfaz y Polimorfismo")
-            ->addTopic("Lidiando com excepciones")
-            ->addTopic("Lambdas, nueva API java.time, wrappers y autoboxing")
-            ->addCertificate(new Certificate(
-                'Formación: Certificación Java (OCA)',
-                '76:00:00',
-                [
-                    '/assets/certificates/java-oca/alura-java-oca-front.png',
-                    '/assets/certificates/java-oca/alura-java-oca-back.png',
-                ],
-                'https://cursos.alura.com.br/certificate/d4a8a0ec-93af-4a30-83cf-d752ef7cfc85',
-            )),
-        1 => [
-            "name" => 'Formación Java',
+    "courses" => [
+        //[], // kotlin-hex
+        //[], // kotlin
+        [ // java-oca
+            "name" => "Formación: Certificación Java (OCA)",
+            "topics" => [
+                "Tipos de Datos",
+                "Operadores y condicionales",
+                "Creando y usando Arrays",
+                "Crear y usar bucles",
+                "Métodos y encapsulación",
+                "Herencia, Interfaz y Polimorfismo",
+                "Lidiando com excepciones",
+                "Lambdas, nueva API java.time, wrappers y autoboxing",
+            ],
+            "certificates" => [
+                ["title" => "Formación: Certificación Java (OCA)"]
+            ],
+        ], // java-oca
+        [ // java
+            "name" => "Formación Java",
             "topics" => [
                 "JRE y JDK: compila y ejecuta tu programa",
                 "Comprendiendo la Orientación de Objetos",
@@ -54,7 +51,16 @@ $trans = array_replace_recursive($default, [
                 "Novedades en Java 8 y 9",
                 "TDD: Pruebas automatizadas con JUnit",
             ],
-        ],
+        ], // java
+        [ // android
+            "name" => "Formación Android",
+            "certificates" => [
+                ["title" => "Crea una aplicación móvil"],
+                ["title" => "Avanzando con Listeners, Menú y UI"],
+                ["title" => "Refinando el proyecto"],
+            ],
+        ], // android
+        [], // symfony
     ],
 ]);
 
