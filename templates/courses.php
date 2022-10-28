@@ -95,8 +95,17 @@
 <?php endforeach ?>
 
 <footer>
-    Afonso de Mori Ayres da Silva<br>
-    <a href="/">afonso.dev</a>
+    <ul class="languages">
+        <li><a href="/courses/en" title="English version">English</a></li>
+        <li><a href="/courses/es" title="Versión en Español">Español</a></li>
+        <li><a href="/courses/pt" title="Versão em Português">Português</a></li>
+    </ul>
+    <p>Afonso de Mori Ayres da Silva</p>
+    <ul>
+        <li><a href="/">afonso.dev</a></li>
+        <li><a href="/github" target="_blank">GitHub</a></li>
+        <li><a href="/linkedin" target="_blank">LinkedIn</a></li>
+    </ul>
 </footer>
 
 <div class="backlight"></div>
