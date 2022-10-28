@@ -8,7 +8,6 @@ $(document).ready(() => {
             window.setTimeout(() => {
                 let parts = window.location.href.split('#');
                 let element = $(`#${parts[1]}`);
-                console.log(element);
                 window.scrollTo({
                     top: element.position().top,
                     left: 0,
@@ -20,24 +19,31 @@ $(document).ready(() => {
     }
 });
 
-$('.tags a').on('click', function (event) {
+$(".tags a").on("click", function (event) {
     event.preventDefault();
 
-    if ($(this).hasClass('active')) {
-        $('.tags a').removeClass('active');
-        $('section.course').slideUp(200);
+    let $this = $(this);
+    let course = $this.attr("href").substring(1);
+
+    if ($this.hasClass("hidden")) {
+        $this.removeClass("hidden");
+        $(`li.${course}`).removeClass("hidden");
+    }
+
+    if ($this.hasClass("active")) {
+        $(".tags a").removeClass("active");
+        $("section.course").slideUp(200);
         window.setTimeout(() => {
-            $('header.course').slideUp(200);
+            $("header.course").slideUp(200);
         }, 100);
         window.history.replaceState(null, null, window.location.pathname);
         return false;
     }
 
-    let course = $(this).attr('href').substring(1);
-    $('.tags a').removeClass('active');
-    $(this).addClass('active');
+    $('.tags a').removeClass("active");
+    $this.addClass("active");
 
-    $('.course').hide();
+    $(".course").hide();
     $(`header.course-${course}`).slideDown(200);
 
     window.setTimeout(() => {
@@ -46,11 +52,11 @@ $('.tags a').on('click', function (event) {
 
     $(`section.course-${course} img`).each(function () {
         let $img = $(this);
-        if ($img.hasClass('placeholder')) {
-            $img.attr('src', $img.data('src'));
-            $img.removeAttr('data-src');
-            $img.on('load', function () {
-                $img.removeClass('placeholder');
+        if ($img.hasClass("placeholder")) {
+            $img.attr("src", $img.data("src"));
+            $img.removeAttr("data-src");
+            $img.on("load", function () {
+                $img.removeClass("placeholder");
             });
         }
     });

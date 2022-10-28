@@ -35,7 +35,14 @@
     <p><strong><?= $trans->page->title ?></strong></p>
     <ul class="tags">
         <?php foreach ($trans->courses as $course): ?>
-            <li><a href="#<?= $course->id ?>" class="<?= $course->id ?>"><?= $course->name ?></a></li>
+            <li class="<?php if ($course->isHidden): ?><?= $course->id ?> hidden<?php endif; ?>">
+                <a
+                    href="#<?= $course->id ?>"
+                    class="<?= $course->id ?> <?php if ($course->isHidden): ?>hidden<?php endif; ?>"
+                >
+                    <?= $course->name ?>
+                </a>
+            </li>
         <?php endforeach; ?>
     </ul>
 </section>

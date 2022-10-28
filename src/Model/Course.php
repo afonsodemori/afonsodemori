@@ -11,6 +11,7 @@ class Course implements \JsonSerializable
     public string $id;
     public string $name;
     public string $about = "";
+    public bool $isHidden = false;
     /** @var string[] */
     public array $topics = [];
     /** @var Certificate[] $certificates */
@@ -25,6 +26,12 @@ class Course implements \JsonSerializable
     public function setAbout(string $about): self
     {
         $this->about = $about;
+        return $this;
+    }
+
+    public function setIsHidden(bool $isHidden = true): self
+    {
+        $this->isHidden = $isHidden;
         return $this;
     }
 
@@ -50,11 +57,12 @@ class Course implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'about' => $this->about,
-            'certificates' => $this->certificates,
-            'topics' => $this->topics,
+            "id" => $this->id,
+            "name" => $this->name,
+            "about" => $this->about,
+            "isHidden" => $this->isHidden,
+            "certificates" => $this->certificates,
+            "topics" => $this->topics,
         ];
     }
 }

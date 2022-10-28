@@ -93,6 +93,7 @@ $trans->courses = [
         )),
 
     (new Course("symfony", "Symfony"))
+        ->setIsHidden()
         ->addCertificate(new Certificate(
             "Charming Development in Symfony 5",
             "1:50:00",
