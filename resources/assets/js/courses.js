@@ -2,60 +2,68 @@ function isValidHash(hash = null) {
     if (hash === null) hash = window.location.hash.substring(1);
     if (hash === "") return false;
     // Look for a header for the course
-    return $(`#${hash}`).length === 1;
+    let isValidHash = $(`#${hash}`).length === 1;
+    console.debug("Is valid hash?", isValidHash);
+    return isValidHash;
 }
 
 $(document).ready(() => {
     if (isValidHash()) {
         let course = window.location.hash.substring(1);
-
-        window.setTimeout(() => {
-            $(`.tags a.${course}`).trigger('click');
-
-            window.setTimeout(() => {
-                let parts = window.location.href.split('#');
-                let element = $(`#${parts[1]}`);
-                window.scrollTo({
-                    top: element.position().top,
-                    left: 0,
-                    behavior: 'smooth'
-                });
-            }, 500);
-
-        }, 200);
+        displayCourse(course, true);
     }
 });
 
-$(".tags a").on("click", function (event) {
-    event.preventDefault();
+function displayCourse(course, scrollToContent = false) {
+    console.debug("Course:", course);
 
-    let $this = $(this);
-    let course = $this.attr("href").substring(1);
+    let $tagLi = $(`.tags li.${course}`);
+    let $tagAnchor = $(`.tags li.${course} a`);
 
-    if ($this.hasClass("hidden")) {
-        $this.removeClass("hidden");
-        $(`li.${course}`).removeClass("hidden");
-    }
-
-    if ($this.hasClass("active")) {
-        $(".tags a").removeClass("active");
+    if ($tagAnchor.hasClass("active")) {
+        console.debug(`Hiding ${course}...`);
+        $tagAnchor.removeClass("active");
         $("section.course").slideUp(200);
+
         window.setTimeout(() => {
             $("header.course").slideUp(200);
         }, 100);
+
         window.history.replaceState(null, null, window.location.pathname);
+
         return false;
     }
 
-    $('.tags a').removeClass("active");
-    $this.addClass("active");
+    if ($tagLi.hasClass("hidden")) {
+        console.debug("Rendering hidden course...");
+        $tagLi.removeClass("hidden");
+        $tagAnchor.removeClass("hidden");
+    }
 
+    $('.tags a').removeClass("active");
+    $tagAnchor.addClass("active");
     $(".course").hide();
     $(`header.course-${course}`).slideDown(200);
 
     window.setTimeout(() => {
         $(`section.course-${course}`).slideDown(400);
     }, 200);
+
+    if (scrollToContent) {
+        // TODO: Refactor to scroll to course and certificates with the same code
+        window.setTimeout(() => {
+            window.setTimeout(() => {
+                let parts = window.location.href.split('#');
+                let element = $(`#${parts[1]}`);
+                window.scrollTo({
+                    top: element.position().top,
+                    left: 0,
+                    behavior: "smooth"
+                });
+            }, 500);
+
+        }, 200);
+    }
 
     $(`section.course-${course} img`).each(function () {
         let $img = $(this);
@@ -69,11 +77,19 @@ $(".tags a").on("click", function (event) {
     });
 
     window.history.replaceState(null, null, `#${course}`);
+}
+
+$(".tags a").on("click", function (event) {
+    event.preventDefault();
+    let course = $(this).attr("href").substring(1);
+    console.debug(`Clicked: ${course}`);
+    displayCourse(course);
 });
 
 $('.course li a').on('click', function (event) {
     let parts = this.href.split('#');
 
+    // TODO: Refactor to scroll to course and certificates with the same code
     if (parts.length === 2) {
         event.preventDefault();
 
