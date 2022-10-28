@@ -110,7 +110,8 @@
 
 <div class="backlight"></div>
 
-<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.js?v=<?= time() ?>"></script>
+<script src="/assets/js/shared.js?v=<?= time() ?>"></script>
 <script src="/assets/js/courses.js?v=<?= time() ?>"></script>
 </body>
 </html>

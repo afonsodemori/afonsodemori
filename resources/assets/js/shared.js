@@ -78,6 +78,6 @@ function loadLanguage(locale) {
 }
 
 // Avoid saving locale for URLs without an explicit locale
-if (availableLanguages.indexOf(window.location.pathname.substr(-2)) >= 0) {
-    setCookie('locale', document.documentElement.lang, 365);
+if (availableLanguages.indexOf(window.location.pathname.slice(-2)) >= 0) {
+    setCookie("locale", document.documentElement.lang, 365);
 }

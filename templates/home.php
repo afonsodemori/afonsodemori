@@ -87,6 +87,6 @@
         </ul>
     </div>
 </section>
-
+<script src="/assets/js/shared.js?v=<?= time() ?>"></script>
 </body>
 </html>

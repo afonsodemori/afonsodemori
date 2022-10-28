@@ -13,6 +13,8 @@ $(document).ready(() => {
     if (isValidHash()) {
         let course = window.location.hash.substring(1);
         toggleCourse(course, true);
+    } else {
+        window.history.replaceState(null, null, window.location.pathname);
     }
 });
 
@@ -104,7 +106,7 @@ $(".tags a").on("click", function (event) {
     toggleCourse(course);
 });
 
-$('.course li a').on('click', function (event) {
+$(".course li a").on("click", function (event) {
     let parts = this.href.split('#');
 
     // TODO: Refactor to scroll to course and certificates with the same code
@@ -116,7 +118,20 @@ $('.course li a').on('click', function (event) {
         window.scrollTo({
             top: element.position().top,
             left: 0,
-            behavior: 'smooth'
+            behavior: "smooth"
         });
     }
+});
+
+document.querySelectorAll("footer .languages a").forEach(element => {
+    element.addEventListener("click", e => {
+        e.preventDefault();
+        let destination = e.target.href;
+
+        if (window.location.hash !== "") {
+            destination = destination + window.location.hash;
+        }
+
+        window.location.href = destination;
+    });
 });
