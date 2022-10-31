@@ -65,7 +65,7 @@ $trans->courses = [
                 "/assets/certificates/java-oca/alura-java-oca-front.png",
                 "/assets/certificates/java-oca/alura-java-oca-back.png",
             ],
-            "https://cursos.alura.com.br/certificate/d4a8a0ec-93af-4a30-83cf-d752ef7cfc85",
+            "https://cursos.alura.com.br/degree/certificate/eb1e3ce7-0461-4a64-a315-55aa8609dced",
         ))
     ,
 
