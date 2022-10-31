@@ -168,12 +168,14 @@ $trans = array_replace_recursive($default, [
     'courses' => [
         'title' => 'Cursos',
         'list' => '<ul>' .
-            '<li><strong>Symfony 5 Track</strong>, SymfonyCasts, 3 horas;</li>' .
-            '<li><strong>Desenvolvimento Java</strong>, Alura, 100 horas;</li>' .
-            '<li><strong>Desenvolvimento Android</strong>, Alura, 30 horas.</li>' .
-            '<li class="gray">Certificados e outros cursos em ' .
+            '<li><strong>API HTTP em Kotlin aplicando Arquitetura Hexagonal</strong>, Codely (2022), <em>em curso</em>;</li>' .
+            '<li><strong>Formação Kotlin</strong>, Alura (2022), 67 horas;</li>' .
+            '<li><strong>Formação: Certificação Java (OCA)</strong>, Alura (2022), 76 horas;</li>' .
+            '<li><strong>Desenvolvimento Android</strong>, Alura (2020), 30 horas;</li>' .
+            '<li><strong>Desenvolvimento Java</strong>, Alura (2019), 121 horas.</li>' .
+            '<li class="gray"><em>Certificados e outros cursos em ' .
             '<a target="_blank" href="/courses/pt">https://afonso.dev/cursos</a>.' .
-            '</li></ul>',
+            '</em></li></ul>',
     ],
     'skills' => [
         'title' => 'Habilidades',

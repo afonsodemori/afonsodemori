@@ -181,12 +181,14 @@ $trans = [
     'courses' => [
         'title' => 'Courses',
         'list' => '<ul>' .
-            '<li><strong>Symfony 5 Track</strong>, SymfonyCasts, 3 hours;</li>' .
-            '<li><strong>Java Development</strong>, Alura, 100 hours;</li>' .
-            '<li><strong>Android Development</strong>, Alura, 30 hours.</li>' .
-            '<li class="gray">Certificates and other courses at ' .
+            '<li><strong>HTTP API in Kotlin applying Hexagonal Architecture</strong>, Codely (2022), <em>ongoing</em>;</li>' .
+            '<li><strong>Kotlin training</strong>, Alura (2022), 67 hours;</li>' .
+            '<li><strong>Training: Java Certification (OCA)</strong>, Alura (2022), 76 hours;</li>' .
+            '<li><strong>Android Development</strong>, Alura (2020), 30 hours.</li>' .
+            '<li><strong>Java Development</strong>, Alura (2019), 121 hours;</li>' .
+            '<li class="gray"><em>Certificates and other courses at ' .
             '<a target="_blank" href="/courses/en">https://afonso.dev/courses</a>.' .
-            '</li></ul>',
+            '</em></li></ul>',
     ],
     'skills' => [
         'title' => 'Skills',
