@@ -19,8 +19,21 @@ $trans = array_replace_recursive($default, [
         "authenticity" => "Autenticidade",
     ],
     "courses" => [
-        //[], // kotlin-hex
-        //[], // kotlin
+        [ // kotlin-hex
+            "name" => "API HTTP em Kotlin aplicando Arquitetura Hexagonal"
+        ], // kotlin-hex
+        [ // kotlin
+            "name" => "Formação Kotlin",
+            "topics" => [
+                "Orientação a Objetos",
+                "Herança, Polimorfismo e Interface",
+                "Recursos da linguagem com pacotes e composição",
+                "Lidando com exceptions e referências nulas",
+                "Desenvolvimento com coleções, arrays e listas",
+                "Collections: Set e Map",
+                "Recursos do paradigma funcional",
+            ],
+        ], // kotlin
         [ // java-oca
             "name" => "Formação: Certificação Java (OCA)",
             "topics" => [

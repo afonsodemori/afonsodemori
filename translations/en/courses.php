@@ -20,8 +20,34 @@ $trans->page->checkAuthenticity = "Check authenticity";
 $trans->page->authenticity = "Authenticity";
 
 $trans->courses = [
-    //(new Course("kotlin-hex", "HTTP API in Kotlin applying Hexagonal Architecture")),
-    //(new Course("kotlin", "Kotlin training")),
+    (new Course("kotlin-hex", "HTTP API in Kotlin applying Hexagonal Architecture"))
+        ->setIsHidden()
+        ->setAbout("In progress")
+        ->addTopic("Estructura de un proyecto en Kotlin aplicando los fundamentos de la Arquitectura Hexagonal")
+        ->addTopic("Crear una API HTTP en Kotlin desde lo más básico")
+        ->addTopic("Definir nuestra interfaz HTTP utilizando Spring Boot")
+        ->addTopic("Crear una implementación de nuestro repositorio compatible con MySQL")
+        ->addTopic("¡Testing!: Testearemos nuestra aplicación haciendo uso de mocks viendo ejemplos lo más parecidos al día a día")
+    ,
+
+    (new Course("kotlin", "Kotlin training"))
+        ->addTopic("Object Orientation")
+        ->addTopic("Inheritance, Polymorphism and Interface")
+        ->addTopic("Language resources with packages and composition")
+        ->addTopic("Handling exceptions and null references")
+        ->addTopic("Developing with collections, arrays and lists")
+        ->addTopic("Collections: Set and Map")
+        ->addTopic("Functional Paradigm Features")
+        ->addCertificate(new Certificate(
+            "Kotlin training",
+            "67:00:00",
+            [
+                "/assets/certificates/kotlin/alura-kotlin-front.png",
+                "/assets/certificates/kotlin/alura-kotlin-back.png",
+            ],
+            "https://cursos.alura.com.br/degree/certificate/91a67c34-57e9-4ac3-ad1f-a28a6f494cc3"
+        ))
+    ,
 
     (new Course("java-oca", "Training: Java Certification (OCA)"))
         ->addTopic("Data Types")
@@ -40,7 +66,8 @@ $trans->courses = [
                 "/assets/certificates/java-oca/alura-java-oca-back.png",
             ],
             "https://cursos.alura.com.br/certificate/d4a8a0ec-93af-4a30-83cf-d752ef7cfc85",
-        )),
+        ))
+    ,
 
     (new Course("java", "Java training"))
         ->addTopic("JRE and JDK: Compile and run your program")
@@ -61,7 +88,8 @@ $trans->courses = [
                 "/assets/certificates/java/alura-java-back.png",
             ],
             "https://cursos.alura.com.br/degree/certificate/b59eb0e5-18cf-4d81-b91e-af2f92519457",
-        )),
+        ))
+    ,
 
     (new Course("android", "Android training"))
         ->addCertificate(new Certificate(
@@ -90,7 +118,8 @@ $trans->courses = [
                 "/assets/certificates/android/alura-android-003-back.png",
             ],
             "https://cursos.alura.com.br/certificate/7ce1d9d3-34ca-4688-a6db-7ed313720f77",
-        )),
+        ))
+    ,
 
     (new Course("symfony", "Symfony"))
         ->setIsHidden()
@@ -106,4 +135,5 @@ $trans->courses = [
             ["/assets/certificates/symfony/sfcasts-symfony-002.png"],
             "https://symfonycasts.com/certificates/F04F9D8DC130",
         ))
+    ,
 ];

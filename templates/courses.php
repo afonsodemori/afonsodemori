@@ -60,14 +60,16 @@
     </section>
     <?php endif; ?>
 
-    <section class="course course-<?= $course->id ?>">
-        <h2><?= $trans->page->certificates ?></h2>
-        <ol class="summary">
-            <?php foreach ($course->certificates as $certificate): ?>
-                <li><a href="#<?= $certificate->id ?>"><?= $certificate->title ?></a> (<?= $certificate->durationString ?>)</li>
-            <?php endforeach; ?>
-        </ol>
-    </section>
+    <?php if (!empty($course->certificates)): ?>
+        <section class="course course-<?= $course->id ?>">
+            <h2><?= $trans->page->certificates ?></h2>
+            <ol class="summary">
+                <?php foreach ($course->certificates as $certificate): ?>
+                    <li><a href="#<?= $certificate->id ?>"><?= $certificate->title ?></a> (<?= $certificate->durationString ?>)</li>
+                <?php endforeach; ?>
+            </ol>
+        </section>
+    <?php endif; ?>
 
     <?php foreach ($course->certificates as $certificate): ?>
         <section id="<?= $certificate->id ?>" class="course course-<?= $course->id ?>">
