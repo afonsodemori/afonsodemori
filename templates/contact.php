@@ -48,9 +48,43 @@
     <div style="clear: both;"></div>
 </div>
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScH7JyonwEGfMGvMIGV-ZBTk8bSAi0-7W3Fq2QnZRivwBbcEw/viewform?embedded=false"
-        style="width: 100vw; height: 95vh; margin: 0; padding: 0; border: 0;">Loading…
-</iframe>
+<header>
+    <img src="/assets/images/photo.jpg" alt="Photo of Afonso de Mori">
+    <div class="container">
+        <h1><?= $trans->header[0] ?> <span><?= $trans->header[1] ?></span></h1>
+    </div>
+</header>
+<section id="success">
+    <div class="container">
+        <h1><?= $trans->form->success[0] ?> <span><?= $trans->form->success[1] ?></span></h1>
+    </div>
+</section>
+<section class="two">
+    <div class="container">
+        <form id="form" method="post" target="iframe"
+              action="https://docs.google.com/forms/d/e/1FAIpQLScH7JyonwEGfMGvMIGV-ZBTk8bSAi0-7W3Fq2QnZRivwBbcEw/formResponse"
+        >
+            <div>
+                <label for="name"><?= $trans->form->name->label ?>:</label>
+                <input type="text" id="name" name="entry.585471277" required
+                       placeholder="<?= $trans->form->name->placeholder ?>">
+            </div>
+            <div>
+                <label for="email"><?= $trans->form->email->label ?>:</label>
+                <input type="email" id="email" name="entry.60989062" required
+                       placeholder="<?= $trans->form->email->placeholder ?>">
+            </div>
+            <div>
+                <label for="message"><?= $trans->form->message->label ?>:</label>
+                <textarea id="message" name="entry.1085040957" required
+                          placeholder="<?= $trans->form->message->placeholder ?>"></textarea>
+            </div>
+            <button id="submit" data-submitted="<?= $trans->form->submitted ?>"><?= $trans->form->submit ?></button>
+        </form>
+    </div>
+</section>
+<iframe id="iframe" name="iframe" style="display: none;"></iframe>
 <script src="/assets/js/shared.js?v=<?= time() ?>"></script>
+<script src="/assets/js/contact.js?v=<?= time() ?>"></script>
 </body>
 </html>
