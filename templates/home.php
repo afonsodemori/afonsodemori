@@ -26,10 +26,15 @@
 
     <!-- le stylesheets -->
     <link rel="stylesheet" href="/assets/css/home.css?v=<?= time() ?>" media="screen">
+    <link rel="stylesheet" href="/assets/css/home.css?v=<?= time() ?>" media="screen">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo:wght@600;800&family=Inter:wght@300;500&display=swap" media="screen">
 
     <!-- le mobile -->
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
+    <meta name="theme-color" content="#030931">
     <link rel="manifest" href="/app.manifest">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -71,15 +76,11 @@
         }
     }
 </script>
-
 <section>
     <div>
-        <p class="greet">
-            <?= $trans->about->greet ?>,<br>
-            <span class="me"><?= $trans->about->me ?> <span class="gradient">Afonso</span>,</span><br>
-            <?= $trans->about->title ?>
-        </p>
-        <p class="about"><?= $trans->about->bio ?></p>
+        <h1>Afonso <span class="nowrap">de Mori</span></h1>
+        <h2><?= $trans->about->title ?></h2>
+        <p class="bio"><?= $trans->about->bio ?></p>
         <ul class="links">
             <?php foreach ($trans->links as $link): ?>
                 <li><a target="<?= $link->target ?>" href="<?= $link->url ?>" title="<?= $link->title ?>"><?= $link->text ?></a></li>
@@ -87,6 +88,7 @@
         </ul>
     </div>
 </section>
+<div class="backlight"></div>
 <script src="/assets/js/shared.js?v=<?= time() ?>"></script>
 </body>
 </html>
