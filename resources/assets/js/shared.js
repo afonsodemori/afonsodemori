@@ -1,3 +1,7 @@
+if (navigator && navigator.serviceWorker) {
+    navigator.serviceWorker.register('service-worker.js');
+}
+
 function checkDevDomainConnectivity() {
     const domain = window.location.host;
 
