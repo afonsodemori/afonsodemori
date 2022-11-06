@@ -25,10 +25,14 @@
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/contact/pt">
 
     <!-- le stylesheets -->
+    <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/contact.css?v=<?= time() ?>" media="all">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=family=Inter:wght@300;500;700&display=swap" media="screen">
 
     <!-- le mobile -->
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -84,6 +88,7 @@
     </div>
 </section>
 <iframe id="iframe" name="iframe" style="display: none;"></iframe>
+<class class="backlight"></class>
 <script src="/assets/js/shared.js?v=<?= time() ?>"></script>
 <script src="/assets/js/contact.js?v=<?= time() ?>"></script>
 </body>

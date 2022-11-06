@@ -31,6 +31,7 @@
     <meta property="og:image" content="https://afonso.dev/assets/images/og-image-<?= $locale ?>.jpg">
 
     <!-- le stylesheets -->
+    <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/cv-all.css?v=<?= time() ?>" media="all">
     <link rel="stylesheet" href="/assets/css/cv-screen.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/cv-print.css?v=<?= time() ?>" media="print">
