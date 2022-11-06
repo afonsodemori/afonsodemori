@@ -1,13 +1,16 @@
 const defaultLanguage = 'es'; // mostly looking for spanish-speaking companies for now...
 const availableLanguages = ['en', 'es', 'pt'];
+const url = new URL(window.location);
 
 function checkDevDomainConnectivity() {
-    const domain = window.location.host;
+    const keepDomain = url.searchParams.get('keepDomain');
+    if (keepDomain !== null) {
+        localStorage.setItem('keepDomain', (keepDomain !== '0').toString());
+    }
 
     if (
-        domain !== 'afonso.dev'
-        && !domain.startsWith('192')
-        && !domain.endsWith('localhost')
+        url.host !== 'afonso.dev'
+        && localStorage.getItem('keepDomain') !== 'true'
     ) {
         fetch('https://afonso.dev/health-check.html')
             .then(response => {
@@ -164,7 +167,6 @@ function addTopBarListeners() {
 if (availableLanguages.indexOf(window.location.pathname.slice(-2)) >= 0) {
     setCookie('locale', document.documentElement.lang, 365);
 }
-
 
 window.addEventListener('load', () => {
     // Register service worker
