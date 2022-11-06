@@ -14,15 +14,8 @@
     <meta property="og:title" content="Afonso de Mori A. Silva - Software developer - Madrid, Spain">
     <meta property="og:description" content="Afonso de Mori Ayres da Silva's personal profile. Back-end web developer PHP focused">
     <meta property="og:image" content="https://afonso.dev/assets/images/photo-og.jpg">
-
-    <style media="screen">
-        html, body { margin: 0; padding: 0; }
-        body { margin: 1em; font: normal 1em sans-serif; background-color: #1d1d1d; color: #d2d2d2; }
-        a { display: inline-block; padding: 1em; color: #039be5; text-decoration: underline; }
-        a:hover { color: #4fc3f7; }
-    </style>
 </head>
-<body onload="loadLanguage();">
+<body>
 <noscript>
     <ul>
         <li><a href="/en">English</a></li>
@@ -30,6 +23,17 @@
         <li><a href="/pt">Português</a></li>
     </ul>
 </noscript>
-<script src="/assets/js/shared.js"></script>
+<script>
+    // Script to be included in language selection pages (/index.html, /cv/index.html, /contact/index.html, /courses/index.html)
+    const getLocale = () => {
+        if (localStorage.getItem('locale') !== null) return localStorage.getItem('locale');
+        for (let language, i = 0; i < navigator.languages.length; i++)
+            if (['en', 'es', 'pt'].includes(language = navigator.languages[i].split('-').shift())) return language;
+        return 'en';
+    }
+    let url = new URL(window.location);
+    url.pathname = `${url.pathname}/${getLocale()}`.replaceAll('//', '/');
+    window.location = url;
+</script>
 </body>
 </html>
