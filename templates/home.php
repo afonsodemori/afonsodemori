@@ -8,10 +8,10 @@
 <head>
     <title><?= $trans->metas->title ?></title>
 
-    <!-- le metatags -->
+    <!-- le meta-tags -->
+    <meta charset="utf-8">
     <meta name="description" content="<?= $trans->metas->description ?>">
     <meta name="keywords" content="<?= $trans->metas->keywords ?>">
-    <meta charset="utf-8">
     <link rel="canonical" href="https://afonso.dev/<?= $locale ?>">
 
     <!-- le opengraph tags -->

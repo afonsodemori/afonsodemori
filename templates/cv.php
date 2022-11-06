@@ -8,10 +8,10 @@
 <head>
     <title><?= $trans->page->title ?></title>
 
-    <!-- le metatags -->
+    <!-- le meta-tags -->
+    <meta charset="utf-8">
     <meta name="description" content="<?= $trans->page->description ?>">
     <meta name="keywords" content="<?= $trans->page->keywords ?>">
-    <meta charset="utf-8">
     <link rel="canonical" href="https://afonso.dev/cv/<?= $locale ?>">
 
     <!-- le languages -->
@@ -37,8 +37,10 @@
     <link rel="stylesheet" href="/assets/css/cv-print.css?v=<?= time() ?>" media="print">
 
     <!-- le mobile -->
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
+    <meta name="theme-color" content="#030931">
+    <link rel="manifest" href="/app.manifest">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
@@ -178,6 +180,7 @@
         </span>
     </p>
 </footer>
+<div class="backlight"></div>
 <script src="/assets/js/shared.js?v=<?= time() ?>"></script>
 <script src="/assets/js/cv.js?v=<?= time() ?>"></script>
 </body>

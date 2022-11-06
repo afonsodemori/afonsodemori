@@ -20,7 +20,7 @@ html, body {
 }
 
 body {
-    background: var(--background) url("/assets/images/stars.png") no-repeat top right;
+    background: var(--background) url("/assets/images/stars.png") no-repeat top right fixed;
     color: var(--primary);
     font: 300 1.2em/1.6 'Inter', sans-serif;
     text-rendering: geometricPrecision;

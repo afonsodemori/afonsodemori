@@ -173,7 +173,7 @@ $trans = array_replace_recursive($default, [
             '<li><strong>Formación Android</strong>, Alura (2020), 30 horas;</li>' .
             '<li><strong>Formación Java</strong>, Alura (2019), 121 horas.</li>' .
             '<li class="gray"><em>Certificados y otros cursos en ' .
-            '<a target="_blank" href="/courses/es">https://afonso.dev/cursos</a>.' .
+            '<a href="/courses/es">https://afonso.dev/cursos</a>.' .
             '</em></li></ul>',
     ],
     'skills' => [

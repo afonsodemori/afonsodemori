@@ -8,14 +8,14 @@
     --g-docs-size-h3: 11pt;
     --g-docs-gray: #999;
 
-    --body-background: #f8f9fa;
+    --body-background: #030931;
     --body-color: #000;
 
     --article-background-color: #fff;
     --article-box-shadow: 0 0 15px rgba(0, 0, 0, .1);
     --a-color: #3d85c6;
 
-    --modal-boder-color: rgba(0, 0, 0, .2);
+    --modal-boder-color: rgba(255, 255, 255, .2);
     --modal-hover-background: rgba(0, 0, 0, .1);
 
     --section-border-color: rgba(0, 0, 0, .1);
@@ -29,10 +29,9 @@
     :root {
         --g-docs-gray: #999;
 
-        --body-background: #121212;
         --body-color: #bdc1c6;
 
-        --article-background-color: #101010;
+        --article-background-color: transparent;
         --article-box-shadow: none;
         --a-color: #5786f4;
 

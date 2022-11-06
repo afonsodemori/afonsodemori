@@ -1,5 +1,5 @@
 if (navigator && navigator.serviceWorker) {
-    navigator.serviceWorker.register('service-worker.js');
+    navigator.serviceWorker.register('/service-worker.js');
 }
 
 function checkDevDomainConnectivity() {
@@ -7,6 +7,7 @@ function checkDevDomainConnectivity() {
 
     if (
         domain !== 'afonso.dev'
+        && !domain.startsWith('192')
         && !domain.endsWith('localhost')
     ) {
         fetch('https://afonso.dev/health-check.html')

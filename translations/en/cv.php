@@ -187,7 +187,7 @@ $trans = [
             '<li><strong>Android Development</strong>, Alura (2020), 30 hours.</li>' .
             '<li><strong>Java Development</strong>, Alura (2019), 121 hours;</li>' .
             '<li class="gray"><em>Certificates and other courses at ' .
-            '<a target="_blank" href="/courses/en">https://afonso.dev/courses</a>.' .
+            '<a href="/courses/en">https://afonso.dev/courses</a>.' .
             '</em></li></ul>',
     ],
     'skills' => [

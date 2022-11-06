@@ -5,8 +5,8 @@
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
     <title><?= $page->title ?></title>
+    <meta charset="utf-8">
     <meta http-equiv="refresh" content="0; url=<?= $page->url ?>">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
     <!-- le opengraph tags -->
