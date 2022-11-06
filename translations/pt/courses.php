@@ -6,6 +6,8 @@ require __DIR__ . "/../en/courses.php";
 /** @var stdClass $trans */
 $default = json_decode(json_encode($trans), true);
 
+unset($default["topBar"]["localeOptions"]);
+
 $trans = array_replace_recursive($default, [
     "metas" => [
         "title" => "Cursos",
@@ -17,6 +19,19 @@ $trans = array_replace_recursive($default, [
         "certificate" => "Certificado",
         "checkAuthenticity" => "Comprovar autenticidade",
         "authenticity" => "Autenticidade",
+    ],
+    "topBar" => [
+        "locale" => "Português",
+        "localeOptions" => [
+            "en" => [
+                "label" => "English",
+                "link" => "/courses/en",
+            ],
+            "es" => [
+                "label" => "Español",
+                "link" => "/courses/es",
+            ],
+        ],
     ],
     "courses" => [
         [ // kotlin-hex

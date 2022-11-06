@@ -10,10 +10,10 @@
 <head>
     <title><?= $trans->metas->title ?> ‹ Afonso de Mori</title>
 
-    <!-- le metatags -->
+    <!-- le meta-tags -->
+    <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta charset="utf-8">
     <link rel="canonical" href="https://afonso.dev/courses/es">
 
     <!-- le languages -->
@@ -25,11 +25,36 @@
     <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- le stylesheets -->
+    <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/courses.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/courses-print.css?v=<?= time() ?>" media="print">
+
+    <!-- In case the CSS does not load -->
+    <style>svg { height: 10pt; vertical-align: middle; }</style>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
+<div id="top-bar">
+    <nav>
+        <ul class="left">
+            <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
+        </ul>
+        <ul class="right">
+            <li><a href="/cv/<?= $locale ?>">Curriculum</a></li>
+            <li><a id="nav-modal-languages" href="javascript:"><?= $trans->topBar?->locale ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a></li>
+        </ul>
+    </nav>
+    <div style="clear: both;"></div>
+</div>
+<div id="modal-languages" class="modal">
+    <ul>
+        <?php foreach ($trans->topBar->localeOptions as $option): ?>
+            <li><a href="<?= $option->link ?>"><?= $option->label ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+</div>
 
 <section class="last-courses">
     <p><strong><?= $trans->page->title ?></strong></p>

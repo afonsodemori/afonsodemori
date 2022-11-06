@@ -31,6 +31,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=family=Inter:wght@300;500;700&display=swap" media="screen">
 
+    <!-- In case the CSS does not load -->
+    <style>svg { height: 10pt; vertical-align: middle; }</style>
+
     <!-- le mobile -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">

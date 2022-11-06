@@ -19,6 +19,20 @@ $trans->page->certificate = "Certificate";
 $trans->page->checkAuthenticity = "Check authenticity";
 $trans->page->authenticity = "Authenticity";
 
+$trans->topBar = [
+    "locale" => "English",
+    "localeOptions" => [
+        "es" => [
+            "label" => "Español",
+            "link" => "/courses/es",
+        ],
+        "pt" => [
+            "label" => "Português",
+            "link" => "/courses/pt",
+        ],
+    ],
+];
+
 $trans->courses = [
     (new Course("kotlin-hex", "HTTP API in Kotlin applying Hexagonal Architecture"))
         ->setIsHidden()
@@ -137,3 +151,5 @@ $trans->courses = [
         ))
     ,
 ];
+
+$trans = json_decode(json_encode($trans));

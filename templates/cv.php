@@ -36,6 +36,9 @@
     <link rel="stylesheet" href="/assets/css/cv-screen.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/cv-print.css?v=<?= time() ?>" media="print">
 
+    <!-- In case the CSS does not load -->
+    <style>svg { height: 10pt; vertical-align: middle; }</style>
+
     <!-- le mobile -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
