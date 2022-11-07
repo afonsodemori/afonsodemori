@@ -2,7 +2,7 @@ const availableLanguages = ['en', 'es', 'pt'];
 const url = new URL(window.location);
 
 function checkMainDomainConnectivity() {
-    const keepDomain = url.searchParams.get('keepDomain');
+    const keepDomain = url.searchParams.get('keep');
     if (keepDomain !== null) {
         localStorage.setItem('keepDomain', (keepDomain !== '0').toString());
     }
