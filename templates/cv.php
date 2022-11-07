@@ -40,7 +40,7 @@
     <style>svg { height: 10pt; vertical-align: middle; }</style>
 
     <!-- le mobile -->
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
     <meta name="theme-color" content="#030931">
     <link rel="manifest" href="/app.manifest">

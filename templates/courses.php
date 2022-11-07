@@ -21,10 +21,6 @@
     <link rel="alternate" hreflang="es" href="https://afonso.dev/courses/es">
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/courses/pt">
 
-    <!-- le mobile -->
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
-
     <!-- le stylesheets -->
     <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/courses.css?v=<?= time() ?>" media="screen">
@@ -32,6 +28,12 @@
 
     <!-- In case the CSS does not load -->
     <style>svg { height: 10pt; vertical-align: middle; }</style>
+
+    <!-- le mobile -->
+    <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
+    <meta name="theme-color" content="#030931">
+    <link rel="manifest" href="/app.manifest">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>

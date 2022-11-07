@@ -17,7 +17,7 @@
     <!-- le opengraph tags -->
     <meta property="og:title" content="<?= $trans->metas->title ?>">
     <meta property="og:description" content="<?= $trans->metas->description ?>">
-    <meta property="og:image" content="https://afonso.dev/assets/images/photo.jpg">
+    <meta property="og:image" content="https://afonso.dev/me.jpg">
 
     <!-- le languages -->
     <link rel="alternate" hreflang="en" href="https://afonso.dev/en">
@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo:wght@600;800&family=Inter:wght@300;500&display=swap" media="screen">
 
     <!-- le mobile -->
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
     <meta name="theme-color" content="#030931">
     <link rel="manifest" href="/app.manifest">
@@ -48,7 +48,7 @@
         "name": "Afonso de Mori Ayres da Silva",
         "givenName": "Afonso",
         "familyName": "Silva",
-        "image": "https://afonso.dev/assets/images/photo.jpg",
+        "image": "https://afonso.dev/me.jpg",
         "birthDate": "1989-01-10T11:02:00-03:00",
         "nationality": "BR",
         "jobTitle": "Software developer",

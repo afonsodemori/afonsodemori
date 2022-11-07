@@ -35,8 +35,10 @@
     <style>svg { height: 10pt; vertical-align: middle; }</style>
 
     <!-- le mobile -->
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">
     <meta name="viewport" content="initial-scale=1, maximum-scale=5, width=device-width">
+    <meta name="theme-color" content="#030931">
+    <link rel="manifest" href="/app.manifest">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
@@ -56,7 +58,7 @@
 </div>
 
 <header>
-    <img src="/assets/images/photo.jpg" alt="Photo of Afonso de Mori">
+    <img src="/me.jpg" alt="Photo of Afonso de Mori">
     <div class="container">
         <h1><?= $trans->header[0] ?> <span><?= $trans->header[1] ?></span></h1>
     </div>
