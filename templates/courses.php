@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <link rel="canonical" href="https://afonso.dev/courses/es">
+    <link rel="canonical" href="https://afonso.dev/courses/<?= $locale ?>">
 
     <!-- le languages -->
     <link rel="alternate" hreflang="en" href="https://afonso.dev/courses/en">
