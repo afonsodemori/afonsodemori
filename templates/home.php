@@ -27,9 +27,7 @@
     <!-- le stylesheets -->
     <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/home.css?v=<?= time() ?>" media="screen">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo:wght@600;800&family=Inter:wght@300;500&display=swap" media="screen">
+    <link rel="stylesheet" href="/assets/webfonts/exo,inter.css" media="screen">
 
     <!-- le mobile -->
     <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">

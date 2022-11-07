@@ -1,0 +1,44 @@
+/* latin-ext */
+@font-face {
+    font-family: 'Exo';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(exo-600,800.woff2) format('woff2');
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Exo';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url(exo-600,800.woff2) format('woff2');
+}
+
+/* latin */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(inter-300,500,700.woff2) format('woff2');
+}
+
+/* latin */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(inter-300,500,700.woff2) format('woff2');
+}
+
+/* latin */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(inter-300,500,700.woff2) format('woff2');
+}

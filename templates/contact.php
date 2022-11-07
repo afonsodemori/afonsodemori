@@ -27,9 +27,7 @@
     <!-- le stylesheets -->
     <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/contact.css?v=<?= time() ?>" media="all">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" media="screen">
+    <link rel="stylesheet" href="/assets/webfonts/inter.css" media="screen">
 
     <!-- In case the CSS does not load -->
     <style>svg { height: 10pt; vertical-align: middle; }</style>

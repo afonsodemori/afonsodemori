@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="/assets/css/cv-all.css?v=<?= time() ?>" media="all">
     <link rel="stylesheet" href="/assets/css/cv-screen.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/cv-print.css?v=<?= time() ?>" media="print">
+    <link rel="stylesheet" href="/assets/webfonts/inter.css?v=<?= time() ?>" media="screen">
 
     <!-- In case the CSS does not load -->
     <style>svg { height: 10pt; vertical-align: middle; }</style>

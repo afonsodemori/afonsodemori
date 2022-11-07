@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/courses.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/courses-print.css?v=<?= time() ?>" media="print">
+    <link rel="stylesheet" href="/assets/webfonts/inter.css" media="screen">
 
     <!-- In case the CSS does not load -->
     <style>svg { height: 10pt; vertical-align: middle; }</style>
