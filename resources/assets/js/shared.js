@@ -38,8 +38,8 @@ function hideModals() {
 }
 
 function showModal(modal) {
-    const button = document.getElementById(`nav-modal-${modal}`);
-    const element = document.getElementById(`modal-${modal}`);
+    const button = document.querySelector(`#nav-modal-${modal} a`);
+    const element = document.querySelector(`#nav-modal-${modal} .modal`);
 
     if (element.style.display === 'block') {
         return;

@@ -25,6 +25,7 @@
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/pt">
 
     <!-- le stylesheets -->
+    <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
     <link rel="stylesheet" href="/assets/css/home.css?v=<?= time() ?>" media="screen">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

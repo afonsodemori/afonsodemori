@@ -41,15 +41,15 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
-<div id="top-bar">
+<div id="top-bar" class="contact">
     <nav>
         <ul class="left">
             <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
         </ul>
         <ul class="right">
-            <li><a id="link-cv" href="/cv/<?= $locale ?>">Curriculum</a></li>
-            <li><a id="link-in" target="_blank" href="/linkedin">LinkedIn</a></li>
-            <li><a id="link-wa" target="_blank" href="/whatsapp">WhatsApp</a></li>
+            <li id="nav-cv"><a href="/cv/<?= $locale ?>">Curriculum</a></li>
+            <li id="nav-in"><a target="_blank" href="/linkedin">LinkedIn</a></li>
+            <li id="nav-wa"><a target="_blank" href="/whatsapp">WhatsApp</a></li>
         </ul>
     </nav>
     <div style="clear: both;"></div>

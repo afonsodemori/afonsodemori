@@ -48,39 +48,40 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
-<div id="top-bar" class="fixed">
+<div id="top-bar" class="cv fixed">
     <nav>
         <ul class="left">
             <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
         </ul>
         <ul class="right">
-            <li><a id="nav-print" href="javascript:"><?= $trans->topBar->print ?></a></li>
-            <li><a id="nav-modal-download" href="javascript:"><?= $trans->topBar->download ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a></li>
-            <li><a id="nav-modal-languages" href="javascript:"><?= $trans->topBar->locale ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a></li>
+            <li id="nav-print"><a href="javascript:"><?= $trans->topBar->print ?></a></li>
+            <li id="nav-modal-download">
+                <a href="javascript:"><?= $trans->topBar->download ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a>
+                <ul class="modal">
+                    <?php foreach ($trans->topBar->downloadFormats as $extension => $label): ?>
+                        <?php
+                        $baseName = "cv-$locale-afonso_de_mori";
+                        $date = date('Y-m');
+                        $realFilename = "$baseName.$extension";
+                        $downloadFilename = "$baseName-$date.$extension";
+                        ?>
+                        <li><a href="/docs/<?= $realFilename ?>" download="<?= $downloadFilename ?>"><?= $label ?> (.<?= $extension ?>)</a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+            <li id="nav-modal-languages">
+                <a href="javascript:"><?= $trans->topBar->locale ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a>
+                <ul class="modal">
+                    <?php foreach ($trans->topBar->localeOptions as $option): ?>
+                        <li><a href="<?= $option->link ?>"><?= $option->label ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
         </ul>
     </nav>
     <div style="clear: both;"></div>
 </div>
-<div id="modal-download" class="modal">
-    <ul>
-        <?php foreach ($trans->topBar->downloadFormats as $extension => $label): ?>
-            <?php
-            $baseName = "cv-$locale-afonso_de_mori";
-            $date = date('Y-m');
-            $realFilename = "$baseName.$extension";
-            $downloadFilename = "$baseName-$date.$extension";
-            ?>
-            <li><a href="/docs/<?= $realFilename ?>" download="<?= $downloadFilename ?>"><?= $label ?> (.<?= $extension ?>)</a></li>
-        <?php endforeach; ?>
-    </ul>
-</div>
-<div id="modal-languages" class="modal">
-    <ul>
-        <?php foreach ($trans->topBar->localeOptions as $option): ?>
-            <li><a href="<?= $option->link ?>"><?= $option->label ?></a></li>
-        <?php endforeach; ?>
-    </ul>
-</div>
+
 <article class="page">
     <section class="contact">
         <h1>Afonso de Mori Ayres da Silva</h1>
@@ -185,6 +186,5 @@
 </footer>
 <div class="backlight"></div>
 <script src="/assets/js/shared.js?v=<?= time() ?>"></script>
-<script src="/assets/js/cv.js?v=<?= time() ?>"></script>
 </body>
 </html>

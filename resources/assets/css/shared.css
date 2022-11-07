@@ -1,7 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-rendering: geometricPrecision;
+}
+
+::selection {
+    background: #3d3ea490 !important;
+    color: #fff !important;
+}
+
+/* top bar */
+
 #top-bar {
-    font: normal 1.25em Arial, sans-serif;
-    background: linear-gradient(86deg, #2977f3, #4f2cd2);
+    font-weight: normal;
     font-size: 12pt;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(86deg, #2977f3, #4f2cd2);
 }
 
 #top-bar.fixed {
@@ -49,26 +71,31 @@
     background-color: rgba(0, 0, 0, .2);
 }
 
-/* Only for CV pages */
-
-.modal {
+#top-bar .modal {
     display: none;
-    position: fixed;
+    position: fixed; /* todo: fix weird behavior if the bar is not fixed */
+    text-align: left;
     background-color: #060606;
     width: 200px;
-    border: 1px solid var(--modal-boder-color);
+    border: 1px solid rgba(255, 255, 255, .2);
     border-top: none;
     border-radius: 0 0 3px 3px;
     z-index: 1;
 }
 
-.modal ul {
+#top-bar .modal ul {
     margin: .5em 0;
     padding: 0;
     list-style: none;
 }
 
-.modal a {
+#top-bar .modal li {
+    display: block;
+}
+
+#top-bar .modal a {
+    opacity: 1;
+    transition: unset;
     text-decoration: none;
     box-sizing: border-box;
     padding: 1em;
@@ -77,9 +104,32 @@
     color: rgba(255, 255, 255, .6);
 }
 
-.modal a:hover {
+#top-bar .modal a:hover {
     background: #222;
     color: #fff;
     padding: 1em;
     display: inline-block;
+}
+
+@media only screen and (max-width: 500px) {
+    #top-bar a {
+        padding: 13px 10px;
+        font-size: 11pt;
+    }
+
+    #top-bar #nav-print, #top-bar.contact #nav-cv {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    #top-bar #nav-modal-download {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 310px) {
+    #top-bar #nav-in, #top-bar.courses #nav-cv {
+        display: none;
+    }
 }

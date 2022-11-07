@@ -36,24 +36,24 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
-<div id="top-bar">
+<div id="top-bar" class="courses">
     <nav>
         <ul class="left">
             <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
         </ul>
         <ul class="right">
-            <li><a href="/cv/<?= $locale ?>">Curriculum</a></li>
-            <li><a id="nav-modal-languages" href="javascript:"><?= $trans->topBar?->locale ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a></li>
+            <li id="nav-cv"><a href="/cv/<?= $locale ?>">Curriculum</a></li>
+            <li id="nav-modal-languages">
+                <a href="javascript:"><?= $trans->topBar?->locale ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a>
+                <ul id="modal-languages" class="modal">
+                    <?php foreach ($trans->topBar->localeOptions as $option): ?>
+                        <li><a href="<?= $option->link ?>"><?= $option->label ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
         </ul>
     </nav>
     <div style="clear: both;"></div>
-</div>
-<div id="modal-languages" class="modal">
-    <ul>
-        <?php foreach ($trans->topBar->localeOptions as $option): ?>
-            <li><a href="<?= $option->link ?>"><?= $option->label ?></a></li>
-        <?php endforeach; ?>
-    </ul>
 </div>
 
 <section class="last-courses">

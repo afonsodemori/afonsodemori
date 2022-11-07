@@ -4,25 +4,10 @@
     --secondary: #43e8e1;
 }
 
-::selection {
-    background: #3d3ea450 !important;
-    color: #fff !important;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     background: var(--background) url("/assets/images/stars.png") no-repeat top right;
     color: var(--primary);
     font: 300 1.2em/1.6 'Inter', sans-serif;
-    text-rendering: geometricPrecision;
 }
 
 .nowrap {

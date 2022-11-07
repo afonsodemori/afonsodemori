@@ -149,23 +149,8 @@ footer {
 }
 
 @media only screen and (max-width: 500px) {
-    #nav-print {
-        display: none !important;
-    }
-
-    #top-bar a {
-        padding: 13px 10px;
-        font-size: 11pt;
-    }
-
     .page {
         margin-top: 2rem;
-    }
-}
-
-@media only screen and (max-width: 350px) {
-    #nav-modal-download {
-        display: none !important;
     }
 }
 
