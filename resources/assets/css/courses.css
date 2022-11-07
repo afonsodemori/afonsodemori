@@ -60,6 +60,7 @@ a {
 
 .course {
     display: none;
+    transition: 200ms;
 }
 
 figure {
@@ -247,4 +248,11 @@ footer a:hover {
     section.last-courses {
         margin-top: 40px;
     }
+}
+
+.slideUp {
+    margin: 0;
+    padding: 0;
+    height: 0;
+    opacity: 0;
 }

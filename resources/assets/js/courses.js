@@ -1,38 +1,26 @@
-let timeouts = [];
-
 function isValidHash(hash = null) {
     if (hash === null) hash = window.location.hash.substring(1);
     if (hash === "") return false;
     // Look for a header for the course
-    return $(`#${hash}`).length === 1;
+    return document.querySelector(`#${hash}`) !== null;
 }
 
-$(document).ready(() => {
-    if (isValidHash()) {
-        const course = window.location.hash.substring(1);
-        toggleCourse(course, true);
-    } else {
-        window.history.replaceState(null, null, window.location.pathname);
-    }
-});
-
-onhashchange = () => {
-    hideModals();
-    if (isValidHash()) {
-        let course = window.location.hash.substring(1);
-        toggleCourse(course, true);
-    } else {
-        hideCourses();
-    }
-};
-
 function hideCourses() {
-    $(".tags a").removeClass("active");
-    $("section.course").stop().slideUp(200);
+    document.querySelectorAll('.tags a').forEach(element => {
+        element.classList.remove('active');
+    });
 
-    timeouts.push(window.setTimeout(() => {
-        $("header.course").stop().slideUp(200);
-    }, 100));
+    document.querySelectorAll('section.course').forEach(element => {
+        element.style.display = 'none';
+    });
+
+    document.querySelectorAll('header.course').forEach(element => {
+        element.classList.add('slideUp');
+        window.setTimeout(() => {
+            element.style.display = 'none';
+            element.classList.remove('slideUp');
+        }, 200);
+    });
 
     window.history.replaceState(null, null, window.location.pathname);
 }
@@ -43,7 +31,7 @@ function scrollToElement(element, wait = 0) {
         // +2 refers to the border width. todo: how to get it programmatically?
         const topBarHeight = topBar.classList.contains('fixed') ? topBar.clientHeight + 2 : 0;
         window.scrollTo({
-            top: element.position().top - topBarHeight,
+            top: element.offsetTop - topBarHeight,
             left: 0,
             behavior: 'smooth'
         });
@@ -51,67 +39,72 @@ function scrollToElement(element, wait = 0) {
 }
 
 function toggleCourse(course, scrollToContent = false) {
-    (timeouts ?? []).forEach(timeout => clearTimeout(timeout));
-    timeouts = [];
+    // Using timeout to avoid navigating to the anchor before scrolling
+    window.setTimeout(() => {
+        const tagLi = document.querySelector(`.tags li.${course}`);
+        const tagAnchor = document.querySelector(`.tags li.${course} a`);
 
-    const $tagLi = $(`.tags li.${course}`);
-    const $tagAnchor = $(`.tags li.${course} a`);
+        if (tagAnchor.classList.contains('active')) {
+            hideCourses();
+            return;
+        }
 
-    if ($tagAnchor.hasClass('active')) {
-        hideCourses();
-        return;
-    }
+        if (tagLi.classList.contains('hidden')) {
+            tagLi.classList.remove('hidden');
+        }
 
-    if ($tagLi.hasClass("hidden")) {
-        $tagLi.removeClass("hidden");
-        $tagAnchor.removeClass("hidden");
-    }
+        document.querySelectorAll('.tags a').forEach(element => {
+            element.classList.remove('active');
+        });
 
-    $('.tags a').removeClass('active');
-    $tagAnchor.addClass('active');
-    $('.course').hide();
-    const headerSlideDownDuration = 200;
-    $(`header.course-${course}`).stop().slideDown(headerSlideDownDuration);
+        tagAnchor.classList.add('active');
+        document.querySelectorAll('.course').forEach(element => {
+            element.style.display = 'none';
+        });
 
-    timeouts.push(window.setTimeout(() => {
-        const courseSlideDownDuration = 400;
-        $(`section.course-${course}`).stop().slideDown(courseSlideDownDuration);
+        document.querySelector(`header.course-${course}`).style.display = 'block';
+        document.querySelectorAll(`section.course-${course}`).forEach(element => {
+            element.style.display = 'block';
+        });
 
         if (scrollToContent) {
             const parts = window.location.href.split('#');
-            const element = $(`#${parts[1]}`);
-            scrollToElement(element, courseSlideDownDuration + 100);
+            const element = document.querySelector(`#${parts[1]}`);
+            scrollToElement(element, 200);
         }
-    }, headerSlideDownDuration));
 
-    $(`section.course-${course} img`).each(function () {
-        const $img = $(this);
-        if ($img.hasClass('placeholder')) {
-            $img.attr('src', $img.data('src'));
-            $img.removeAttr('data-src');
-            $img.on('load', function () {
-                $img.removeClass("placeholder");
-            });
-        }
-    });
+        document.querySelectorAll(`section.course-${course} img`).forEach(element => {
+            if (element.classList.contains('placeholder')) {
+                element.src = element.dataset.src;
+                delete element.dataset.src;
+                element.addEventListener('load', event => {
+                    element.classList.remove('placeholder');
+                });
+            }
+        });
+    }, 50);
 
     window.history.replaceState(null, null, `#${course}`);
 }
 
-$(".tags a").on("click", function (event) {
-    event.preventDefault();
-    let course = $(this).attr("href").substring(1);
-    toggleCourse(course);
+document.querySelectorAll('.tags a').forEach(element => {
+    element.addEventListener('click', event => {
+        event.preventDefault();
+        const course = new URL(element.href).hash.substring(1);
+        toggleCourse(course);
+    })
 });
 
-$(".course li a").on("click", function (event) {
-    const parts = this.href.split('#');
+document.querySelectorAll('.course li a').forEach(element => {
+    element.addEventListener('click', event => {
+        const parts = element.href.split('#');
 
-    if (parts.length === 2) {
-        event.preventDefault();
-        const element = $(`#${parts[1]}`);
-        scrollToElement(element);
-    }
+        if (parts.length === 2) {
+            event.preventDefault();
+            const element = document.querySelector(`#${parts[1]}`);
+            scrollToElement(element);
+        }
+    });
 });
 
 document.querySelector('#top-bar #nav-modal-languages a').addEventListener('click', () => {
@@ -121,4 +114,23 @@ document.querySelector('#top-bar #nav-modal-languages a').addEventListener('clic
         elementUrl.hash = url.hash;
         element.href = elementUrl;
     })
+});
+
+onhashchange = () => {
+    hideModals();
+    if (isValidHash()) {
+        const course = window.location.hash.substring(1);
+        toggleCourse(course, true);
+    } else {
+        hideCourses();
+    }
+};
+
+window.addEventListener('load', () => {
+    if (isValidHash()) {
+        const course = window.location.hash.substring(1);
+        toggleCourse(course, true);
+    } else {
+        window.history.replaceState(null, null, window.location.pathname);
+    }
 });
