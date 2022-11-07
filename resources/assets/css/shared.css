@@ -24,6 +24,7 @@ body {
     line-height: 1;
     font-family: Arial, sans-serif;
     background: linear-gradient(86deg, #2977f3, #4f2cd2);
+    z-index: 1;
 }
 
 #top-bar.fixed {
@@ -73,14 +74,13 @@ body {
 
 #top-bar .modal {
     display: none;
-    position: fixed; /* todo: fix weird behavior if the bar is not fixed */
+    position: absolute;
     text-align: left;
     background-color: #060606;
     width: 200px;
     border: 1px solid rgba(255, 255, 255, .2);
     border-top: none;
     border-radius: 0 0 3px 3px;
-    z-index: 1;
 }
 
 #top-bar .modal ul {
