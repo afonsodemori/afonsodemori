@@ -9,7 +9,7 @@ function isValidHash(hash = null) {
 
 $(document).ready(() => {
     if (isValidHash()) {
-        let course = window.location.hash.substring(1);
+        const course = window.location.hash.substring(1);
         toggleCourse(course, true);
     } else {
         window.history.replaceState(null, null, window.location.pathname);
@@ -20,7 +20,7 @@ onhashchange = () => {
     hideModals();
     if (isValidHash()) {
         let course = window.location.hash.substring(1);
-        toggleCourse(course);
+        toggleCourse(course, true);
     } else {
         hideCourses();
     }
@@ -37,14 +37,27 @@ function hideCourses() {
     window.history.replaceState(null, null, window.location.pathname);
 }
 
+function scrollToElement(element, wait = 0) {
+    window.setTimeout(() => {
+        const topBar = document.getElementById('top-bar');
+        // +2 refers to the border width. todo: how to get it programmatically?
+        const topBarHeight = topBar.classList.contains('fixed') ? topBar.clientHeight + 2 : 0;
+        window.scrollTo({
+            top: element.position().top - topBarHeight,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }, wait);
+}
+
 function toggleCourse(course, scrollToContent = false) {
     (timeouts ?? []).forEach(timeout => clearTimeout(timeout));
     timeouts = [];
 
-    let $tagLi = $(`.tags li.${course}`);
-    let $tagAnchor = $(`.tags li.${course} a`);
+    const $tagLi = $(`.tags li.${course}`);
+    const $tagAnchor = $(`.tags li.${course} a`);
 
-    if ($tagAnchor.hasClass("active")) {
+    if ($tagAnchor.hasClass('active')) {
         hideCourses();
         return;
     }
@@ -54,37 +67,29 @@ function toggleCourse(course, scrollToContent = false) {
         $tagAnchor.removeClass("hidden");
     }
 
-    $('.tags a').removeClass("active");
-    $tagAnchor.addClass("active");
-    $(".course").hide();
-    $(`header.course-${course}`).stop().slideDown(200);
+    $('.tags a').removeClass('active');
+    $tagAnchor.addClass('active');
+    $('.course').hide();
+    const headerSlideDownDuration = 200;
+    $(`header.course-${course}`).stop().slideDown(headerSlideDownDuration);
 
     timeouts.push(window.setTimeout(() => {
-        $(`section.course-${course}`).stop().slideDown(400);
-    }, 200));
+        const courseSlideDownDuration = 400;
+        $(`section.course-${course}`).stop().slideDown(courseSlideDownDuration);
 
-    if (scrollToContent) {
-        // TODO: Refactor to scroll to course and certificates with the same code
-        window.setTimeout(() => {
-            window.setTimeout(() => {
-                let parts = window.location.href.split('#');
-                let element = $(`#${parts[1]}`);
-                window.scrollTo({
-                    top: element.position().top,
-                    left: 0,
-                    behavior: "smooth"
-                });
-            }, 500);
-
-        }, 200);
-    }
+        if (scrollToContent) {
+            const parts = window.location.href.split('#');
+            const element = $(`#${parts[1]}`);
+            scrollToElement(element, courseSlideDownDuration + 100);
+        }
+    }, headerSlideDownDuration));
 
     $(`section.course-${course} img`).each(function () {
-        let $img = $(this);
-        if ($img.hasClass("placeholder")) {
-            $img.attr("src", $img.data("src"));
-            $img.removeAttr("data-src");
-            $img.on("load", function () {
+        const $img = $(this);
+        if ($img.hasClass('placeholder')) {
+            $img.attr('src', $img.data('src'));
+            $img.removeAttr('data-src');
+            $img.on('load', function () {
                 $img.removeClass("placeholder");
             });
         }
@@ -100,19 +105,12 @@ $(".tags a").on("click", function (event) {
 });
 
 $(".course li a").on("click", function (event) {
-    let parts = this.href.split('#');
+    const parts = this.href.split('#');
 
-    // TODO: Refactor to scroll to course and certificates with the same code
     if (parts.length === 2) {
         event.preventDefault();
-
-        let element = $(`#${parts[1]}`);
-
-        window.scrollTo({
-            top: element.position().top,
-            left: 0,
-            behavior: "smooth"
-        });
+        const element = $(`#${parts[1]}`);
+        scrollToElement(element);
     }
 });
 

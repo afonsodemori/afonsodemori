@@ -36,7 +36,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
-<div id="top-bar" class="courses">
+<div id="top-bar" class="courses fixed">
     <nav>
         <ul class="left">
             <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
