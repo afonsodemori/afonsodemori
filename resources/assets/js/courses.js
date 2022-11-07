@@ -4,9 +4,7 @@ function isValidHash(hash = null) {
     if (hash === null) hash = window.location.hash.substring(1);
     if (hash === "") return false;
     // Look for a header for the course
-    let isValidHash = $(`#${hash}`).length === 1;
-    console.debug("Is valid hash?", isValidHash);
-    return isValidHash;
+    return $(`#${hash}`).length === 1;
 }
 
 $(document).ready(() => {
@@ -19,7 +17,7 @@ $(document).ready(() => {
 });
 
 onhashchange = () => {
-    console.debug("Location hash has changed");
+    hideModals();
     if (isValidHash()) {
         let course = window.location.hash.substring(1);
         toggleCourse(course);
@@ -29,7 +27,6 @@ onhashchange = () => {
 };
 
 function hideCourses() {
-    console.debug(`Hiding courses...`);
     $(".tags a").removeClass("active");
     $("section.course").stop().slideUp(200);
 
@@ -41,8 +38,6 @@ function hideCourses() {
 }
 
 function toggleCourse(course, scrollToContent = false) {
-    console.debug("Course:", course);
-
     (timeouts ?? []).forEach(timeout => clearTimeout(timeout));
     timeouts = [];
 
@@ -55,7 +50,6 @@ function toggleCourse(course, scrollToContent = false) {
     }
 
     if ($tagLi.hasClass("hidden")) {
-        console.debug("Rendering hidden course...");
         $tagLi.removeClass("hidden");
         $tagAnchor.removeClass("hidden");
     }
@@ -102,7 +96,6 @@ function toggleCourse(course, scrollToContent = false) {
 $(".tags a").on("click", function (event) {
     event.preventDefault();
     let course = $(this).attr("href").substring(1);
-    console.debug(`Clicked: ${course}`);
     toggleCourse(course);
 });
 
@@ -123,15 +116,11 @@ $(".course li a").on("click", function (event) {
     }
 });
 
-document.querySelectorAll("footer .languages a").forEach(element => {
-    element.addEventListener("click", e => {
-        e.preventDefault();
-        let destination = e.target.href;
-
-        if (window.location.hash !== "") {
-            destination = destination + window.location.hash;
-        }
-
-        window.location.href = destination;
-    });
+document.querySelector('#top-bar #nav-modal-languages a').addEventListener('click', () => {
+    const url = new URL(window.location);
+    document.querySelectorAll('#top-bar #nav-modal-languages ul.modal a').forEach(element => {
+        let elementUrl = new URL(element.href);
+        elementUrl.hash = url.hash;
+        element.href = elementUrl;
+    })
 });
