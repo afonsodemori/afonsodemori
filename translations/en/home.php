@@ -14,6 +14,12 @@ $trans = [
         'bio' => 'Back-end web developer since 2009, PHP specialist; Great knowledge in the DevOps area and great passion about process automation; Experienced with continuous delivery, agile methodologies, front-end languages, and infrastructure; Striving to inspire and evolve my team continuously.',
     ],
     'links' => [
+        'cv' => [
+            'text' => 'Resume',
+            'title' => 'See my full resume',
+            'url' => '/cv/en',
+            'target' => '_self',
+        ],
         'linkedin' => [
             'text' => 'LinkedIn',
             'title' => 'See my LinkedIn profile',
@@ -25,12 +31,6 @@ $trans = [
             'title' => 'See my Github profile',
             'url' => '/github',
             'target' => '_blank',
-        ],
-        'cv' => [
-            'text' => 'Resume',
-            'title' => 'See my full resume',
-            'url' => '/cv/en',
-            'target' => '_self',
         ],
         'contact' => [
             'text' => 'Contact',

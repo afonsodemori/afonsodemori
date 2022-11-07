@@ -18,23 +18,21 @@ $trans = array_replace_recursive($default, [
         'bio' => 'Desarrollador back-end desde 2009, especialista en PHP; Sólidos conocimientos en DevOps y un apasionado de la automatización de procesos; Experiencia con entrega continua y metodologías ágiles, lenguajes front-end y de infraestructura; Me esfuerzo para inspirar y evolucionar continuamente a mi equipo.',
     ],
     'links' => [
+        'cv' => [
+            'text' => 'Currículo',
+            'title' => 'Ve mi currículo completo',
+            'url' => '/cv/es',
+        ],
         'linkedin' => [
             'title' => 'Visita mi perfil en LinkedIn',
         ],
         'github' => [
             'title' => 'Visita mi perfil en Github',
         ],
-        'cv' => [
-            'text' => 'Currículo',
-            'title' => 'Ve mi currículo completo',
-            'url' => '/cv/es',
-            'target' => '_self',
-        ],
         'contact' => [
             'text' => 'Contacto',
             'title' => 'Contacta conmigo',
             'url' => '/contact/es',
-            'target' => '_self',
         ],
     ],
 ]);
