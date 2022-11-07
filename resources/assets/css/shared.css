@@ -128,7 +128,7 @@ body {
     }
 }
 
-@media only screen and (max-width: 310px) {
+@media only screen and (max-width: 320px) {
     #top-bar #nav-in, #top-bar.courses #nav-cv {
         display: none;
     }
