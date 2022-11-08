@@ -97,6 +97,7 @@ document.querySelectorAll('.tags a').forEach(element => {
 
 document.querySelectorAll('.course li a').forEach(element => {
     element.addEventListener('click', event => {
+        event.preventDefault();
         const parts = element.href.split('#');
 
         if (parts.length === 2) {
