@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+$root = __DIR__ . '/..';
+
+echo shell_exec("php $root/bin/install-assets");
+echo shell_exec("php $root/bin/generate-pages");
+echo shell_exec("php $root/bin/import-cv");
+file_put_contents(
+    "$root/_site/healt-check.html",
+    "<h1>OK</h1>\n<address>Last build: " . date(DATE_ATOM) . "</address>\n"
+);
