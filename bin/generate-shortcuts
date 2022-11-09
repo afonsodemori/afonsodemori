@@ -19,7 +19,7 @@ function generatePage(string $urlString): RedirectionPage
     $url = new Url($urlString);
 
     $iconBaseUrl = 'https://afonso.dev/assets/images/icons';
-    $basePath = dirname(__DIR__) . '/public/assets/images/icons';
+    $basePath = dirname(__DIR__) . '/resources/assets/images/icons';
     $fileName = str_replace('.', '-', $url->getHost(true));
     foreach (['png', 'jpg'] as $extension) {
         if (file_exists("$basePath/$fileName.$extension")) {
