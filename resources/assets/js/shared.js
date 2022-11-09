@@ -11,18 +11,19 @@ function checkMainDomainConnectivity() {
         url.host !== 'afonso.dev'
         && localStorage.getItem('keepDomain') !== 'true'
     ) {
-        fetch('https://afonso.dev/health-check.html')
+        fetch('https://afonso.dev/health-check')
             .then(response => {
-                if (response.status !== 200) {
-                    console.debug("Can't connect.");
-                    return;
+                if (response.status === 200) {
+                    response.text().then(text => {
+                        if (text.includes('OK')) {
+                            const url = new URL(window.location);
+                            url.host = 'afonso.dev';
+                            window.location = url;
+                        }
+                    });
                 }
-
-                console.debug('Connected to afonso.dev.');
-                window.location = `https://afonso.dev${window.location.pathname}${window.location.hash}`;
             })
             .catch(() => {
-                console.log('Can\'t connect for whatever reason.');
             });
     }
 }
