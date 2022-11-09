@@ -15,7 +15,7 @@
     <meta property="og:image" content="<?= $page->iconPath ?>">
 </head>
 <style>
-    :root { --background: #37474f; --color: #263238; --light: #78909c; --lighter: #c1d5e0; }
+    :root { --background: #152c40; --color: rgba(0, 0, 0, .35); --light: rgba(255, 255, 255, .2); --lighter: rgba(255, 255, 255, .4); }
     ::selection { background: var(--color) !important; color: var(--lighter) !important; }
     html, body { margin: 0; padding: 0; }
     body { font: normal 1em sans-serif; text-rendering: geometricPrecision; background: var(--background); color: var(--color); text-align: center; padding: 20vh 1em 1em; }
