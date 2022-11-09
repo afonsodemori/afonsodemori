@@ -47,7 +47,7 @@
         <ul class="right">
             <li id="nav-cv"><a href="/cv/<?= $locale ?>">Curriculum</a></li>
             <li id="nav-modal-languages">
-                <a href="javascript:"><?= $trans->topBar?->locale ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a>
+                <a href="javascript:"><?= $trans->topBar->locale ?> <?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-down-solid.svg') ?></a>
                 <ul id="modal-languages" class="modal">
                     <?php foreach ($trans->topBar->localeOptions as $option): ?>
                         <li><a href="<?= $option->link ?>"><?= $option->label ?></a></li>

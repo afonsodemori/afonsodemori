@@ -77,7 +77,7 @@ abstract class CliHelper
         self::log("Writing $path... ", false);
         file_put_contents($path, $content);
         $fileSize = number_format(filesize($path) / 1024, 2);
-        self::log("$fileSize KB", timestamp: false);
+        self::log("$fileSize KB", true, false);
     }
 
     public static function ln(): void
@@ -88,7 +88,7 @@ abstract class CliHelper
     public static function log(
         string $message,
         $linebreak = true,
-        $timestamp = true,
+        $timestamp = true
     ): void {
         if ($timestamp) {
             echo sprintf("[%s] ", date('H:i:s'));

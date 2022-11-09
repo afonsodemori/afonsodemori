@@ -4,9 +4,12 @@ namespace App\Model;
 
 class Url
 {
+    private string $url;
+
     public function __construct(
-        readonly private string $url,
+        string $url
     ) {
+        $this->url = $url;
     }
 
     public function __toString(): string
@@ -45,6 +48,6 @@ class Url
 
     public function startsWithWww(): bool
     {
-        return str_starts_with($this->getHost(), 'www.');
+        return strpos($this->getHost(), 'www.') === 0;
     }
 }

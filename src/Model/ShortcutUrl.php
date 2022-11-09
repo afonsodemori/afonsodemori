@@ -4,8 +4,8 @@ namespace App\Model;
 
 class ShortcutUrl
 {
-    readonly private array $shortcuts;
-    readonly private string $longUrl;
+    private array $shortcuts;
+    private string $longUrl;
 
     private function __construct() {
     }

@@ -4,11 +4,20 @@ namespace App\Model\Page;
 
 abstract class AbstractPage
 {
+    public string $title;
+    public string $description;
+    public string $url;
+    public string $iconPath;
+
     public function __construct(
-        readonly public string $title,
-        readonly public string $description,
-        readonly public string $url,
-        readonly public string $iconPath,
+        string $title,
+        string $description,
+        string $url,
+        string $iconPath
     ) {
+        $this->title = $title;
+        $this->description = $description;
+        $this->url = $url;
+        $this->iconPath = $iconPath;
     }
 }

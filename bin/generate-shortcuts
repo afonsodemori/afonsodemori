@@ -32,8 +32,8 @@ function generatePage(string $urlString): RedirectionPage
         $icon = "$iconBaseUrl/default.jpg";
     }
 
-    if (str_contains($url->getHost(true), 'afonso.dev')) {
-        $title = 'afonso.dev // Redirection';
+    if (strpos($url->getHost(true), "afonso.dev") !== false) {
+        $title = "afonso.dev // Redirection";
     } else {
         $title = "afonso.dev // Go to {$url->getHost(true)}";
     }

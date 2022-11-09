@@ -7,13 +7,16 @@ require __DIR__ . '/AbstractPage.php';
 
 class RedirectionPage extends AbstractPage
 {
+    public string $printableUrl;
+
     public function __construct(
         string $title,
         string $description,
         string $url,
         string $iconPath,
-        readonly public string $printableUrl,
+        string $printableUrl
     ) {
+        $this->printableUrl = $printableUrl;
         parent::__construct(
             $title,
             $description,
