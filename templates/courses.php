@@ -93,14 +93,14 @@
             <h2><?= $trans->page->certificates ?></h2>
             <ol class="summary">
                 <?php foreach ($course->certificates as $certificate): ?>
-                    <li><a href="#<?= $certificate->id ?>"><?= $certificate->title ?></a> (<?= $certificate->durationString ?>)</li>
+                    <li><a href="#certificate-<?= $certificate->id ?>"><?= $certificate->title ?></a> (<?= $certificate->durationString ?>)</li>
                 <?php endforeach; ?>
             </ol>
         </section>
     <?php endif; ?>
 
     <?php foreach ($course->certificates as $certificate): ?>
-        <section id="<?= $certificate->id ?>" class="course course-<?= $course->id ?>">
+        <section id="certificate-<?= $certificate->id ?>" class="course course-<?= $course->id ?>">
             <h2><?= $certificate->title ?></h2>
             <?php foreach ($certificate->images as $image): ?>
             <figure class="certificate">
