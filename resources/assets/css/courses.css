@@ -98,7 +98,7 @@ section.last-courses p {
     border: 1px solid rgba(255, 255, 255, .2);
     margin: .2em 0;
     padding: .5em 1em;
-    border-radius: 1rem;
+    border-radius: 2em;
     color: rgba(255, 255, 255, .7);
     text-decoration: none;
 }
