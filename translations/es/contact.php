@@ -22,6 +22,7 @@ $trans = array_replace_recursive($default, [
             'label' => 'Correo',
             'placeholder' => 'Correo electrónico',
         ],
+        'subject' => 'Contacto via afonso.dev',
         'message' => [
             'label' => 'Mensaje',
             'placeholder' => 'Dime algo agradable :-)',
@@ -32,6 +33,7 @@ $trans = array_replace_recursive($default, [
             'Mensaje enviado.',
             'Gracias.',
         ],
+        'error' => 'Algo salió mal. Por favor, inténtalo de nuevo más tarde.',
     ]
 ]);
 

@@ -68,29 +68,39 @@
 </section>
 <section class="two">
     <div class="container">
-        <form id="form" method="post" target="iframe"
-              action="https://docs.google.com/forms/d/e/1FAIpQLScH7JyonwEGfMGvMIGV-ZBTk8bSAi0-7W3Fq2QnZRivwBbcEw/formResponse"
-        >
+        <form id="contact-form" method="post" action="/contact">
             <div>
-                <label for="name"><?= $trans->form->name->label ?>:</label>
-                <input type="text" id="name" name="entry.585471277" required
-                       placeholder="<?= $trans->form->name->placeholder ?>">
+                <label>
+                    <?= $trans->form->name->label ?>:
+                    <input type="text" id="name" name="name" required
+                           placeholder="<?= $trans->form->name->placeholder ?>">
+                </label>
             </div>
             <div>
-                <label for="email"><?= $trans->form->email->label ?>:</label>
-                <input type="email" id="email" name="entry.60989062" required
-                       placeholder="<?= $trans->form->email->placeholder ?>">
+                <label>
+                    <?= $trans->form->email->label ?>:
+                    <input type="email" id="email" name="email" required
+                           placeholder="<?= $trans->form->email->placeholder ?>">
+                </label>
             </div>
             <div>
-                <label for="message"><?= $trans->form->message->label ?>:</label>
-                <textarea id="message" name="entry.1085040957" required
-                          placeholder="<?= $trans->form->message->placeholder ?>"></textarea>
+                <label>
+                    <?= $trans->form->message->label ?>:
+                    <textarea id="message" name="message" required
+                              placeholder="<?= $trans->form->message->placeholder ?>"></textarea>
+                </label>
             </div>
-            <button id="submit" data-submitted="<?= $trans->form->submitted ?>"><?= $trans->form->submit ?></button>
+            <div>
+                <input type="hidden" name="subject" value="<?= $trans->form->subject ?>"></input>
+                <button id="submit"
+                        data-submit="<?= $trans->form->submit ?>"
+                        data-submitted="<?= $trans->form->submitted ?>"
+                ><?= $trans->form->submit ?></button>
+                <div id="error"><?= $trans->form->error ?></div>
+            </div>
         </form>
     </div>
 </section>
-<iframe id="iframe" name="iframe" style="display: none;"></iframe>
 <div class="backlight"></div>
 <script src="/assets/js/shared.js?v=<?= time() ?>"></script>
 <script src="/assets/js/contact.js?v=<?= time() ?>"></script>

@@ -20,6 +20,7 @@ $trans = [
             'label' => 'Email',
             'placeholder' => 'Email address',
         ],
+        'subject' => 'Contact via afonso.dev',
         'message' => [
             'label' => 'Message',
             'placeholder' => 'Say something nice :-)',
@@ -30,6 +31,7 @@ $trans = [
             'Message sent.',
             'Thanks.',
         ],
+        'error' => 'Something went wrong. Please, try again later.',
     ]
 ];
 
