@@ -55,7 +55,7 @@ $trans = array_replace_recursive($default, [
             [
                 // Bitban
                 'title' => 'Desenvolvedor Sênior',
-                'location' => 'Remoto, Espanha',
+                'location' => 'Madri, Espanha (Remoto)',
                 'description' => '<ul>' .
                     '<li>Evolução de bCube Publisher, Sistema de Gerenciamento de Conteúdo (CMS) proprietário de Bitban;</li>' .
                     '<li>Desenvolvimento de APIs REST e bibliotecas em PHP 7 e 8 e utilizando componentes Symfony 5;</li>' .
@@ -88,7 +88,7 @@ $trans = array_replace_recursive($default, [
                 'location' => 'EUA, Brasil e Espanha',
                 'description' => '<ul>' .
                     '<li>Curso de inglês de inverno na Universidade Internacional da Flórida - FIU (EUA);</li>' .
-                    '<li>Um ano ensinando inglês (estagiário) na Universidade Nove de Julho - UNINOVE (Brasil);</li>' .
+                    '<li>Dois semestres ensinando inglês (estagiário) na Universidade Nove de Julho - UNINOVE (Brasil);</li>' .
                     '<li>Quatro semanas de curso de espanhol em Enforex Idiomas (Espanha);</li>' .
                     '<li>Três meses dedicados a atualização como programador, para voltar ao mercado de trabalho.</li>' .
                     '</ul>',

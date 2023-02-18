@@ -54,7 +54,7 @@ $trans = [
                     'start' => '2020-01',
                     'end' => null,
                 ],
-                'location' => 'Remote, Spain',
+                'location' => 'Madrid, Spain (Remote)',
                 'description' => '<ul>' .
                     '<li>Evolution of bCube Publisher, Bitban\'s proprietary Content Management System (CMS);</li>' .
                     '<li>Development of REST APIs and libraries in PHP 7 and 8 and using Symfony 5 components;</li>' .
@@ -99,7 +99,7 @@ $trans = [
                 'location' => 'USA, Brazil and Spain',
                 'description' => '<ul>' .
                     '<li>Winter English course at Florida International University - FIU (USA);</li>' .
-                    '<li>One year teaching English (trainee) at "Nove de Julho" University - UNINOVE (Brazil);</li>' .
+                    '<li>Two semesters teaching English (trainee) at "Nove de Julho" University - UNINOVE (Brazil);</li>' .
                     '<li>Four-week Spanish course at Enforex Idiomas (Spain);</li>' .
                     '<li>Three months dedicated to updating my knowledge as a programmer, to return to the labor market.</li>' .
                     '</ul>',
