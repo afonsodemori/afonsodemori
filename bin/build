@@ -1,15 +1,20 @@
-#!/usr/bin/env php
-<?php
+#!/bin/bash
 
-$root = __DIR__ . '/..';
+# install assets
+rm -rf dist && mkdir dist
+cp -rv resources/* dist/
 
-echo shell_exec("php $root/bin/install-assets");
-echo shell_exec("php $root/bin/generate-pages");
-echo shell_exec("mkdir $root/out");
-echo shell_exec("javac -d $root/out src/dev/afonso/*.java");
-echo shell_exec("java -cp $root/out dev.afonso.ResumesImporter");
-echo shell_exec("java -cp $root/out dev.afonso.ShortcutsGenerator");
-file_put_contents(
-    "$root/dist/health-check.html",
-    "<h1>OK</h1>\n<address>Last build: " . date(DATE_ATOM) . "</address>\n"
-);
+# generate pages (migrate to java)
+bin/generate-pages
+
+# compile classes
+rm -rf out && mkdir out
+javac -d out src/dev/afonso/*.java
+
+# import resumes and generate shortcuts
+java -cp out dev.afonso.ResumesImporter
+java -cp out dev.afonso.ShortcutsGenerator
+
+# tag the build version
+printf "<h1>OK</h1>\n" > dist/health-check.html
+printf "<address>Last build: $(date)</address>\n" >> dist/health-check.html
