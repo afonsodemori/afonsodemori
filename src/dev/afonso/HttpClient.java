@@ -1,15 +1,13 @@
 package dev.afonso;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpClient {
 
     public String get(URL url) throws IOException {
-        System.out.print("=> GET " + url.toString());
+        System.out.println("=> GET " + url.toString());
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         int responseCode = connection.getResponseCode();
 
@@ -28,5 +26,28 @@ public class HttpClient {
         reader.close();
 
         return response.toString();
+    }
+
+    public void download(URL url, File file) throws IOException {
+        System.out.println("=> Downloading " + url.toString());
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        int responseCode = connection.getResponseCode();
+
+        if (responseCode != HttpURLConnection.HTTP_OK) {
+            throw new RuntimeException("<= Request has failed.");
+        }
+
+        InputStream inputStream = connection.getInputStream();
+        FileOutputStream outputStream = new FileOutputStream(file);
+
+        int bytesRead;
+        byte[] buffer = new byte[1024];
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+
+        outputStream.close();
+        inputStream.close();
+        connection.disconnect();
     }
 }

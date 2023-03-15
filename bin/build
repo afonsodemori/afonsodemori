@@ -7,8 +7,8 @@ echo shell_exec("php $root/bin/install-assets");
 echo shell_exec("php $root/bin/generate-pages");
 echo shell_exec("mkdir $root/out");
 echo shell_exec("javac -d $root/out src/dev/afonso/*.java");
+echo shell_exec("java -cp $root/out dev.afonso.ResumesImporter");
 echo shell_exec("java -cp $root/out dev.afonso.ShortcutsGenerator");
-echo shell_exec("php $root/bin/import-cv");
 file_put_contents(
     "$root/dist/health-check.html",
     "<h1>OK</h1>\n<address>Last build: " . date(DATE_ATOM) . "</address>\n"
