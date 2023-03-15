@@ -6,6 +6,8 @@ $root = __DIR__ . '/..';
 echo shell_exec("php $root/bin/install-assets");
 echo shell_exec("php $root/bin/generate-pages");
 echo shell_exec("php $root/bin/generate-shortcuts");
+echo shell_exec("javac -d out src/dev/afonso/RedirectionsGenerator.java");
+echo shell_exec("java -cp out dev.afonso.RedirectionsGenerator");
 echo shell_exec("php $root/bin/import-cv");
 file_put_contents(
     "$root/dist/health-check.html",
