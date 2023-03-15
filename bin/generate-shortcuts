@@ -83,7 +83,7 @@ echo "OK\n";
 $handle = fopen($feedPath, 'rb');
 $headers = fgetcsv($handle, 1000);
 
-$filepath = __DIR__ . "/../_site/_redirects";
+$filepath = __DIR__ . "/../dist/_redirects";
 file_put_contents($filepath, "");
 while (($data = fgetcsv($handle, 1000)) !== false) {
     $shortcutUrl = ShortcutUrl::fromCsvRow($data);
@@ -91,7 +91,7 @@ while (($data = fgetcsv($handle, 1000)) !== false) {
     foreach ($shortcutUrl->getShortcuts() as $shortcut) {
         echo "Generating /$shortcut...\n";
         file_put_contents($filepath, "/$shortcut {$shortcutUrl->getLongUrl()} 301\n", FILE_APPEND);
-        $shortcutPath = "$appDir/_site/$shortcut.html";
+        $shortcutPath = "$appDir/dist/$shortcut.html";
         CliHelper::writeFile($shortcutPath, render(generatePage($shortcutUrl->getLongUrl())));
     }
 }

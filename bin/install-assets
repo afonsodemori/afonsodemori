@@ -3,7 +3,7 @@
 
 $rootDir = dirname(__DIR__);
 $source = "$rootDir/resources";
-$destination = "$rootDir/_site";
+$destination = "$rootDir/dist";
 
 echo shell_exec("rm -rv $destination");
 

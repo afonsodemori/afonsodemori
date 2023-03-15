@@ -9,7 +9,7 @@ use App\Helper\CliHelper;
 $startTime = microtime(true);
 
 $appDir = dirname(__DIR__);
-$filesDir = "$appDir/_site/docs";
+$filesDir = "$appDir/dist/docs";
 
 $formats = [
     'pdf',

@@ -46,7 +46,7 @@ class HtmlPage
             '//',
             '/',
             sprintf(
-                '%s/_site/%s/%s.html',
+                '%s/dist/%s/%s.html',
                 dirname(__DIR__, 2),
                 trim($this->path, '/'),
                 $this->lang
