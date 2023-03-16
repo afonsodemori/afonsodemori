@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="locale">pt</entry>
+
+    <entry key="metas.title">Afonso de Mori A. Silva - Desenvolvedor de software - Madri, Espanha</entry>
+    <entry key="metas.description">Perfil pessoal de Afonso de Mori Ayres da Silva. Desenvolvedor web back-end com foco em PHP</entry>
+    <entry key="metas.keywords">afonso, mori, ayres, silva, demori, afonsodemori, afonsosilva89, desenvolvedor, php</entry>
+
+    <entry key="about.greet">Olá</entry>
+    <entry key="about.me">Sou</entry>
+    <entry key="about.title"><![CDATA[desenvolvedor <span class="nowrap">de software</span>]]></entry>
+    <entry key="about.bio">Desenvolvedor back-end desde 2009, especialista em PHP; Sólidos conhecimentos em DevOps e apaixonado por automatização de processos; Experiência com entrega contínua e metodologias ágeis, linguagens front-end e infraestrutura; Me empenho em inspirar e evoluir minha equipe continuamente.</entry>
+
+    <entry key="links.resume.text">Currículo</entry>
+    <entry key="links.resume.title">Veja meu currículo completo</entry>
+    <entry key="links.linkedin.text">LinkedIn</entry>
+    <entry key="links.linkedin.title">Veja meu perfil no LinkedIn</entry>
+    <entry key="links.github.text">GitHub</entry>
+    <entry key="links.github.title">Veja meu perfil no GitHub</entry>
+    <entry key="links.contact.text">Contato</entry>
+    <entry key="links.contact.title">Entre em contato</entry>
+</properties>

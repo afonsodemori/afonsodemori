@@ -1,22 +1,17 @@
-<?php
-/**
- * @var string $locale
- * @var stdClass $trans
- */
-?><!DOCTYPE html>
-<html lang="<?= $locale ?>">
+<!DOCTYPE html>
+<html lang="{locale}">
 <head>
-    <title><?= $trans->metas->title ?></title>
+    <title>{metas.title}</title>
 
     <!-- le meta-tags -->
     <meta charset="utf-8">
-    <meta name="description" content="<?= $trans->metas->description ?>">
-    <meta name="keywords" content="<?= $trans->metas->keywords ?>">
-    <link rel="canonical" href="https://afonso.dev/<?= $locale ?>">
+    <meta name="description" content="{metas.description}">
+    <meta name="keywords" content="{metas.keywords}">
+    <link rel="canonical" href="https://afonso.dev/{locale}">
 
     <!-- le opengraph tags -->
-    <meta property="og:title" content="<?= $trans->metas->title ?>">
-    <meta property="og:description" content="<?= $trans->metas->description ?>">
+    <meta property="og:title" content="{metas.title}">
+    <meta property="og:description" content="{metas.description}">
     <meta property="og:image" content="https://afonso.dev/me.jpg">
 
     <!-- le languages -->
@@ -25,8 +20,8 @@
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/pt">
 
     <!-- le stylesheets -->
-    <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
-    <link rel="stylesheet" href="/assets/css/home.css?v=<?= time() ?>" media="screen">
+    <link rel="stylesheet" href="/assets/css/shared.css?v={hash}" media="screen">
+    <link rel="stylesheet" href="/assets/css/home.css?v={hash}" media="screen">
     <link rel="stylesheet" href="/assets/webfonts/exo,inter.css" media="screen">
 
     <!-- le mobile -->
@@ -77,16 +72,17 @@
 <section>
     <div>
         <h1>Afonso <span class="nowrap">de Mori</span></h1>
-        <h2><?= $trans->about->title ?></h2>
-        <p class="bio"><?= $trans->about->bio ?></p>
+        <h2>{about.title}</h2>
+        <p class="bio">{about.bio}</p>
         <ul class="links">
-            <?php foreach ($trans->links as $link): ?>
-                <li><a target="<?= $link->target ?>" href="<?= $link->url ?>" title="<?= $link->title ?>"><?= $link->text ?></a></li>
-            <?php endforeach; ?>
+            <li><a href="/cv/{locale}" title="{links.resume.title}">{links.resume.text}</a></li>
+            <li><a target="_blank" href="/in" title="{links.linkedin.title}">{links.linkedin.text}</a></li>
+            <li><a target="_blank" href="/github" title="{links.github.title}">{links.github.text}</a></li>
+            <li><a href="/contact/{locale}" title="{links.contact.title}">{links.contact.text}</a></li>
         </ul>
     </div>
 </section>
 <div class="backlight"></div>
-<script src="/assets/js/shared.js?v=<?= time() ?>"></script>
+<script src="/assets/js/shared.js?v={hash}"></script>
 </body>
 </html>
