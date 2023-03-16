@@ -1,22 +1,17 @@
-<?php
-/**
- * @var string $locale
- * @var stdClass $trans
- */
-?><!DOCTYPE html>
-<html lang="<?= $locale ?>">
+<!DOCTYPE html>
+<html lang="{locale}">
 <head>
-    <title><?= $trans->metas->title ?> ‹ afonso.dev</title>
+    <title>{metas.title} ‹ afonso.dev</title>
 
     <!-- le metatags -->
-    <meta name="description" content="<?= $trans->metas->description ?>">
-    <meta name="keywords" content="<?= $trans->metas->keywords ?>">
+    <meta name="description" content="{metas.description}">
+    <meta name="keywords" content="{metas.keywords}">
     <meta charset="utf-8">
-    <link rel="canonical" href="https://afonso.dev/contact/<?= $locale ?>">
+    <link rel="canonical" href="https://afonso.dev/contact/{locale}">
 
     <!-- le opengraph tags -->
-    <meta property="og:title" content="<?= $trans->metas->title ?> ‹ afonso.dev">
-    <meta property="og:description" content="<?= $trans->metas->description ?>">
+    <meta property="og:title" content="{metas.title} ‹ afonso.dev">
+    <meta property="og:description" content="{metas.description}">
     <meta property="og:image" content="https://afonso.dev/assets/images/photo-og.jpg">
 
     <!-- le languages -->
@@ -25,8 +20,8 @@
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/contact/pt">
 
     <!-- le stylesheets -->
-    <link rel="stylesheet" href="/assets/css/shared.css?v=<?= time() ?>" media="screen">
-    <link rel="stylesheet" href="/assets/css/contact.css?v=<?= time() ?>" media="all">
+    <link rel="stylesheet" href="/assets/css/shared.css?v={hash}" media="screen">
+    <link rel="stylesheet" href="/assets/css/contact.css?v={hash}" media="all">
     <link rel="stylesheet" href="/assets/webfonts/inter.css" media="screen">
 
     <!-- In case the CSS does not load -->
@@ -44,10 +39,10 @@
 <div id="top-bar" class="contact">
     <nav>
         <ul class="left">
-            <li><a href="/<?= $locale ?>"><?= file_get_contents(__DIR__ . '/../resources/assets/images/angle-left-solid.svg') ?> afonso.dev</a></li>
+            <li><a href="/{locale}">{topbar.icon} afonso.dev</a></li>
         </ul>
         <ul class="right">
-            <li id="nav-cv"><a href="/cv/<?= $locale ?>">Curriculum</a></li>
+            <li id="nav-cv"><a href="/cv/{locale}">Curriculum</a></li>
             <li id="nav-in"><a target="_blank" href="/linkedin">LinkedIn</a></li>
             <li id="nav-wa"><a target="_blank" href="/whatsapp">WhatsApp</a></li>
         </ul>
@@ -58,12 +53,12 @@
 <header>
     <img src="/me.jpg" alt="Photo of Afonso de Mori">
     <div class="container">
-        <h1><?= $trans->header[0] ?> <span><?= $trans->header[1] ?></span></h1>
+        <h1>{header.0} <span>{header.1}</span></h1>
     </div>
 </header>
 <section id="success">
     <div class="container">
-        <h1><?= $trans->form->success[0] ?> <span><?= $trans->form->success[1] ?></span></h1>
+        <h1>{form.success.0} <span>{form.success.1}</span></h1>
     </div>
 </section>
 <section class="two">
@@ -71,38 +66,38 @@
         <form id="contact-form" method="post" action="/contact">
             <div>
                 <label>
-                    <?= $trans->form->name->label ?>:
+                    {form.name.label}:
                     <input type="text" id="name" name="name" required
-                           placeholder="<?= $trans->form->name->placeholder ?>">
+                           placeholder="{form.name.placeholder}">
                 </label>
             </div>
             <div>
                 <label>
-                    <?= $trans->form->email->label ?>:
+                    {form.email.label}:
                     <input type="email" id="email" name="email" required
-                           placeholder="<?= $trans->form->email->placeholder ?>">
+                           placeholder="{form.email.placeholder}">
                 </label>
             </div>
             <div>
                 <label>
-                    <?= $trans->form->message->label ?>:
+                    {form.message.label}:
                     <textarea id="message" name="message" required
-                              placeholder="<?= $trans->form->message->placeholder ?>"></textarea>
+                              placeholder="{form.message.placeholder}"></textarea>
                 </label>
             </div>
             <div>
-                <input type="hidden" name="subject" value="<?= $trans->form->subject ?>"></input>
+                <input type="hidden" name="subject" value="{form.subject}"></input>
                 <button id="submit"
-                        data-submit="<?= $trans->form->submit ?>"
-                        data-submitted="<?= $trans->form->submitted ?>"
-                ><?= $trans->form->submit ?></button>
-                <div id="error"><?= $trans->form->error ?></div>
+                        data-submit="{form.submit}"
+                        data-submitted="{form.submitted}"
+                >{form.submit}</button>
+                <div id="error">{form.error}</div>
             </div>
         </form>
     </div>
 </section>
 <div class="backlight"></div>
-<script src="/assets/js/shared.js?v=<?= time() ?>"></script>
-<script src="/assets/js/contact.js?v=<?= time() ?>"></script>
+<script src="/assets/js/shared.js?v={hash}"></script>
+<script src="/assets/js/contact.js?v={hash}"></script>
 </body>
 </html>

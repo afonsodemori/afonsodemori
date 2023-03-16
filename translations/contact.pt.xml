@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="locale">pt</entry>
+
+    <entry key="title">Vamos conversar!</entry>
+    <entry key="description"/>
+    <entry key="keywords"/>
+
+    <entry key="topbar.icon"><![CDATA[<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left" class="svg-inline--fa fa-angle-left fa-w-8" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path fill="currentColor" d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></svg>]]></entry>
+
+    <entry key="header.0">Olá! Eu sou Afonso,</entry>
+    <entry key="header.1">engenheiro de software morando em Madri, com mais de 10 anos de experiência. Vamos conversar?</entry>
+
+    <entry key="form.name.label">Nome</entry>
+    <entry key="form.name.placeholder">Nome completo</entry>
+    <entry key="form.email.label">E-mail</entry>
+    <entry key="form.email.placeholder">Endereço de e-mail</entry>
+    <entry key="form.subject">Contato via afonso.dev</entry>
+    <entry key="form.message.label">Mensagem</entry>
+    <entry key="form.message.placeholder">Diga algo agradável :-)</entry>
+    <entry key="form.submit">Enviar</entry>
+    <entry key="form.submitted">Enviando...</entry>
+    <entry key="form.success.0">Mensagem enviada.</entry>
+    <entry key="form.success.1">Obrigado.</entry>
+    <entry key="form.error">Algo deu errado. Por favor, tente novamente mais tarde.</entry>
+</properties>

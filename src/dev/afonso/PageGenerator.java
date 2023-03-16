@@ -25,6 +25,7 @@ class PageGenerator {
 
         List<Page> pages = new ArrayList<>();
         pages.add(new Page("home", "/"));
+        pages.add(new Page("contact", "/contact"));
 
         Properties translation = new Properties();
         pages.forEach(page -> languages.forEach(language -> {
@@ -46,7 +47,7 @@ class PageGenerator {
                 String outputHtml = fullHtml.toString();
                 outputHtml = outputHtml.replaceAll("\\{hash}", hash);
 
-                Matcher matcher = Pattern.compile("\\{([a-z.]++)}").matcher(outputHtml);
+                Matcher matcher = Pattern.compile("\\{([a-z0-9.]++)}").matcher(outputHtml);
 
                 while (matcher.find()) {
                     key = matcher.group(1);
