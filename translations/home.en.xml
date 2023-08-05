@@ -3,14 +3,14 @@
 <properties>
     <entry key="locale">en</entry>
 
-    <entry key="metas.title">Afonso de Mori A. Silva - Software developer - Madrid, Spain</entry>
+    <entry key="metas.title">Afonso de Mori A. Silva - Software developer - Zamora, Spain</entry>
     <entry key="metas.description">Afonso de Mori Ayres da Silva's personal profile. Back-end web developer PHP focused</entry>
-    <entry key="metas.keywords">afonso, mori, ayres, silva, demori, afonsodemori, afonsosilva89, web developer, php</entry>
+    <entry key="metas.keywords">afonso, mori, ayres, silva, demori, afonsodemori, afonsosilva89, web developer, php, java</entry>
 
     <entry key="about.greet">Hi</entry>
     <entry key="about.me">I'm</entry>
     <entry key="about.title">software developer</entry>
-    <entry key="about.bio">Back-end web developer since 2009, PHP specialist; Great knowledge in the DevOps area and great passion about process automation; Experienced with continuous delivery, agile methodologies, front-end languages, and infrastructure; Striving to inspire and evolve my team continuously.</entry>
+    <entry key="about.bio">Software Engineer with 15 years of experience, specialized in back-end development using technologies such as PHP, Symfony, MySQL, and Doctrine. I also have knowledge of front-end and DevOps, and I easily adapt to different environments and projects. I am passionate about continuous learning and innovation, and I strive to stay up-to-date with trends and technological advancements, as well as to inspire and evolve my team.</entry>
 
     <entry key="links.resume.text">Resume</entry>
     <entry key="links.resume.title">See my full resume</entry>

@@ -3,8 +3,8 @@
 
 $trans = [
     'page' => [
-        'title' => 'Resume: Afonso de Mori - Software Engineer - Madrid, Spain',
-        'description' => 'Learn about the professional career of Afonso de Mori, a programmer with more than 10 years of experience.',
+        'title' => 'Resume: Afonso de Mori - Software Engineer - Zamora, Spain',
+        'description' => 'Learn about the professional career of Afonso de Mori, a programmer with more than 15 years of experience.',
         'keywords' => '',
     ],
     'topBar' => [
@@ -33,9 +33,11 @@ $trans = [
     ],
     'profile' => [
         'title' => 'Profile',
-        'description' => 'Back-end web developer since 2009, PHP specialist; Great knowledge in the DevOps area and ' .
-            'great passion about process automation; Experienced with continuous delivery, agile methodologies, ' .
-            'front-end languages, and infrastructure; Striving to inspire and evolve my team continuously.',
+        'description' => 'Software Engineer with 15 years of experience, specialized in back-end development using ' .
+            'technologies such as PHP, Symfony, MySQL, and Doctrine. I also have knowledge of front-end and DevOps, ' .
+            'and I easily adapt to different environments and projects. I am passionate about continuous learning ' .
+            'and innovation, and I strive to stay up-to-date with trends and technological advancements, as well as ' .
+            'to inspire and evolve my team.',
     ],
     'experience' => [
         'title' => 'Experience',
@@ -57,7 +59,7 @@ $trans = [
                 'location' => 'Madrid, Spain (Remote)',
                 'description' => '<ul>' .
                     '<li>Evolution of bCube Publisher, Bitban\'s proprietary Content Management System (CMS);</li>' .
-                    '<li>Development of REST APIs and libraries in PHP 7 and 8 and using Symfony 5 components;</li>' .
+                    '<li>Development of REST APIs and libraries in PHP 8 and using Symfony 5 components;</li>' .
                     '<li>Stack: PHP, Symfony, MySQL/ORM, Solr, Docker/Minikube, git/Gitlab.</li>' .
                     '</ul>',
             ],
@@ -101,6 +103,7 @@ $trans = [
                     '<li>Winter English course at Florida International University - FIU (USA);</li>' .
                     '<li>Two semesters teaching English (trainee) at "Nove de Julho" University - UNINOVE (Brazil);</li>' .
                     '<li>Four-week Spanish course at Enforex Idiomas (Spain);</li>' .
+                    '<li>Moved from Sao Paulo to Madrid (Brazil → Spain);</li>' .
                     '<li>Three months dedicated to updating my knowledge as a programmer, to return to the labor market.</li>' .
                     '</ul>',
             ],
@@ -193,11 +196,11 @@ $trans = [
     'skills' => [
         'title' => 'Skills',
         'list' => '<ul>' .
-            '<li><strong>Back-end:</strong> PHP (5.6 to 8.1), Symfony (2.2 to 6.0); MariaDB/MySQL, Doctrine.</li>' .
-            '<li><strong>Front-end:</strong> HTML; CSS, Less; JavaScript, jQuery; Bootstrap.</li>' .
-            '<li><strong>Infrastructure:</strong> Bash; Linux servers (Debian/Ubuntu/CentOS); Puppet; Amazon Web Services (AWS).</li>' .
+            '<li><strong>Back-end:</strong> PHP, Symfony; Java, Spring; MariaDB/MySQL, Doctrine, Hibernate.</li>' .
+            '<li><strong>Front-end:</strong> HTML, CSS, JavaScript.</li>' .
+            '<li><strong>Infrastructure:</strong> Bash; Linux servers (Debian/Ubuntu/CentOS); Amazon Web Services (AWS).</li>' .
             '<li><strong>Web servers:</strong> Nginx, Apache.</li>' .
-            '<li><strong>Other skills:</strong> Git/git-flow; Jenkins; Scrum; Kanban; Continuous Integration; Java/Android.</li>' .
+            '<li><strong>Other skills:</strong> Git/git-flow; Docker; Jenkins; Scrum; Kanban; Continuous Integration; Kotlin, Android.</li>' .
             '</ul>',
     ],
     'footer' => [

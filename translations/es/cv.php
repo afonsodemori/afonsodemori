@@ -11,8 +11,8 @@ unset(
 
 $trans = array_replace_recursive($default, [
     'page' => [
-        'title' => 'Currículo: Afonso de Mori - Ingeniero de Software - Madrid, España',
-        'description' => 'Conoce la trayectoria profesional de Afonso de Mori, programador con más de 10 años de experiencia.',
+        'title' => 'Currículo: Afonso de Mori - Ingeniero de Software - Zamora, España',
+        'description' => 'Conoce la trayectoria profesional de Afonso de Mori, programador con más de 15 años de experiencia.',
     ],
     'topBar' => [
         'print' => 'Imprimir',
@@ -37,9 +37,11 @@ $trans = array_replace_recursive($default, [
     ],
     'profile' => [
         'title' => 'Perfil',
-        'description' => 'Desarrollador back-end desde 2009, especialista en PHP; Sólidos conocimientos en DevOps y un ' .
-            'apasionado de la automatización de procesos; Experiencia con entrega continua y metodologías ágiles, ' .
-            'lenguajes front-end y de infraestructura; Me esfuerzo para inspirar y evolucionar continuamente a mi equipo.',
+        'description' => 'Ingeniero de Software con 15 años de experiencia, especializado en el desarrollo back-end ' .
+            'con tecnologías como PHP, Symfony, MySQL y Doctrine. También tengo conocimientos de front-end y DevOps, ' .
+            'y me adapto fácilmente a diferentes entornos y proyectos. Me apasiona el aprendizaje continuo y la ' .
+            'innovación, y me esfuerzo por mantenerme al día con las tendencias y los avances tecnológicos, así como ' .
+            'por inspirar y evolucionar a mi equipo.',
     ],
     'experience' => [
         'title' => 'Experiencia',
@@ -57,7 +59,7 @@ $trans = array_replace_recursive($default, [
                 'location' => 'Madrid, Comunidad de Madrid (Remoto)',
                 'description' => '<ul>' .
                     '<li>Evolución de bCube Publisher, el Sistema de Gestión de Contenidos (CMS) propietario de Bitban;</li>' .
-                    '<li>Desarrollo de API REST y librerías en PHP 7 y 8 y utilizando componentes de Symfony 5;</li>' .
+                    '<li>Desarrollo de API REST y librerías en PHP 8 y utilizando componentes de Symfony 5;</li>' .
                     '<li>Stack: PHP, Symfony, MySQL/ORM, Solr, Docker/Minikube, git/Gitlab.</li>' .
                     '</ul>',
             ],
@@ -89,7 +91,8 @@ $trans = array_replace_recursive($default, [
                     '<li>Curso de inglés de invierno en la Universidad Internacional de Florida - FIU (EE.UU.);</li>' .
                     '<li>Dos semestres enseñando inglés (becario) en la Universidad "Nove de Julho" - UNINOVE (Brasil);</li>' .
                     '<li>Cuatro semanas de curso de español en Enforex Idiomas (España);</li>' .
-                    '<li>Tres meses dedicados a actualización como programador, para volver al mercado laboral.</li>' .
+                    '<li>Mudanza de Sao Paulo a Madrid (Brasil → España);</li>' .
+                    '<li>Tres meses dedicados a mi actualización como programador, para volver al mercado laboral.</li>' .
                     '</ul>',
             ],
             [
@@ -179,11 +182,11 @@ $trans = array_replace_recursive($default, [
     'skills' => [
         'title' => 'Aptitudes',
         'list' => '<ul>' .
-            '<li><strong>Back-end:</strong> PHP (5.6 a 8.1), Symfony (2.2 a 6.0); MariaDB/MySQL, Doctrine.</li>' .
+            '<li><strong>Back-end:</strong> PHP, Symfony; Java, Spring; MariaDB/MySQL, Doctrine, Hibernate.</li>' .
             '<li><strong>Front-end:</strong> HTML, CSS, JavaScript.</li>' .
             '<li><strong>Infraestructura:</strong> Bash, servidores Linux (Debian/Ubuntu/CentOS), Amazon Web Services (AWS).</li>' .
             '<li><strong>Servidores web:</strong> Nginx, Apache.</li>' .
-            '<li><strong>Otros:</strong> Git/git-flow; Jenkins; Scrum; Kanban; Integración Continua; Java/Android.</li>' .
+            '<li><strong>Otros:</strong> Git/git-flow; Docker; Jenkins; Scrum; Kanban; Integración Continua; Kotlin, Android.</li>' .
             '</ul>',
     ],
     'footer' => [
