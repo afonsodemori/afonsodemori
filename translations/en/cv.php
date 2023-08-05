@@ -59,8 +59,8 @@ $trans = [
                 'location' => 'Madrid, Spain (Remote)',
                 'description' => '<ul>' .
                     '<li>Evolution of bCube Publisher, Bitban\'s proprietary Content Management System (CMS);</li>' .
-                    '<li>Development of REST APIs and libraries in PHP 8 and using Symfony 5 components;</li>' .
-                    '<li>Stack: PHP, Symfony, MySQL/ORM, Solr, Docker/Minikube, git/Gitlab.</li>' .
+                    '<li>Development of REST APIs and libraries in PHP 8 and using Symfony 5 components.</li>' .
+                    '<li>Stack: PHP, Symfony, MySQL, ORM, REST APIs, Redis, Solr, Docker, Git.</li>' .
                     '</ul>',
             ],
             [

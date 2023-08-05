@@ -59,8 +59,8 @@ $trans = array_replace_recursive($default, [
                 'location' => 'Madrid, Comunidad de Madrid (Remoto)',
                 'description' => '<ul>' .
                     '<li>Evolución de bCube Publisher, el Sistema de Gestión de Contenidos (CMS) propietario de Bitban;</li>' .
-                    '<li>Desarrollo de API REST y librerías en PHP 8 y utilizando componentes de Symfony 5;</li>' .
-                    '<li>Stack: PHP, Symfony, MySQL/ORM, Solr, Docker/Minikube, git/Gitlab.</li>' .
+                    '<li>Desarrollo de API REST y librerías en PHP 8 y utilizando componentes de Symfony 5.</li>' .
+                    '<li>Stack: PHP, Symfony, MySQL, ORM, REST APIs, Redis, Solr, Docker, Git.</li>' .
                     '</ul>',
             ],
             [
