@@ -12,7 +12,7 @@ class ShortcutsGenerator {
 
     public static final String FEED_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRny4h8y8u_z3FDv3JaLt7PZuB0zy1VzX4ep7E9gD-tihrZGpeNT6AUS33B8FM5xpN22WRz5qeQaQUs/pub?gid=2039462908&single=true&output=csv";
 
-    public static void main(String[] args) throws IOException {
+    public static void run() throws IOException {
         System.out.println("==> Generating shortcuts\n");
         String csv = new HttpClient().get(new URL(FEED_URL));
         List<Shortcut> shortcuts = mapShortcuts(csv);

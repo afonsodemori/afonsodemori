@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 class PageGenerator {
 
-    public static void main(String[] args) {
+    public static void run() {
         String hash = Math.round(Math.random() * 1000000) + "";
 
         List<String> languages = new ArrayList<>();

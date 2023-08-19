@@ -15,9 +15,10 @@ rm -rf out && mkdir out
 javac -d out src/dev/afonso/*.java
 
 # import resumes and generate shortcuts
-java -cp out dev.afonso.PageGenerator
-java -cp out dev.afonso.ResumesImporter
-java -cp out dev.afonso.ShortcutsGenerator
+java -cp out dev.afonso.Build
+# java -cp out dev.afonso.PageGenerator
+# java -cp out dev.afonso.ResumesImporter
+# java -cp out dev.afonso.ShortcutsGenerator
 
 # tag the build version
 printf "<h1>OK</h1>\n" > dist/health-check.html

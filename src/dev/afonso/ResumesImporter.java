@@ -27,7 +27,7 @@ class ResumesImporter {
         FILES_FORMATS.add("odt");
     }
 
-    public static void main(String[] args) {
+    public static void run() {
         System.out.println("==> Importing resumes...\n");
         FILES_IDS.forEach((language, fileId) -> FILES_FORMATS.forEach(format -> {
             try {
