@@ -1,3 +1,10 @@
+/*
+    The separation of CSS into cv-all.css, cv-print.css and cv-screen.css
+    aimed to replicate Google Docs design in those media types.
+    Trying to have a better look on screens, the idea was abandoned.
+    TODO: MUST refactor and simplify these files.
+*/
+
 body {
     background: var(--body-background) url("/assets/images/stars.png") no-repeat top right fixed;
     color: var(--body-color);
@@ -5,18 +12,19 @@ body {
     cursor: default;
 }
 
-.page { /* Same as Google Docs */
+.page {
+    font: 300 1em/1.6 'Inter', sans-serif;
+    border-radius: 15px;
     box-sizing: border-box;
     background-color: var(--article-background-color);
-    margin: 1em auto 0 auto;
-    padding: .5in;
-    width: 210mm;
-    height: 297mm;
+    margin: 5em auto 0 auto;
+    max-width: 800px;
     box-shadow: var(--article-box-shadow);
 }
 
-.page:first-of-type {
-    margin-top: 5em;
+.page section {
+    padding: 3em;
+    border-bottom: 1px solid #0f064b;
 }
 
 .page a:hover {
@@ -29,6 +37,11 @@ body {
 
 .page .screen-mobile {
     display: none;
+}
+
+.page .contact span {
+    display: block;
+    margin: .5em auto;
 }
 
 footer {
@@ -44,11 +57,13 @@ footer {
 
 @media only screen and (max-width: 215mm) {
     .page {
+        /* Ignoring light theme - TODO: Review it */
+        background-color: transparent;
+        color: #bdc1c6;
         padding: 0;
         box-shadow: none;
         width: 100%;
         height: unset;
-        font: 300 1.1em/1.6 'Inter', sans-serif;
     }
 
     .page a {
@@ -132,11 +147,6 @@ footer {
         display: none;
     }
 
-    .page .contact span {
-        display: block;
-        margin: .5em auto;
-    }
-
     section {
         padding: 3em 1em;
         border-bottom: 2px solid var(--section-border-color);
@@ -146,17 +156,15 @@ footer {
         border: 0;
         min-height: 70vh;
     }
+
+    footer {
+        color: #bdc1c6;
+    }
 }
 
 @media only screen and (max-width: 500px) {
     .page {
         margin-top: 2rem;
-    }
-}
-
-@media only screen and (min-width: 240mm) {
-    .page {
-        zoom: 110%;
     }
 }
 

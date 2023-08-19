@@ -1,11 +1,18 @@
+/*
+    The separation of CSS into cv-all.css, cv-print.css and cv-screen.css
+    aimed to replicate Google Docs design in those media types.
+    Trying to have a better look on screens, the idea was abandoned.
+    TODO: MUST refactor and simplify these files.
+*/
+
 /* variables */
 
 :root {
-    --g-docs-text-margin: 5pt;
-    --g-docs-size-normal: 10pt;
-    --g-docs-size-h1: 20pt;
-    --g-docs-size-h2: 13pt;
-    --g-docs-size-h3: 11pt;
+    --g-docs-text-margin: .5em;
+    --g-docs-size-normal: .8em;
+    --g-docs-size-h1: 2em;
+    --g-docs-size-h2: 1.2em;
+    --g-docs-size-h3: 1em;
     --g-docs-gray: #999;
 
     --body-background: #030931;
@@ -19,6 +26,18 @@
 
     --footer-text-color: #fff;
     --footer-background-color: rgba(0, 0, 0, .3);
+}
+
+@media (prefers-color-scheme: dark) and (min-width: 215mm) {
+    :root {
+        --article-background-color: #1b1f23;
+        --body-color: #bdc1c6;
+        --a-color: #43e8e1;
+    }
+
+    .page section {
+        border-bottom-color: black !important;
+    }
 }
 
 /* Dark mode only in small screens for now */

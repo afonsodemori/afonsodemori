@@ -104,10 +104,6 @@ $trans = array_replace_recursive($default, [
                     '<li>Em abril de 2015, a Zocprint foi comprada pelo Grupo Digipix. Tive um papel importante na transição tecnológica para a nova empresa, sendo responsável pela manutenção da web e de seus serviços, pelo desenvolvimento de APIs REST para integração entre sistemas de backoffice e pelo treinamento da equipe de infraestrutura da Digipix nas tecnologias usadas pela Zocprint;</li>' .
                     '<li>Infraestrutura (Amazon Web Services), controle de versão e deploy de software (Jenkins/puppet).</li>' .
                     '</ul>' .
-
-                    // PAGE-BREAK - TODO: Think a better way, maybe
-                    '</section></article><article class="page"><section class="experience">' .
-
                     '<h3>Desenvolvedor Junior<span class="gray">, Julho 2013 – Abril 2015 (1 ano e 10 meses) | São Paulo, SP</span></h3>' .
                     '<ul>' .
                     '<li>Evolução e manutenção do sistema de comércio eletrônico em Symfony/PHP e Doctrine/MySQL e do editor WYSIWYG online para personalização de produtos em JavaScript/jQuery;</li>' .

@@ -109,14 +109,10 @@
         </div>
     </section>
 
-    <p class="div">&nbsp;</p>
-
     <section class="profile">
         <h2><?= $trans->profile->title ?></h2>
         <p><?= $trans->profile->description ?></p>
     </section>
-
-    <p class="div">&nbsp;</p>
 
     <section class="experience">
         <h2><?= $trans->experience->title ?></h2>
@@ -142,16 +138,12 @@
         </ul>
     </section>
 
-    <p class="div">&nbsp;</p>
-
     <section class="education">
         <h2><?= $trans->education->title ?></h2>
         <h3><?= $trans->education->what ?></h3>
         <p class="period"><?= $trans->education->when ?></p>
         <?= $trans->education->how ?>
     </section>
-
-    <p class="div">&nbsp;</p>
 
     <section class="languages">
         <h2><?= $trans->languages->title ?></h2>
@@ -162,21 +154,18 @@
         </ul>
     </section>
 
-    <p class="div">&nbsp;</p>
-
     <section class="courses">
         <h2><?= $trans->courses->title ?></h2>
         <?= $trans->courses->list ?>
     </section>
 
-    <p class="div">&nbsp;</p>
-
     <section class="skills">
         <h2><?= $trans->skills->title ?></h2>
         <?= $trans->skills->list ?>
     </section>
-</article>
-<footer>
+
+    <!-- TODO: Should not be here. It is inside article for the print view to be correct. Fix it! -->
+    <footer>
     <p>
         <span class="screen-only"><?= $trans->footer->updated ?>:</span>
         <?= $trans->footer->months[date('n') - 1] ?>/<?= date('Y') ?>
@@ -185,6 +174,7 @@
         </span>
     </p>
 </footer>
+</article>
 <div class="backlight"></div>
 <script src="/assets/js/shared.js?v=<?= time() ?>"></script>
 </body>

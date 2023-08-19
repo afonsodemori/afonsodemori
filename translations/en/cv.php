@@ -117,10 +117,6 @@ $trans = [
                     '<li>In April 2015, Zocprint was bought by the Digipix Group. I had an important role in the technological transition to the new company, being responsible for the maintenance of the web and its services, the development of REST APIs for integration between back-office systems, and responsible for training Digipix\'s infrastructure team in the technologies used by Zocprint;</li>' .
                     '<li>Infrastructure (Amazon Web Services), version control and software deployment (Jenkins/puppet).</li>' .
                     '</ul>' .
-
-                    // PAGE-BREAK - TODO: Think a better way, maybe
-                    '</section></article><article class="page"><section class="experience">' .
-
                     '<h3>Junior Developer<span class="gray">, July 2013 – April 2015 (1 yr 10 mos) | Sao Paulo, Brazil</span></h3>' .
                     '<ul>' .
                     '<li>Evolution and maintenance of the e-commerce system in Symfony/PHP and Doctrine/MySQL, and the online WYSIWYG editor for product customization in JavaScript/jQuery;</li>' .
