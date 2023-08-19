@@ -5,30 +5,37 @@
  * Anyway, its enough during the development stage.
  */
 
-class Route {
+final class Route
+{
+    public const BASE_DIR = '/workspaces/afonsodemori/dist';
+
     private string $route;
 
-    private function __construct(string $requestUri) {
+    private function __construct(string $requestUri)
+    {
         $this->route = $requestUri;
     }
 
-    final public static function fromRequestUri(string $requestUri): self {
+    final public static function fromRequestUri(string $requestUri): self
+    {
         return new static($requestUri);
     }
 
-    final public function getRoute(): string {
+    final public function getRoute(): string
+    {
         return $this->route;
     }
 
-    final public function getFilepath(): string {
+    final public function getFilepath(): string
+    {
         if ($this->isAsset()) {
-            return realpath("{$this->getBaseDir()}/{$this->route}");
+            return realpath(self::BASE_DIR . "/{$this->route}");
         }
 
         $tryPaths = [
-            "{$this->getBaseDir()}/{$this->route}",
-            "{$this->getBaseDir()}/{$this->route}.html",
-            "{$this->getBaseDir()}/{$this->route}/index.html",
+            self::BASE_DIR . "/{$this->route}",
+            self::BASE_DIR . "/{$this->route}.html",
+            self::BASE_DIR . "/{$this->route}/index.html",
         ];
 
         foreach ($tryPaths as $tryPath) {
@@ -37,32 +44,52 @@ class Route {
             }
         }
 
-        throw new RuntimeException("Not found");
+        throw new RuntimeException('Not Found', 404);
     }
 
-    final public function isAsset(): bool {
+    final public function isAsset(): bool
+    {
         if (substr($this->route, -5) === '.html') {
             return false;
         }
 
-        if (!is_file("{$this->getBaseDir()}/{$this->route}")) {
+        if (!is_file(self::BASE_DIR . "/{$this->route}")) {
             return false;
         }
 
         return strpos($this->route, '.');
     }
 
-    final public function getMimeType(): string {
-        # There are problems if CSS files have text/plain header
+    final public function getRedirectionIfExists(): ?array
+    {
+        $redirect = null;
+
+        if (!($redirectsResource = fopen(self::BASE_DIR . '/_redirects', 'r'))) {
+            throw new RuntimeException('_redirects file not found', 404);
+        }
+
+        while (($line = fgets($redirectsResource)) !== false) {
+            list($shortcut, $longUrl, $httpCode) = explode(' ', $line);
+
+            if ($this->route === $shortcut) {
+                $redirect = compact('shortcut', 'longUrl', 'httpCode');
+                break;
+            }
+        }
+
+        fclose($redirectsResource);
+
+        return $redirect;
+    }
+
+    final public function getMimeType(): string
+    {
+        // There are problems if CSS files have text/plain header
         if (substr($this->route, -4) === '.css') {
             return 'text/css; charset=utf-8';
         }
 
         return mime_content_type($this->getFilepath());
-    }
-
-    final public function getBaseDir(): string {
-        return realpath(__DIR__ . '/../dist');
     }
 }
 
@@ -78,7 +105,31 @@ if ($route->isAsset()) {
 try {
     require_once $route->getFilepath();
 } catch (Exception $e) {
+    $datetime = (new DateTime())->format(DateTimeInterface::RSS);
+
+    try {
+        if (!is_null($redir = $route->getRedirectionIfExists())) {
+            echo <<<END
+                <title>Redirection {$redir['shortcut']}</title>
+                <h1>Redirection</h1>
+                <ul>
+                    <li><strong>Shortcut:</strong> {$redir['shortcut']}</li>
+                    <li><strong>Long URL:</strong> <a href="{$redir['longUrl']}">{$redir['longUrl']}</a></li>
+                    <li><strong>HTTP Code:</strong> {$redir['httpCode']}</li>
+                </ul>
+                <address>$datetime</address>
+            END;
+            exit();
+        }
+    } catch (Exception $e) {
+        // Will be handled above
+    }
+
     header('HTTP/1.0 404 Not Found');
-    echo "Not found";
+    echo <<<END
+        <title>{$e->getMessage()}</title>
+        <h1>{$e->getMessage()}</h1>
+        <address>$datetime</address>
+    END;
     exit();
 }
