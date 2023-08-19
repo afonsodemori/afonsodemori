@@ -16,3 +16,8 @@ You can see my CV at [afonso.dev/cv](https://afonso.dev/cv), and you can reach m
 [afonso.dev/contact](https://afonso.dev/contact).
 
 Cheers!
+
+<!--
+    This file is shown in the GitHub profile at https://github.com/afonsodemori
+    An additional REAME file is available at /README_DEV.md
+-->
