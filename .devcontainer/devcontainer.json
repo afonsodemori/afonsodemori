@@ -6,7 +6,22 @@
   "forwardPorts": [
     8080
   ],
-  "postStartCommand": "php -S 0.0.0.0:8080 src/router.php",
+  "postCreateCommand": {
+    "git-completion-download": "curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /home/vscode/.git-completion.bash",
+    "git-completion-enable": "echo 'source /home/vscode/.git-completion.bash' >> /home/vscode/.bashrc",
+		"alias-ll": "echo \"alias ll='ls -alFh'\" >> /home/vscode/.bashrc"
+  },
+  "postStartCommand": {
+    "git-config-safe-directory": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "server": "php -S 0.0.0.0:8080 src/router.php"
+  },
+  "containerEnv": {
+		"PROMPT_COMMAND": "history -a",
+		"HISTFILE": "/bash_history/.bash_history"
+	},
+	"mounts": [
+		"source=bash_history,target=/bash_history,type=volume"
+	],
   "customizations": {
     "vscode": {
       "extensions": [
