@@ -54,13 +54,21 @@ $trans = array_replace_recursive($default, [
         'conjunction' => 'y',
         'jobs' => [
             [
+                // PG
+                'title' => 'Desarrollador Back-end Sénior',
+                'location' => 'Mónaco, Mónaco (Remoto)',
+                'description' => '<ul>' .
+                    '<li>Stack: PHP, Symfony, MySQL, ORM, Docker, ElasticSearch, RabbitMQ.</li>' .
+                    '</ul>',
+            ],
+            [
                 // Bitban
                 'title' => 'Desarrollador Sénior',
                 'location' => 'Madrid, Comunidad de Madrid (Remoto)',
                 'description' => '<ul>' .
                     '<li>Evolución de bCube Publisher, el Sistema de Gestión de Contenidos (CMS) propietario de Bitban;</li>' .
-                    '<li>Desarrollo de API REST y librerías en PHP 8 y utilizando componentes de Symfony 5.</li>' .
-                    '<li>Stack: PHP, Symfony, MySQL, ORM, REST APIs, Redis, Solr, Docker, Git.</li>' .
+                    '<li>Desarrollo de API REST y librerías en PHP 8 y utilizando componentes de Symfony 5;</li>' .
+                    '<li>Mentoría técnica, ayudando a los compañeros de equipo a alcanzar niveles más altos en programación y conocimiento sobre el producto de Bitban.</li>' .
                     '</ul>',
             ],
             [

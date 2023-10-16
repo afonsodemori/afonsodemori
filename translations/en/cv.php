@@ -33,8 +33,8 @@ $trans = [
     ],
     'profile' => [
         'title' => 'Profile',
-        'description' => 'Software Engineer with 15 years of experience, specialized in back-end development using ' .
-            'technologies such as PHP, Symfony, MySQL, and Doctrine. I also have knowledge of front-end and DevOps, ' .
+        'description' => 'Software Engineer with 15 years of experience, specialized in backend development using ' .
+            'technologies such as PHP, Symfony, MySQL, and Doctrine. I also have knowledge of frontend and DevOps, ' .
             'and I easily adapt to different environments and projects. I am passionate about continuous learning ' .
             'and innovation, and I strive to stay up-to-date with trends and technological advancements, as well as ' .
             'to inspire and evolve my team.',
@@ -50,17 +50,29 @@ $trans = [
         'conjunction' => '',
         'jobs' => [
             [
+                'title' => 'Senior Backend Developer',
+                'company' => 'Platinium Group S.A.M.',
+                'period' => [
+                    'start' => '2023-10',
+                    'end' => null,
+                ],
+                'location' => 'Monaco, Monaco (Remote)',
+                'description' => '<ul>' .
+                    '<li>Stack: PHP, Symfony, MySQL, ORM, Docker, ElasticSearch, RabbitMQ.</li>' .
+                    '</ul>',
+            ],
+            [
                 'title' => 'Senior Developer',
                 'company' => 'Bitban Technologies S.L.',
                 'period' => [
                     'start' => '2020-01',
-                    'end' => null,
+                    'end' => '2023-10',
                 ],
                 'location' => 'Madrid, Spain (Remote)',
                 'description' => '<ul>' .
                     '<li>Evolution of bCube Publisher, Bitban\'s proprietary Content Management System (CMS);</li>' .
-                    '<li>Development of REST APIs and libraries in PHP 8 and using Symfony 5 components.</li>' .
-                    '<li>Stack: PHP, Symfony, MySQL, ORM, REST APIs, Redis, Solr, Docker, Git.</li>' .
+                    '<li>Development of REST APIs and libraries in PHP 8 and using Symfony 5 components;</li>' .
+                    '<li>Technical mentorship, helping teammates to achieve higher levels in programming and knowledge about Bitban\'s product.</li>' .
                     '</ul>',
             ],
             [
