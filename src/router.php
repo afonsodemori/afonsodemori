@@ -7,7 +7,7 @@
 
 final class Route
 {
-    public const BASE_DIR = '/workspaces/afonsodemori/dist';
+    public const BASE_DIR = '/app/dist';
 
     private string $route;
 
