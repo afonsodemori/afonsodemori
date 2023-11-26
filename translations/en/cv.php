@@ -58,7 +58,7 @@ $trans = [
                 ],
                 'location' => 'Monaco, Monaco (Remote)',
                 'description' => '<ul>' .
-                    '<li>Stack: PHP, Symfony, MySQL, ORM, Docker, ElasticSearch, RabbitMQ.</li>' .
+                    '<li>Stack: PHP, Symfony, MySQL, ORM, Docker, RabbitMQ.</li>' .
                     '</ul>',
             ],
             [

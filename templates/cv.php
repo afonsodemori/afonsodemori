@@ -154,10 +154,12 @@
         </ul>
     </section>
 
+    <!--
     <section class="courses">
         <h2><?= $trans->courses->title ?></h2>
         <?= $trans->courses->list ?>
     </section>
+    -->
 
     <section class="skills">
         <h2><?= $trans->skills->title ?></h2>

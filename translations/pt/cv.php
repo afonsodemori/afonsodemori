@@ -59,7 +59,7 @@ $trans = array_replace_recursive($default, [
                 'title' => 'Desenvolvedor Back-end Sênior',
                 'location' => 'Mônaco, Mônaco (Remoto)',
                 'description' => '<ul>' .
-                    '<li>Stack: PHP, Symfony, MySQL, ORM, Docker, ElasticSearch, RabbitMQ.</li>' .
+                    '<li>Stack: PHP, Symfony, MySQL, ORM, Docker, RabbitMQ.</li>' .
                     '</ul>',
             ],
             [
