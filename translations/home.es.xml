@@ -7,9 +7,16 @@
     <entry key="metas.description">Perfil personal de Afonso de Mori Ayres da Silva. Desarrollador web back-end con foco en PHP</entry>
     <entry key="metas.keywords">afonso, mori, ayres, silva, demori, afonsodemori, afonsosilva89, desarrollador web, php, java</entry>
 
+    <entry key="language.first.text">English</entry>
+    <entry key="language.first.link">/en</entry>
+    <entry key="language.first.title">Read in English</entry>
+    <entry key="language.second.text">Português</entry>
+    <entry key="language.second.link">/pt</entry>
+    <entry key="language.second.title">Ler em Português</entry>
+
     <entry key="about.greet">Hola</entry>
     <entry key="about.me">Soy</entry>
-    <entry key="about.title"><![CDATA[desarrollador <span class="nowrap">de software</span>]]></entry>
+    <entry key="about.title"><![CDATA[Desarrollador <span class="nowrap">de Software</span>]]></entry>
     <entry key="about.bio">Ingeniero de Software con 15 años de experiencia, especializado en el desarrollo back-end con tecnologías como PHP, Symfony, MySQL y Doctrine. También tengo conocimientos de front-end y DevOps, y me adapto fácilmente a diferentes entornos y proyectos. Me apasiona el aprendizaje continuo y la innovación, y me esfuerzo por mantenerme al día con las tendencias y los avances tecnológicos, así como por inspirar y evolucionar a mi equipo.</entry>
 
     <entry key="links.resume.text">Currículo</entry>

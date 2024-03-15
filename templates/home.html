@@ -20,9 +20,10 @@
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/pt">
 
     <!-- le stylesheets -->
-    <link rel="stylesheet" href="/assets/css/shared.css?v={hash}" media="screen">
-    <link rel="stylesheet" href="/assets/css/home.css?v={hash}" media="screen">
-    <link rel="stylesheet" href="/assets/webfonts/exo,inter.css" media="screen">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css?v={hash}" media="all">
 
     <!-- le mobile -->
     <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">
@@ -69,20 +70,67 @@
         }
     }
 </script>
-<section>
-    <div>
+<div class="language">
+    <a href="{language.first.link}" title="{language.first.title}">{language.first.text}</a>
+    <a href="{language.second.link}" title="{language.second.title}">{language.second.text}</a>
+</div>
+
+<header>
+    <div class="container">
+        <div class="code"><span class="open">&lt;</span><span class="close">/&gt;</span></div>
         <h1>Afonso <span class="nowrap">de Mori</span></h1>
         <h2>{about.title}</h2>
-        <p class="bio">{about.bio}</p>
-        <ul class="links">
-            <li><a href="/cv/{locale}" title="{links.resume.title}">{links.resume.text}</a></li>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <p>{about.bio}</p>
+    </div>
+</article>
+
+<footer>
+    <div class="container">
+        <ul>
+            <li><a class="download-resume" href="#" title="{links.resume.title}">{links.resume.text}</a></li>
             <li><a target="_blank" href="/in" title="{links.linkedin.title}">{links.linkedin.text}</a></li>
             <li><a target="_blank" href="/github" title="{links.github.title}">{links.github.text}</a></li>
-            <li><a href="/contact/{locale}" title="{links.contact.title}">{links.contact.text}</a></li>
         </ul>
     </div>
-</section>
-<div class="backlight"></div>
+</footer>
+
+<div id="curtain" class="hidden">
+    <div>
+        <h1>English</h1>
+        <ul>
+            <li><a download href="/docs/cv-en-afonso_de_mori.pdf">PDF</a></li>
+            <li><a download href="/docs/cv-en-afonso_de_mori.docx">Word (.docx)</a></li>
+            <li><a download href="/docs/cv-en-afonso_de_mori.txt">Plain text (.txt)</a></li>
+            <li><a download href="/docs/cv-en-afonso_de_mori.odt">Open Document (.odt)</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h1>Español</h1>
+        <ul>
+            <li><a download href="/docs/cv-es-afonso_de_mori.pdf">PDF</a></li>
+            <li><a download href="/docs/cv-es-afonso_de_mori.docx">Word (.docx)</a></li>
+            <li><a download href="/docs/cv-es-afonso_de_mori.txt">Texto sin formato (.txt)</a></li>
+            <li><a download href="/docs/cv-es-afonso_de_mori.odt">Open Document (.odt)</a></li>
+        </ul>
+    </div>
+    <div>
+        <h1>Português</h1>
+        <ul>
+            <li><a download href="/docs/cv-pt-afonso_de_mori.pdf">PDF</a></li>
+            <li><a download href="/docs/cv-pt-afonso_de_mori.docx">Word (.docx)</a></li>
+            <li><a download href="/docs/cv-pt-afonso_de_mori.txt">Texto simples (.txt)</a></li>
+            <li><a download href="/docs/cv-pt-afonso_de_mori.odt">Open Document (.odt)</a></li>
+        </ul>
+    </div>
+</div>
+
+<script src="/assets/scripts.js?v={hash}"></script>
 <script src="/assets/js/shared.js?v={hash}"></script>
 </body>
 </html>
