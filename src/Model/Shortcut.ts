@@ -17,7 +17,7 @@ export default class Shortcut {
             // Example: alura,https://cursos.alura.com.br/user/afonsodemori,
             const parts = row.split(',');
             names = [parts[0].trim()];
-            url = parts[1].trim().slice(0, -1);
+            url = parts[1].trim();
         }
 
         return new Shortcut(names, url);
