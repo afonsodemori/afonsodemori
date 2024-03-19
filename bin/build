@@ -27,3 +27,6 @@ npx tsc && node js-dist/build.js
 # tag the build version
 printf "<h1>OK</h1>\n" > dist/health-check.html
 printf "<address>Last build: $(date)</address>\n" >> dist/health-check.html
+
+echo
+echo 'Done!'
