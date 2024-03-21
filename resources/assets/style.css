@@ -137,6 +137,7 @@ div.language a:hover {
     margin: 0;
     padding: 0;
     list-style: none;
+    min-width: 200px;
 }
 
 #curtain div {
@@ -174,14 +175,14 @@ div.language a:hover {
     padding: 2em;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1000px) {
     #curtain {
         flex-direction: column;
         justify-content: unset;
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1200px) {
     html {
         zoom: 125%;
     }
