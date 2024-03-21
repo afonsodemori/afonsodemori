@@ -16,11 +16,8 @@ bin/generate-pages
 rm -rf out && mkdir out
 javac -d out src/dev/afonso/*.java
 
-# import resumes and generate shortcuts
+# generate pages --> TODO: migrate to TS
 java -cp out dev.afonso.Build
-# java -cp out dev.afonso.PageGenerator
-# java -cp out dev.afonso.ResumesImporter
-# java -cp out dev.afonso.ShortcutsGenerator
 
 npx tsc && node build/build.js
 
