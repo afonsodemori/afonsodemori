@@ -20,18 +20,18 @@ export default class ImportResumes {
                     .replace('{format}', format)
                 ;
                 console.log(`Getting ${endpoint}...`);
-                const response = await axios.get(endpoint);
+
+                const response = await axios.get(endpoint, {
+                    responseType: 'arraybuffer'
+                });
+
                 const outputPath = this
                     .fileOutputPath
                     .replace('{language}', urlInfo.lang)
                     .replace('{format}', format)
                 ;
                 console.log(`=> ${outputPath}`);
-                fs.writeFile(outputPath, response.data, err => {
-                    if (err) {
-                        console.error('Failed to write to file:', err);
-                    }
-                });
+                fs.writeFileSync(outputPath, response.data, 'binary');
             }
         }
     }
