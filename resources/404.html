@@ -8,23 +8,26 @@
     <style>
         * { box-sizing: border-box; }
         html, body { margin: 0; padding: 0; }
-        body { font: normal 1em sans-serif; text-rendering: geometricPrecision; background-color: #030931; color: rgba(255, 255, 255, .8); text-align: center; }
-        h1 { margin: auto 0; font-weight: bold; font-style: italic; font-size: 3em; }
-        section { min-height: 100vh; padding: 1em; display: flex; align-items: center; }
+        body { font: normal 1em sans-serif; text-rendering: geometricPrecision; text-align: center; color: rgba(0, 0, 0, 0.8); background: #eff1f5; }
+        h1 { margin: auto 0; font-weight: bold; font-size: 3em; }
+        section { min-height: 80vh; padding: 1em; display: flex; align-items: center; }
         section div { margin: auto; }
         p { margin: 1em 0; }
-        a { color: #43e8e1; text-decoration: underline; text-underline-position: under; }
-        a:hover { text-decoration-thickness: 2px; }
-        .backlight { position: fixed; width: 40em; height: 40em; transform: rotate(-30deg); border-radius: 50%; opacity: .4; -webkit-filter: blur(50px); filter: blur(50px); background-image: radial-gradient(circle at 0%, #3d3ea4, #0f064b 50%); top: 20%; left: 40vw; z-index: -1; }
+        a { color: #28a3bf; text-decoration: none; border-bottom: 1px solid; }
+        a:hover { border-bottom-width: medium; }
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #25273a; color: rgba(255, 255, 255, 0.8); }
+            a { color: #8aadf4; }
+        }
     </style>
 </head>
 <body>
 <section>
     <div>
-        <h1>page not found</h1>
+        <h1>Page Not Found</h1>
         <p>You'll be redirected to the <a href="/">home page</a>…</p>
+        <p>:-(</p>
     </div>
 </section>
-<span class="backlight"></span>
 </body>
 </html>
