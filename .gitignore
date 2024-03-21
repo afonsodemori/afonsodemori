@@ -3,7 +3,7 @@
 .DS_Store
 *.iml
 /dist/
-/js-dist/
+/build/
 /node_modules/
 /out/
 /vendor/

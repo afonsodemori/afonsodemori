@@ -22,7 +22,7 @@ java -cp out dev.afonso.Build
 # java -cp out dev.afonso.ResumesImporter
 # java -cp out dev.afonso.ShortcutsGenerator
 
-npx tsc && node js-dist/build.js
+npx tsc && node build/build.js
 
 # tag the build version
 printf "<h1>OK</h1>\n" > dist/health-check.html
