@@ -22,8 +22,15 @@ java -cp out dev.afonso.Build
 npx tsc && node build/build.js
 
 # tag the build version
-printf "<h1>OK</h1>\n" > dist/health-check.html
-printf "<address>Last build: $(date)</address>\n" >> dist/health-check.html
+{
+    echo '<!DOCTYPE html><html lang="en">'
+    echo '<head><meta name="viewport" content="width=device-width, initial-scale=1"><title></title></head>'
+    echo '<body>'
+    echo '<h1>OK</h1>'
+    echo "<p>${CF_PAGES_BRANCH:-?}@$(echo ${CF_PAGES_COMMIT_SHA:-?} | head -c7)</p>"
+    echo "<address>$(date)</address>"
+    echo '</body></html>'
+} > dist/health-check.html
 
 echo
 echo 'Done!'
