@@ -1,5 +1,8 @@
 import GenerateShortcuts from "./GenerateShortcuts";
 import ImportResumes from "./ImportResumes";
+import GeneratePages from "./GeneratePages";
+
+new GeneratePages().execute();
 
 new GenerateShortcuts().execute().then(r => {
 }).catch(error => {

@@ -1,0 +1,21 @@
+{
+  "locale": "en",
+  "metas.title": "Let's talk!",
+  "metas.description": "",
+  "metas.keywords": "",
+  "topbar.icon": "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"angle-left\" class=\"svg-inline--fa fa-angle-left fa-w-8\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 512\"><path fill=\"currentColor\" d=\"M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z\"></path></svg>",
+  "header.0": "Hi! I'm Afonso,",
+  "header.1": "a Zamora (Spain) based Software Engineer with 15+ years of experience. Let's talk?",
+  "form.name.label": "Name",
+  "form.name.placeholder": "Full name",
+  "form.email.label": "Email",
+  "form.email.placeholder": "Email address",
+  "form.subject": "Contact via afonso.dev",
+  "form.message.label": "Message",
+  "form.message.placeholder": "Say something nice :-)",
+  "form.submit": "Send",
+  "form.submitted": "Sending...",
+  "form.success.0": "Message sent.",
+  "form.success.1": "Thanks.",
+  "form.error": "Something went wrong. Please, try again later."
+}

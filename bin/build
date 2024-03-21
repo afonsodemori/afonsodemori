@@ -6,18 +6,11 @@ npm install
 rm -rf dist && mkdir dist
 cp -rv resources/* dist/
 
-# TODO: java should get this done
+# TODO: TS should get this done
 mkdir -p dist/{cv,contact,courses}
 
-# generate pages (migrate to java)
+# generate pages (migrate to TS)
 bin/generate-pages
-
-# compile classes
-rm -rf out && mkdir out
-javac -d out src/dev/afonso/*.java
-
-# generate pages --> TODO: migrate to TS
-java -cp out dev.afonso.Build
 
 npx tsc && node build/build.js
 
