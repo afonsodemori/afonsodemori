@@ -13,10 +13,13 @@ export default class GeneratePages {
         const pages: Page[] = [
             { name: 'home', url: '/' },
             { name: 'contact', url: '/contact' },
+            { name: 'curriculum', url: '/cv' },
         ];
 
         pages.forEach(page => {
+            console.log('Generating Page', page);
             languages.forEach(language => {
+                console.log(`Language: ${language}`);
                 try {
                     // load translation
                     const translation = JSON.parse(fs.readFileSync(path.join(__dirname, `/../translations/${page.name}.${language}.json`), 'utf-8'));
@@ -32,6 +35,7 @@ export default class GeneratePages {
                     });
 
                     const outputPath = path.join(__dirname, `/../dist/${page.url.substring(1)}/${language}.html`).replace('//', '/');
+                    console.log(outputPath);
 
                     // Create directories as needed
                     const outputDir = path.dirname(outputPath);

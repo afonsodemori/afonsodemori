@@ -9,9 +9,6 @@ cp -rv resources/* dist/
 # TODO: TS should get this done
 mkdir -p dist/{cv,contact,courses}
 
-# generate pages (migrate to TS)
-bin/generate-pages
-
 npx tsc && node build/build.js
 
 # tag the build version
