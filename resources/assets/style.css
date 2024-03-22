@@ -190,20 +190,20 @@ div.language a:hover {
 
 @media (prefers-color-scheme: dark) {
     body {
-        color: rgba(255, 255, 255, 0.8);
-        background-color: #25273a;
+        color: rgba(255, 255, 255, 0.75);
+        background-color: #1e1e2e;
     }
 
     header .open {
-        color: #a6da95;
+        color: #a6e3a1;
     }
 
     header .close {
-        color: #8aadf4;
+        color: #89b4fb;
     }
 
     footer a {
-        color: #8aadf4;
+        color: #89b4fb;
     }
 
     div.language a {
