@@ -14,6 +14,10 @@
     }
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -32,6 +36,14 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 2em;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.hidden {
+    display: none !important;
 }
 
 @media screen and (min-width: 1200px) {
@@ -138,25 +150,22 @@ div.language a:hover {
     font-weight: 500;
 }
 
-
-
 @media (prefers-color-scheme: dark) {
     div.language a {
         color: rgba(255, 255, 255, 0.4);
     }
 
     div.language a:hover {
-        background-color: unset;
         color: #fff;
     }
 }
 
-.nowrap {
-    white-space: nowrap;
-}
-
-.hidden {
-    display: none !important;
+select {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
 }
 
 .custom-select {
@@ -171,13 +180,11 @@ div.language a:hover {
     color: var(--secondary);
     border-radius: 4px;
     cursor: pointer;
-    opacity: .75;
     transition: transform 0.2s ease-in-out;
     background-color: var(--bg);
 }
 
 div div:hover .selected-option {
-    border-style: dot-dash;
     transform: scale(1.07);
 }
 
@@ -186,13 +193,5 @@ div div:hover .selected-option {
     background-color: var(--primary);
     color: var(--bg);
     border-radius: 4px;
-    cursor: pointer;
-}
-
-select {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
     cursor: pointer;
 }
