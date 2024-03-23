@@ -3,12 +3,14 @@
   "metas.title": "Afonso de Mori A. Silva - Software developer - Zamora, Spain",
   "metas.description": "Afonso de Mori Ayres da Silva's personal profile. Back-end web developer PHP focused",
   "metas.keywords": "afonso, mori, ayres, silva, demori, afonsodemori, afonsosilva89, web developer, php, java",
+
   "language.first.text": "English",
   "language.first.link": "/cv/en",
   "language.first.title": "Read in English",
   "language.second.text": "Español",
   "language.second.link": "/cv/es",
   "language.second.title": "Leer en Español",
+
   "about.title": "Desenvolvedor <span class=\"nowrap\">de Software</span>",
 
   "download.text": "Selecione una versão para baixar",
