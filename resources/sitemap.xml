@@ -21,11 +21,4 @@
         <xhtml:link rel="alternate" hreflang="pt" href="https://afonso.dev/cv/pt"/>
         <priority>0.8</priority>
     </url>
-    <url>
-        <loc>https://afonso.dev/courses/en</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://afonso.dev/courses/en"/>
-        <xhtml:link rel="alternate" hreflang="es" href="https://afonso.dev/courses/es"/>
-        <xhtml:link rel="alternate" hreflang="pt" href="https://afonso.dev/courses/pt"/>
-        <priority>0.8</priority>
-    </url>
 </urlset>
