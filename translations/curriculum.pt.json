@@ -9,5 +9,22 @@
   "language.second.text": "Español",
   "language.second.link": "/cv/es",
   "language.second.title": "Leer en Español",
-  "about.title": "Desenvolvedor <span class=\"nowrap\">de Software</span>"
+  "about.title": "Desenvolvedor <span class=\"nowrap\">de Software</span>",
+
+  "download.text": "Selecione una versão para baixar",
+
+  "language1.action": "Versão em Português",
+  "language1.locale": "pt",
+  "language1.format": "Formato",
+  "language1.option3.text": "Texto simples (.txt)",
+
+  "language2.action": "English version",
+  "language2.locale": "en",
+  "language2.format": "Format",
+  "language2.option3.text": "Plain text (.txt)",
+
+  "language3.action": "Versión en Español",
+  "language3.format": "Formato",
+  "language3.locale": "es",
+  "language3.option3.text": "Texto sin formato (.txt)"
 }

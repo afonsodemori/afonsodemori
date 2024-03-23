@@ -9,5 +9,22 @@
   "language.second.text": "Português",
   "language.second.link": "/cv/pt",
   "language.second.title": "Ler em Português",
-  "about.title": "Software Developer"
+  "about.title": "Software Developer",
+
+  "download.text": "Select a version to download",
+
+  "language1.action": "English version",
+  "language1.locale": "en",
+  "language1.format": "Format",
+  "language1.option3.text": "Plain text (.txt)",
+
+  "language2.action": "Versión en Español",
+  "language2.locale": "es",
+  "language2.format": "Formato",
+  "language2.option3.text": "Texto sin formato (.txt)",
+
+  "language3.action": "Versão em Português",
+  "language3.locale": "pt",
+  "language3.format": "Formato",
+  "language3.option3.text": "Texto simples (.txt)"
 }

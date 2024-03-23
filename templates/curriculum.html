@@ -40,7 +40,6 @@
             border-radius: .5em;
             box-shadow: 0 0 20px rgba(0, 0, 0, .3);
             opacity: .8;
-            margin: 1em 0;
         }
     </style>
 </head>
@@ -58,12 +57,43 @@
     </div>
 </header>
 
-<section>
+<section style="margin-bottom: 0">
     <div class="container">
-        <p>Résumé in English: <br><a download href="/docs/cv-en-afonso_de_mori.pdf">PDF</a> <a download href="/docs/cv-en-afonso_de_mori.docx">Word (.docx)</a> <a download href="/docs/cv-en-afonso_de_mori.txt">Text (.txt)</a></p>
-        <p>Currículum en Español: <br><a download href="/docs/cv-es-afonso_de_mori.pdf">PDF</a> <a download href="/docs/cv-es-afonso_de_mori.docx">Word (.docx)</a> <a download href="/docs/cv-es-afonso_de_mori.txt">Texto (.txt)</a></p>
-        <p>Currículo em Português: <br><a download href="/docs/cv-pt-afonso_de_mori.pdf">PDF</a> <a download href="/docs/cv-pt-afonso_de_mori.docx">Word (.docx)</a> <a download href="/docs/cv-pt-afonso_de_mori.txt">Texto (.txt)</a></p>
+        <p style="margin: 0">{download.text}</p>
+
+        <div class="custom-select">
+            <span class="selected-option primary">{language1.action} ▾</span>
+            <select class="download-cv">
+                <option selected disabled value="">{language1.format}</option>
+                <option value="{language1.locale}-pdf">PDF (.pdf)</option>
+                <option value="{language1.locale}-docx">Word (.docx)</option>
+                <option value="{language1.locale}-txt">{language1.option3.text}</option>
+            </select>
+        </div>
+
+        <div class="custom-select">
+            <span class="selected-option">{language2.action} ▾</span>
+            <select class="download-cv">
+                <option selected disabled value="">{language2.format}</option>
+                <option value="{language2.locale}-pdf">PDF (.pdf)</option>
+                <option value="{language2.locale}-docx">Word (.docx)</option>
+                <option value="{language2.locale}-txt">{language2.option3.text}</option>
+            </select>
+        </div>
+
+        <div class="custom-select">
+            <span class="selected-option">{language3.action} ▾</span>
+            <select class="download-cv">
+                <option selected disabled value="">{language3.format}</option>
+                <option value="{language3.locale}-pdf">PDF (.pdf)</option>
+                <option value="{language3.locale}-docx">Word (.docx)</option>
+                <option value="{language3.locale}-txt">{language3.option3.text}</option>
+            </select>
+        </div>
     </div>
+</section>
+
+<section>
     <div class="container">
         <img class="cv-page" src="/docs/cv-{locale}-afonso_de_mori-1.png" alt="">
         <img class="cv-page" src="/docs/cv-{locale}-afonso_de_mori-2.png" alt="">
