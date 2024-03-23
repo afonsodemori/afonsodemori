@@ -9,6 +9,7 @@ function checkMainDomainConnectivity() {
 
     if (
         url.host !== 'afonso.dev'
+        && url.host.substring(url.host.indexOf('.')) !== '.afonsodemori.pages.dev'
         && localStorage.getItem('keepDomain') !== 'true'
     ) {
         fetch('https://afonso.dev/health-check')
@@ -18,6 +19,7 @@ function checkMainDomainConnectivity() {
                         if (text.includes('OK')) {
                             const url = new URL(window.location);
                             url.host = 'afonso.dev';
+                            url.port = '443';
                             window.location = url;
                         }
                     });
@@ -25,62 +27,6 @@ function checkMainDomainConnectivity() {
             })
             .catch(() => {
             });
-    }
-}
-
-function hideModals() {
-    document.querySelectorAll('.modal').forEach(element => {
-        element.style.display = '';
-    });
-    document.querySelectorAll('nav a').forEach(element => {
-        element.classList.remove('active');
-    });
-    document.removeEventListener('click', hideModals);
-}
-
-function showModal(modal) {
-    const button = document.querySelector(`#nav-modal-${modal} a`);
-    const element = document.querySelector(`#nav-modal-${modal} .modal`);
-
-    if (element.style.display === 'block') {
-        return;
-    }
-
-    hideModals();
-    button.classList.add('active');
-    element.style.display = 'block';
-    element.style.top = `${button.offsetHeight}px`;
-
-    if (button.offsetLeft + element.offsetWidth < window.innerWidth) {
-        element.style.left = `${button.offsetLeft}px`;
-    } else {
-        element.style.left = `${button.offsetLeft + button.offsetWidth - element.offsetWidth}px`;
-    }
-
-    window.setTimeout(() => {
-        document.addEventListener('click', hideModals);
-    }, 50);
-}
-
-function addTopBarListeners() {
-    let element;
-
-    if ((element = document.getElementById('nav-print')) !== null) {
-        element.addEventListener('click', () => {
-            print();
-        });
-    }
-
-    if ((element = document.getElementById('nav-modal-download')) !== null) {
-        element.addEventListener('click', () => {
-            showModal('download');
-        });
-    }
-
-    if ((element = document.getElementById('nav-modal-languages')) !== null) {
-        element.addEventListener('click', () => {
-            showModal('languages');
-        });
     }
 }
 
@@ -100,6 +46,5 @@ function registerServiceWorker() {
 window.addEventListener('load', () => {
     checkMainDomainConnectivity();
     updateDefaultLocale();
-    addTopBarListeners();
     registerServiceWorker();
 });
