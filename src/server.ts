@@ -25,6 +25,8 @@ app.get('*', (req, res) => {
     res.status(404).send('Not Found');
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+    console.log(`http://localhost:${port}`);
 });
