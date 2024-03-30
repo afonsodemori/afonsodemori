@@ -33,7 +33,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 780px;
     margin: 0 auto;
     padding: 2em;
 }
@@ -97,6 +97,19 @@ header h2 {
 article p {
     font-size: 1.1em;
     font-weight: 300;
+}
+
+/* /cv only */
+.cv-page {
+    width: 100%;
+    max-width: 700px;
+    border-radius: .5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    opacity: .8;
+}
+
+.cv-page:first-of-type {
+    margin-bottom: 1em;
 }
 
 /* footer */
