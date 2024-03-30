@@ -3,16 +3,17 @@
   "metas.title": "Afonso de Mori A. Silva - Desenvolvedor de software - Zamora, Espanha",
   "metas.description": "Perfil pessoal de Afonso de Mori Ayres da Silva. Desenvolvedor web back-end com foco em PHP",
   "metas.keywords": "afonso, mori, ayres, silva, demori, afonsodemori, afonsosilva89, desenvolvedor, php, java",
+
   "language.first.text": "English",
   "language.first.link": "/en",
   "language.first.title": "Read in English",
   "language.second.text": "Español",
   "language.second.link": "/es",
   "language.second.title": "Leer en Español",
-  "about.greet": "Olá",
-  "about.me": "Sou",
+
   "about.title": "Desenvolvedor <span class=\"nowrap\">de Software</span>",
-  "about.bio": "Engenheiro de Software com 15 anos de experiência, especializado em desenvolvimento back-end com tecnologias como PHP, Symfony, MySQL e Doctrine. Também possuo conhecimentos de front-end e DevOps, e me adapto facilmente a diferentes ambientes e projetos. Sou apaixonado por aprendizado contínuo e inovação, e me esforço para me manter atualizado com as tendências e avanços tecnológicos, além de inspirar e evoluir minha equipe.",
+  "about.bio": "Engenheiro de Software com mais de 15 anos de experiência em desenvolvimento back-end. Especializado em PHP, Symfony, MySQL e Doctrine. Tenho conhecimentos em DevOps e front-end, e me adapto facilmente a diferentes ambientes e projetos. Comprometido com aprendizado contínuo, inovação e trabalho em equipe.",
+
   "links.resume.text": "Currículo",
   "links.resume.title": "Veja meu currículo completo",
   "links.linkedin.text": "LinkedIn",
