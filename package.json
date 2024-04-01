@@ -4,7 +4,9 @@
   "description": "### a Spain based Software Engineer, specialized in back-end development with PHP ~(for now)~.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "npx tsc && node build/server.js",
+    "build": "npx tsc && node build/build.js",
+    "assets": "cp -rv resources/* dist/"
   },
   "keywords": [],
   "author": "",

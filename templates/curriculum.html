@@ -7,17 +7,12 @@
     <meta charset="utf-8">
     <meta name="description" content="{metas.description}">
     <meta name="keywords" content="{metas.keywords}">
-    <link rel="canonical" href="https://afonso.dev/{locale}">
-
-    <!-- le opengraph tags -->
-    <meta property="og:title" content="{metas.title}">
-    <meta property="og:description" content="{metas.description}">
-    <meta property="og:image" content="https://afonso.dev/me.jpg">
+    <link rel="canonical" href="https://afonso.dev/cv/{locale}">
 
     <!-- le languages -->
-    <link rel="alternate" hreflang="en" href="https://afonso.dev/en">
-    <link rel="alternate" hreflang="es" href="https://afonso.dev/es">
-    <link rel="alternate" hreflang="pt" href="https://afonso.dev/pt">
+    <link rel="alternate" hreflang="en" href="https://afonso.dev/cv/en">
+    <link rel="alternate" hreflang="es" href="https://afonso.dev/cv/es">
+    <link rel="alternate" hreflang="pt" href="https://afonso.dev/cv/pt">
 
     <!-- le stylesheets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,15 +28,16 @@
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-    <style>
-        .cv-page {
-            width: 100%;
-            max-width: 600px;
-            border-radius: .5em;
-            box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-            opacity: .8;
-        }
-    </style>
+    <!-- le opengraph tags -->
+    <meta property="og:type" content="profile">
+    <meta property="profile:first_name" content="Afonso">
+    <meta property="profile:last_name" content="de Mori">
+    <meta property="profile:gender" content="male">
+    <!--<meta property="article:modified_time" content="">-->
+    <!--<meta property="article:expiration_time" content="">-->
+    <meta property="og:title" content="{metas.title}">
+    <meta property="og:description" content="{metas.description}">
+    <meta property="og:image" content="https://afonso.dev/assets/images/og-image-{locale}.jpg">
 </head>
 <body>
 <div class="language">
@@ -95,8 +91,8 @@
 
 <section>
     <div class="container">
-        <img class="cv-page" src="/docs/cv-{locale}-afonso_de_mori-1.png" alt="">
-        <img class="cv-page" src="/docs/cv-{locale}-afonso_de_mori-2.png" alt="">
+        <img class="cv-page" src="/docs/cv-{locale}-afonso_de_mori-1.png" alt="{metas.title} - Page 1">
+        <img class="cv-page" src="/docs/cv-{locale}-afonso_de_mori-2.png" alt="{metas.title} - Page 2">
     </div>
 </section>
 
