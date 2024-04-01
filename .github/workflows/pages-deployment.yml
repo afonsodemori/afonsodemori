@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - develop
-      - github-cloudflare-ci
+      - oven
 
 jobs:
   build:
@@ -35,6 +35,18 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Tag with version
+        run: |
+          {
+            echo '<!DOCTYPE html><html lang="en">'
+            echo '<head><meta name="viewport" content="width=device-width, initial-scale=1"><title></title></head>'
+            echo '<body>'
+            echo '<h1>OK</h1>'
+            echo "<p>${GITHUB_REF##*/}@$(echo ${GITHUB_SHA} | head -c7)</p>"
+            echo "<address>$(date)</address>"
+            echo '</body></html>'
+          } > dist/health-check.html
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -57,7 +69,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: afonsodemori
+          projectName: afonso
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
