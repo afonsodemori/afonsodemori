@@ -1,10 +1,11 @@
 import * as fs from "fs";
 import axios from "axios";
+import path from "path";
 
 // TODO: Check this whole flow and refactor
 export default class ImportResumes {
     baseUrl = 'https://docs.google.com/document/export?id={file_id}&format={format}';
-    fileOutputPath = 'dist/docs/cv-{language}-afonso_de_mori.{format}';
+    fileOutputPath = path.join(__dirname, 'dist/docs/cv-{language}-afonso_de_mori.{format}');
     sourceUrls = [
         {'lang': 'en', 'fileId': '1aYKfrRKX0YHVZukZvMGe3cXTOIY648ZXwF3iXTGQF34'},
         {'lang': 'es', 'fileId': '1TT9BpFpy6QBs1sygecTuPAHD8iPMPII1y3Rw7rNuj74'},

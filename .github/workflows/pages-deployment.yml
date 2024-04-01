@@ -58,4 +58,4 @@ jobs:
           projectName: afonsodemori
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: ${{ github.ref_name }}
