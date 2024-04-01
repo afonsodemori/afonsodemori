@@ -22,10 +22,10 @@ export default class GeneratePages {
                 console.log(`Language: ${language}`);
                 try {
                     // load translation
-                    const translation = JSON.parse(fs.readFileSync(path.join(__dirname, `/../translations/${page.name}.${language}.json`), 'utf-8'));
+                    const translation = JSON.parse(fs.readFileSync(path.join(__dirname, `../translations/${page.name}.${language}.json`), 'utf-8'));
 
                     // load page
-                    const html = fs.readFileSync(path.join(__dirname, `/../templates/${page.name}.html`), 'utf-8');
+                    const html = fs.readFileSync(path.join(__dirname, `../templates/${page.name}.html`), 'utf-8');
 
                     let outputHtml = html.replace(/{([a-z0-9.]+)}/g, (match, key) => {
                         const value = translation[key];
@@ -34,7 +34,7 @@ export default class GeneratePages {
                         return value;
                     });
 
-                    const outputPath = path.join(__dirname, `/../dist/${page.url.substring(1)}/${language}.html`).replace('//', '/');
+                    const outputPath = path.join(__dirname, `../dist/${page.url.substring(1)}/${language}.html`).replace('//', '/');
                     console.log(outputPath);
 
                     // Create directories as needed
