@@ -15,10 +15,7 @@
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/cv/pt">
 
     <!-- le stylesheets -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/style.css?v={hash}" media="all">
+    <link rel="stylesheet" href="/assets/style.css?v={hash}" media="screen">
 
     <!-- le mobile -->
     <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">
@@ -59,7 +56,7 @@
 
         <div class="custom-select">
             <span class="selected-option primary">{language1.action} ▾</span>
-            <select class="download-cv">
+            <select aria-label="{language1.action}" class="download-cv">
                 <option selected disabled value="">{language1.format}</option>
                 <option value="{language1.locale}-pdf">PDF (.pdf)</option>
                 <option value="{language1.locale}-docx">Word (.docx)</option>
@@ -69,7 +66,7 @@
 
         <div class="custom-select">
             <span class="selected-option">{language2.action} ▾</span>
-            <select class="download-cv">
+            <select aria-label="{language2.action}" class="download-cv">
                 <option selected disabled value="">{language2.format}</option>
                 <option value="{language2.locale}-pdf">PDF (.pdf)</option>
                 <option value="{language2.locale}-docx">Word (.docx)</option>
@@ -79,7 +76,7 @@
 
         <div class="custom-select">
             <span class="selected-option">{language3.action} ▾</span>
-            <select class="download-cv">
+            <select aria-label="{language3.action}" class="download-cv">
                 <option selected disabled value="">{language3.format}</option>
                 <option value="{language3.locale}-pdf">PDF (.pdf)</option>
                 <option value="{language3.locale}-docx">Word (.docx)</option>

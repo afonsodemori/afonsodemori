@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    src: url('inter-variable.woff2') format('woff2');
+    font-display: swap;
+}
+
 :root {
     --color: rgba(0, 0, 0, 0.8);
     --bg: #eff1f5;
@@ -24,12 +32,15 @@ html, body {
 }
 
 body {
-    font: 400 normal 1.0em/1.6 'Roboto Serif', serif;
-    font-family: 'Inter', sans-serif;
+    font: 300 normal 1.0em/1.6 'Inter', sans-serif;
     text-align: center;
     text-rendering: geometricPrecision;
     color: var(--color);
     background-color: var(--bg);
+}
+
+a {
+    font-weight: 500;
 }
 
 .container {
@@ -96,7 +107,6 @@ header h2 {
 
 article p {
     font-size: 1.1em;
-    font-weight: 300;
 }
 
 /* /cv only */
@@ -136,7 +146,6 @@ footer a {
     text-decoration: none;
     border-bottom: 1px solid;
     margin: .5em;
-    font-weight: 500;
 }
 
 /* general */
@@ -155,12 +164,10 @@ div.language a {
     padding: .5em;
     color: rgba(0, 0, 0, 0.4);
     text-decoration: underline;
-    font-weight: 500;
 }
 
 div.language a:hover {
     color: #000;
-    font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -207,4 +214,5 @@ div div:hover .selected-option {
     color: var(--bg);
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 400;
 }
