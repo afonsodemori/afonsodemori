@@ -85,11 +85,18 @@
         </div>
     </div>
 </section>
+<script>
+    // If absolute URL from the remote server is provided, configure the CORS
+    // header on that server.
+    var pdfUrl = `/docs/cv-{locale}-afonso_de_mori.pdf`;
+</script>
+<script src="/assets/pdfjs/pdf.min.mjs" type="module"></script>
+<script src="/assets/js/cv-viewer.js" type="module"></script>
 
 <section>
     <div class="container">
-        <img class="cv-page" src="/docs/cv-{locale}-afonso_de_mori-1.png" alt="{metas.title} - Page 1">
-        <img class="cv-page" src="/docs/cv-{locale}-afonso_de_mori-2.png" alt="{metas.title} - Page 2">
+        <canvas class="cv-page" id="the-canvas-p1"></canvas>
+        <canvas class="cv-page" id="the-canvas-p2"></canvas>
     </div>
 </section>
 
