@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    volumes:
+      - .:/app
+    entrypoint: "npm run server"
+    ports:
+      - "3000:3000"
