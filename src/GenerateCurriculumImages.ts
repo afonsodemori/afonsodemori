@@ -5,10 +5,10 @@ export default class GenerateCurriculumImages {
     execute() {
         ['en', 'es', 'pt'].forEach(language => {
             const options = {
-                density: 100,
+                density: 300,
                 saveFilename: `cv-${language}-afonso_de_mori`,
                 savePath: [__dirname, "/../dist/docs"].join(''),
-                format: "jpeg",
+                format: "png",
                 width: 1200,
                 preserveAspectRatio: true,
             };
