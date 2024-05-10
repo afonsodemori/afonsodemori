@@ -16,7 +16,6 @@
     "@types/node": "^20.11.30",
     "axios": "^1.6.8",
     "express": "^4.19.1",
-    "pdf2pic": "^3.1.1",
     "typescript": "^5.4.3"
   }
 }
