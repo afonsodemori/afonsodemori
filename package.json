@@ -4,9 +4,13 @@
   "description": "### a Spain based Software Engineer, specialized in back-end development with PHP ~(for now)~.",
   "main": "index.js",
   "scripts": {
-    "server": "npx tsc && node build/server.js",
-    "build": "npx tsc && node build/build.js",
-    "assets": "cp -rv resources/* dist/"
+    "assets": "cp -rv resources/* dist/",
+    "clean": "rm -rvf dist/*",
+    "import-resumes": "npx tsc && node build/ImportResumes.js",
+    "generate-pages": "npx tsc && node build/GeneratePages.js",
+    "generate-shortcuts": "npx tsc && node build/GenerateShortcuts.js",
+    "replace-cv-text": "npx tsc && node build/ReplaceCvTexts.js",
+    "serve": "npx tsc && node build/server.js"
   },
   "keywords": [],
   "author": "",

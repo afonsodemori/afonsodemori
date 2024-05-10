@@ -49,3 +49,5 @@ export default class GeneratePages {
         });
     }
 }
+
+new GeneratePages().execute();

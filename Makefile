@@ -20,3 +20,30 @@ docker/image: docker/login
 # For reference. Not used.
 .docker/builder-delete:
 	@docker builder rm multi_arch
+
+clean:
+# @rm -rf node_modules
+	@rm -rf dist
+	@rm -rf build
+	@cp -R resources dist
+
+build: clean ci resumes pages shortcuts
+	@./bin/convert-cv.sh
+
+ci:
+	@npm ci
+
+resumes:
+	@npm run import-resumes
+
+pages:
+	@npm run generate-pages
+
+shortcuts:
+	@npm run generate-shortcuts
+
+replace:
+	@npm run replace-cv-text
+
+serve:
+	@npm run serve
