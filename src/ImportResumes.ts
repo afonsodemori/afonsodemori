@@ -37,3 +37,8 @@ export default class ImportResumes {
         }
     }
 }
+
+new ImportResumes().execute().then(r => {
+}).catch(error => {
+    console.error('Error executing ImportResumes:', error);
+});
