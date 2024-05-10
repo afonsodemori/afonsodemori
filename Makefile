@@ -39,6 +39,7 @@ assets:
 resumes:
 	@npm run import-resumes
 	@./bin/convert-cv.sh
+	@npm run replace-resumes-text
 
 pages:
 	@npm run generate-pages
