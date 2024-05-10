@@ -4,8 +4,7 @@
   "description": "### a Spain based Software Engineer, specialized in back-end development with PHP ~(for now)~.",
   "main": "index.js",
   "scripts": {
-    "assets": "cp -rv resources/* dist/",
-    "clean": "rm -rvf dist/*",
+    "install-assets": "cp -Rv resources dist",
     "import-resumes": "npx tsc && node build/ImportResumes.js",
     "generate-pages": "npx tsc && node build/GeneratePages.js",
     "generate-shortcuts": "npx tsc && node build/GenerateShortcuts.js",

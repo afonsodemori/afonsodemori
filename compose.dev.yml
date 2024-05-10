@@ -1,10 +1,9 @@
-version: "3.8"
-
 services:
   dev:
-    build: .
+    image: afonsodemori/afonso-dev:latest
+    container_name: afonso-dev
     volumes:
       - .:/app
-    entrypoint: "npm run server"
     ports:
       - "3000:3000"
+    tty: true

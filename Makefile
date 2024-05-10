@@ -2,10 +2,11 @@ help:
 	@echo "TODO:"
 
 up:
-	@docker-compose -f compose.dev.yml up -d
+	@docker compose -f compose.dev.yml up -d
 
 down:
-	@docker-compose -f compose.dev.yml down --remove-orphans
+	@docker compose -f compose.dev.yml kill --remove-orphans
+	@docker compose -f compose.dev.yml rm -f
 
 docker/login:
 	@docker login $(REGISTRY)
@@ -25,13 +26,12 @@ clean:
 # @rm -rf node_modules
 	@rm -rf dist
 	@rm -rf build
-	@cp -R resources dist
-
-build: clean ci resumes pages shortcuts
-	@./bin/convert-cv.sh
 
 ci:
 	@npm ci
+
+assets:
+	@npm run install-assets
 
 resumes:
 	@npm run import-resumes
@@ -44,6 +44,12 @@ shortcuts:
 
 replace:
 	@npm run replace-cv-text
+
+.PHONY: build
+build:
+	@which pdftoppm > /dev/null || (echo "pdftoppm not found. Try running inside the dev container." && exit 1)
+	@make clean ci resumes pages shortcuts
+	@./bin/convert-cv.sh
 
 serve:
 	@npm run serve
