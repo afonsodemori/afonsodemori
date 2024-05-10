@@ -4,6 +4,9 @@ help:
 up:
 	@docker compose -f compose.dev.yml up -d
 
+dev:
+	@docker compose -f compose.dev.yml exec -it dev bash
+
 down:
 	@docker compose -f compose.dev.yml kill --remove-orphans
 	@docker compose -f compose.dev.yml rm -f
@@ -12,7 +15,7 @@ docker/login:
 	@docker login $(REGISTRY)
 
 docker/image: docker/login
-	@make .builder-create
+	@make .docker/builder-create
 	@docker buildx build --platform linux/amd64,linux/arm64 -t afonsodemori/afonso-dev:latest -f Dockerfile . --push
 
 .docker/builder-create:
@@ -48,7 +51,7 @@ replace:
 .PHONY: build
 build:
 	@which pdftoppm > /dev/null || (echo "pdftoppm not found. Try running inside the dev container." && exit 1)
-	@make clean ci resumes pages shortcuts
+	@make clean ci assets resumes pages shortcuts
 	@./bin/convert-cv.sh
 
 serve:
