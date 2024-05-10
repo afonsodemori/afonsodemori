@@ -38,6 +38,7 @@ assets:
 
 resumes:
 	@npm run import-resumes
+	@./bin/convert-cv.sh
 
 pages:
 	@npm run generate-pages
@@ -49,7 +50,6 @@ shortcuts:
 build:
 	@which pdftoppm > /dev/null || (echo "pdftoppm not found. Try running inside the dev container." && exit 1)
 	@make clean ci assets pages shortcuts resumes
-	@./bin/convert-cv.sh
 
 serve:
 	@npm run serve
