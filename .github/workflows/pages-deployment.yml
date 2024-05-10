@@ -30,7 +30,9 @@ jobs:
           cp -rv resources/* dist/
 
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          npm run build
 
       - name: Tag with version
         run: |
