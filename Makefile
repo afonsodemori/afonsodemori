@@ -2,21 +2,21 @@ help:
 	@echo "TODO:"
 
 up:
-	@docker compose -f compose.dev.yml up -d
+	@docker compose up -d
 
 dev:
-	@docker compose -f compose.dev.yml exec -it dev bash
+	@docker compose exec -it dev bash
 
 down:
-	@docker compose -f compose.dev.yml kill --remove-orphans
-	@docker compose -f compose.dev.yml rm -f
+	@docker compose kill --remove-orphans
+	@docker compose rm -f
 
 docker/login:
 	@docker login $(REGISTRY)
 
 docker/image: docker/login
 	@make .docker/builder-create
-	@docker buildx build --platform linux/amd64,linux/arm64 -t afonsodemori/afonso-dev:latest -f Dockerfile . --push
+	@docker buildx build --platform linux/amd64,linux/arm64 -t afonsodemori/afonso-dev:latest -f docker/Dockerfile . --push
 
 .docker/builder-create:
 	@docker buildx use multi_arch 2>/dev/null || docker buildx create --name multi_arch --use
@@ -45,13 +45,10 @@ pages:
 shortcuts:
 	@npm run generate-shortcuts
 
-replace:
-	@npm run replace-cv-text
-
 .PHONY: build
 build:
 	@which pdftoppm > /dev/null || (echo "pdftoppm not found. Try running inside the dev container." && exit 1)
-	@make clean ci assets resumes pages shortcuts
+	@make clean ci assets pages shortcuts resumes
 	@./bin/convert-cv.sh
 
 serve:
