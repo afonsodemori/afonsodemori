@@ -1,0 +1,9 @@
+services:
+  dev:
+    image: afonsodemori/afonso-dev:latest
+    container_name: afonso-dev
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    entrypoint: docker/entrypoint.sh
