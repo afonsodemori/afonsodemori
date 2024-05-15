@@ -13,9 +13,24 @@ function registerServiceWorker() {
     }
 }
 
+function replaceLowQualityResume() {
+    document.querySelectorAll('picture[class^="page-"]').forEach(picture => {
+        const source = picture.children[0];
+        const img = picture.children[1];
+
+        img.addEventListener('load', () => {
+            img.parentElement.classList.remove('blur');
+        });
+
+        source.srcset = source.srcset.replace('-low', '');
+        img.src = img.src.replace('-low', '');
+    });
+}
+
 window.addEventListener('load', () => {
     updateDefaultLocale();
     registerServiceWorker();
+    replaceLowQualityResume();
 });
 
 const selectElements = document.querySelectorAll('select.download-cv');
