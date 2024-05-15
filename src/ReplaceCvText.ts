@@ -6,7 +6,7 @@ interface Page {
     url: string;
 }
 
-export default class GeneratePages {
+class GeneratePages {
     execute() {
         const languages = ['en', 'es', 'pt'];
 
@@ -40,7 +40,7 @@ export default class GeneratePages {
                 const finalText = formattedText
                     .join('')
                     // split contact info
-                    .replace(/     /g, '</p><p>')
+                    .replace(/ {5}/g, '</p><p>')
                     .replace(/:<\/p><p>me@/g, ': me@')
                     // replace links
                     .replace('me@afonso.dev', '<a href="mailto:me@afonso.dev">me@afonso.dev</a>')
@@ -66,27 +66,6 @@ export default class GeneratePages {
                 const html = fs.readFileSync(fileToChange, 'utf-8');
                 let outputHtml = html.replace('[[[replace-cv-text]]]', finalText);
                 fs.writeFileSync(fileToChange, outputHtml);
-
-                /*
-                // load page
-                const html = fs.readFileSync(path.join(__dirname, `../templates/${page.name}.html`), 'utf-8');
-
-                let outputHtml = html.replace(/{([a-z0-9.]+)}/g, (match, key) => {
-                    const value = translation[key];
-                    if (key === 'hash') return Math.round(Math.random() * 1000000).toString();
-                    if (value === undefined) throw new Error(`Missing translation: ${page.name} / ${language} / ${key}`);
-                    return value;
-                });
-
-                const outputPath = path.join(__dirname, `../dist/${page.url.substring(1)}/${language}.html`).replace('//', '/');
-                console.log(outputPath);
-
-                // Create directories as needed
-                const outputDir = path.dirname(outputPath);
-                fs.mkdirSync(outputDir, { recursive: true });
-
-                fs.writeFileSync(outputPath, outputHtml);
-                */
             } catch (error) {
                 console.error(error);
             }
