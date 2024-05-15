@@ -4,7 +4,7 @@ help:
 up:
 	@docker compose up -d
 
-dev:
+dev: up
 	@docker compose exec -it dev bash
 
 down:
