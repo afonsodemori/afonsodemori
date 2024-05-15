@@ -124,6 +124,7 @@ article p {
 .cv-page {
     width: 100%;
     max-width: 700px;
+    height: unset;
     border-radius: .5em;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     opacity: .8;
