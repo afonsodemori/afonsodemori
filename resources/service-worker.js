@@ -10,6 +10,10 @@ self.addEventListener('install', event => {
                     '/cv',
                     '/assets/style.css',
                     '/assets/js/scripts.js',
+                    '/assets/inter-variable.woff2',
+                    '/favicon.ico',
+                    '/app.manifest',
+                    '/assets/icons/favicon-192.png',
                 ];
 
                 ['en', 'es', 'pt'].forEach(locale => {
@@ -42,37 +46,46 @@ self.addEventListener('fetch', function (event) {
     const request = event.request;
     const urlWithoutQuery = new URL(request.url.split('?')[0]);
 
-    event.respondWith(
-        caches.match(urlWithoutQuery)
-            .then(cachedResponse => {
+    function updateCache(urlWithoutQuery) {
+        return fetch(request)
+            .then(response => {
+                if (!response || response.status !== 200 || response.type !== 'basic') {
+                    // invalid response
+                    return response;
+                }
 
-                return fetch(request)
-                    .then(response => {
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            // invalid response
-                            return response;
-                        }
+                // clone the response since it can only be read once
+                const responseToCache = response.clone();
 
-                        // clone the response since it can only be read once
-                        const responseToCache = response.clone();
-
-                        // cache the fetched response for offline use
-                        caches.open(cacheName)
-                            .then(cache => {
-                                cache.put(urlWithoutQuery, responseToCache);
-                            })
-                        ;
-
-                        return response;
+                // cache the fetched response for offline use
+                caches
+                    .open(cacheName)
+                    .then(cache => {
+                        cache.put(urlWithoutQuery, responseToCache).then();
                     })
                     .catch(() => {
-                        if (!cachedResponse) {
-                            // TODO: no cached version, show offline page
-                        }
-
-                        // offline, use the cached version
-                        return cachedResponse;
                     });
+
+                return response;
+            })
+            .catch(() => {
+                // TODO: Offline?
+            });
+    }
+
+    event.respondWith(
+        caches
+            .match(urlWithoutQuery)
+            .then(cachedResponse => {
+
+                if (!cachedResponse) {
+                    return updateCache(urlWithoutQuery);
+                }
+
+                updateCache(urlWithoutQuery).then(() => {
+                });
+
+                return cachedResponse;
             })
     );
 });
