@@ -6,7 +6,7 @@ interface Page {
     url: string;
 }
 
-export default class GeneratePages {
+class GeneratePages {
     execute() {
         const languages = ['en', 'es', 'pt'];
 
@@ -15,6 +15,8 @@ export default class GeneratePages {
             { name: 'contact', url: '/contact' },
             { name: 'curriculum', url: '/cv' },
         ];
+
+        const hash = Math.round(Math.random() * 1000000).toString();
 
         pages.forEach(page => {
             console.log('Generating Page', page);
@@ -29,7 +31,7 @@ export default class GeneratePages {
 
                     let outputHtml = html.replace(/{([a-z0-9.]+)}/g, (match, key) => {
                         const value = translation[key];
-                        if (key === 'hash') return Math.round(Math.random() * 1000000).toString();
+                        if (key === 'hash') return hash;
                         if (value === undefined) throw new Error(`Missing translation: ${page.name} / ${language} / ${key}`);
                         return value;
                     });
