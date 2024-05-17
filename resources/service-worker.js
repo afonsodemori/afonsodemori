@@ -51,20 +51,22 @@ self.addEventListener('fetch', event => {
             .match(cacheKey)
             .then(async cachedResponse => {
 
-                const response = cachedResponse ?? await updateCache(request, cacheKey);
+                const response = cachedResponse ?? await warmCache(request, cacheKey);
 
                 if (cachedResponse) {
                     // if response was cache, refresh cache async
-                    updateCache(request, cacheKey).then(() => {
+                    warmCache(request, cacheKey).then(() => {
                     });
                 }
 
-                return response;
+                const downloadResponse = convertResponseIfDownload(request, response, cacheKey);
+
+                return downloadResponse || response;
             })
     );
 });
 
-function updateCache(request, cacheKey) {
+function warmCache(request, cacheKey) {
     return fetch(request, cacheKey)
         .then(response => {
             if (!response || response.status !== 200 || response.type !== 'basic') {
@@ -89,4 +91,45 @@ function updateCache(request, cacheKey) {
         .catch(() => {
             // TODO: Offline?
         });
+}
+
+function convertResponseIfDownload(request, response, cacheKey) {
+    if (!request.url.endsWith('?download')) {
+        return;
+    }
+
+    const originalFilename = cacheKey.pathname.split('/').pop();
+    const basename = originalFilename.slice(0, originalFilename.lastIndexOf('.'));
+    const extension = originalFilename.split('.').pop();
+    const downloadableExtensions = ['pdf', 'txt', 'docx', 'odt'];
+
+    if (!downloadableExtensions.includes(extension)) {
+        return;
+    }
+
+    const language = originalFilename.match(/^cv-(es|pt)-/)?.[1] ?? 'en';
+    let monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    if (language === 'es') {
+        monthNames = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'];
+    } else if (language === 'pt') {
+        monthNames = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+    }
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = monthNames[now.getMonth()];
+    const formattedDate = `${month}${year}`;
+
+    // Clone the response
+    const clonedResponse = response.clone();
+
+    const filename = `${basename}-${formattedDate}.${extension}`;
+    const headers = new Headers(clonedResponse.headers);
+    headers.append('Content-Disposition', `attachment; filename="${filename}"`);
+
+    return new Response(clonedResponse.body, {
+        status: clonedResponse.status,
+        statusText: clonedResponse.statusText,
+        headers: headers
+    });
 }
