@@ -52,36 +52,35 @@
 
 <section style="margin-bottom: 0">
     <div class="container">
-        <p style="margin: 0">{download.text}</p>
+        <div class="cv-select-download" style="text-align: left">
+            <p style="margin: 0">{download.text}:</p>
 
-        <div class="custom-select">
-            <span class="selected-option primary">{language1.action} ▾</span>
-            <select aria-label="{language1.action}" class="download-cv">
-                <option selected disabled value="">{language1.format}</option>
-                <option value="{language1.locale}-pdf">PDF (.pdf)</option>
-                <option value="{language1.locale}-docx">Word (.docx)</option>
-                <option value="{language1.locale}-txt">{language1.option3.text}</option>
-            </select>
-        </div>
+            <ul>
+                <li>{language1.action}<ul>
+                    <li>{language1.format}</li>
+                    <li><a href="/docs/cv-{language1.locale}-afonso_de_mori.pdf">PDF (.pdf)</a></li>
+                    <li><a href="/docs/cv-{language1.locale}-afonso_de_mori.docx">Word (.docx)</a></li>
+                    <li><a href="/docs/cv-{language1.locale}-afonso_de_mori.txt">{language1.option3.text}</a></li>
+                </ul></li>
+            </ul>
 
-        <div class="custom-select">
-            <span class="selected-option">{language2.action} ▾</span>
-            <select aria-label="{language2.action}" class="download-cv">
-                <option selected disabled value="">{language2.format}</option>
-                <option value="{language2.locale}-pdf">PDF (.pdf)</option>
-                <option value="{language2.locale}-docx">Word (.docx)</option>
-                <option value="{language2.locale}-txt">{language2.option3.text}</option>
-            </select>
-        </div>
+            <ul>
+                <li>{language2.action}<ul>
+                    <li>{language2.format}</li>
+                    <li><a href="/docs/cv-{language2.locale}-afonso_de_mori.pdf">PDF (.pdf)</a></li>
+                    <li><a href="/docs/cv-{language2.locale}-afonso_de_mori.docx">Word (.docx)</a></li>
+                    <li><a href="/docs/cv-{language2.locale}-afonso_de_mori.txt">{language2.option3.text}</a></li>
+                </ul></li>
+            </ul>
 
-        <div class="custom-select">
-            <span class="selected-option">{language3.action} ▾</span>
-            <select aria-label="{language3.action}" class="download-cv">
-                <option selected disabled value="">{language3.format}</option>
-                <option value="{language3.locale}-pdf">PDF (.pdf)</option>
-                <option value="{language3.locale}-docx">Word (.docx)</option>
-                <option value="{language3.locale}-txt">{language3.option3.text}</option>
-            </select>
+            <ul>
+                <li>{language3.action}<ul>
+                    <li>{language3.format}</li>
+                    <li><a href="/docs/cv-{language3.locale}-afonso_de_mori.pdf">PDF (.pdf)</a></li>
+                    <li><a href="/docs/cv-{language3.locale}-afonso_de_mori.docx">Word (.docx)</a></li>
+                    <li><a href="/docs/cv-{language3.locale}-afonso_de_mori.txt">{language3.option3.text}</a></li>
+                </ul></li>
+            </ul>
         </div>
     </div>
 </section>
