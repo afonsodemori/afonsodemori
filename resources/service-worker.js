@@ -38,54 +38,55 @@ self.addEventListener('install', event => {
     );
 });
 
-self.addEventListener('activate', function (event) {
+self.addEventListener('activate', () => {
     console.debug('SW: Activate');
 });
 
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', event => {
     const request = event.request;
-    const urlWithoutQuery = new URL(request.url.split('?')[0]);
-
-    function updateCache(urlWithoutQuery) {
-        return fetch(request)
-            .then(response => {
-                if (!response || response.status !== 200 || response.type !== 'basic') {
-                    // invalid response
-                    return response;
-                }
-
-                // clone the response since it can only be read once
-                const responseToCache = response.clone();
-
-                // cache the fetched response for offline use
-                caches
-                    .open(cacheName)
-                    .then(cache => {
-                        cache.put(urlWithoutQuery, responseToCache).then();
-                    })
-                    .catch(() => {
-                    });
-
-                return response;
-            })
-            .catch(() => {
-                // TODO: Offline?
-            });
-    }
+    const cacheKey = new URL(request.url.split('?')[0]);
 
     event.respondWith(
         caches
-            .match(urlWithoutQuery)
-            .then(cachedResponse => {
+            .match(cacheKey)
+            .then(async cachedResponse => {
 
-                if (!cachedResponse) {
-                    return updateCache(urlWithoutQuery);
+                const response = cachedResponse ?? await updateCache(request, cacheKey);
+
+                if (cachedResponse) {
+                    // if response was cache, refresh cache async
+                    updateCache(request, cacheKey).then(() => {
+                    });
                 }
 
-                updateCache(urlWithoutQuery).then(() => {
-                });
-
-                return cachedResponse;
+                return response;
             })
     );
 });
+
+function updateCache(request, cacheKey) {
+    return fetch(request, cacheKey)
+        .then(response => {
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+                // invalid response
+                return response;
+            }
+
+            // clone the response since it can only be read once
+            const responseToCache = response.clone();
+
+            // cache the fetched response for offline use
+            caches
+                .open(cacheName)
+                .then(cache => {
+                    cache.put(cacheKey, responseToCache).then();
+                })
+                .catch(() => {
+                });
+
+            return response;
+        })
+        .catch(() => {
+            // TODO: Offline?
+        });
+}
