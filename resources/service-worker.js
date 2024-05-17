@@ -1,9 +1,10 @@
 const cacheName = 'offline-access';
 
 self.addEventListener('install', event => {
-    console.debug('SW: Install');
+    console.debug('[fns] new service worker found');
     event.waitUntil(
-        caches.open(cacheName)
+        caches
+            .open(cacheName)
             .then(cache => {
                 const urls = [
                     '/',
@@ -33,13 +34,15 @@ self.addEventListener('install', event => {
                     });
                 });
 
-                return cache.addAll(urls);
+                return cache.addAll(urls)
+                    .then(() => console.debug('[fns] service worker installed, pending activation'))
+                    .catch(() => console.debug('[fns] service worker installation failed'))
             })
     );
 });
 
 self.addEventListener('activate', () => {
-    console.debug('SW: Activate');
+    console.debug('[fns] new service worker activated');
 });
 
 self.addEventListener('fetch', event => {
@@ -50,86 +53,89 @@ self.addEventListener('fetch', event => {
         caches
             .match(cacheKey)
             .then(async cachedResponse => {
-
-                const response = cachedResponse ?? await warmCache(request, cacheKey);
-
-                if (cachedResponse) {
-                    // if response was cache, refresh cache async
-                    warmCache(request, cacheKey).then(() => {
-                    });
+                if (!cachedResponse) {
+                    return refreshCache(request, cacheKey);
                 }
 
-                const downloadResponse = convertResponseIfDownload(request, response, cacheKey);
+                refreshCache(request, cacheKey).then();
 
-                return downloadResponse || response;
+                return cachedResponse;
+            })
+            .then(response => {
+                return getDownloadResponse(request, response, cacheKey) || response;
             })
     );
 });
 
-function warmCache(request, cacheKey) {
+function refreshCache(request, cacheKey) {
     return fetch(request, cacheKey)
         .then(response => {
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-                // invalid response
-                return response;
-            }
+            if (!isResponseValidToCache(response)) return response;
 
-            // clone the response since it can only be read once
             const responseToCache = response.clone();
-
-            // cache the fetched response for offline use
             caches
                 .open(cacheName)
-                .then(cache => {
-                    cache.put(cacheKey, responseToCache).then();
-                })
+                .then(cache => cache.put(cacheKey, responseToCache))
                 .catch(() => {
                 });
 
             return response;
         })
         .catch(() => {
-            // TODO: Offline?
         });
 }
 
-function convertResponseIfDownload(request, response, cacheKey) {
-    if (!request.url.endsWith('?download')) {
-        return;
-    }
+function getDownloadResponse(request, response, cacheKey) {
+    const filename = getBasenameFromFilename(cacheKey);
+    const extension = getExtensionFromFilename(filename);
 
-    const originalFilename = cacheKey.pathname.split('/').pop();
-    const basename = originalFilename.slice(0, originalFilename.lastIndexOf('.'));
-    const extension = originalFilename.split('.').pop();
-    const downloadableExtensions = ['pdf', 'txt', 'docx', 'odt'];
+    if (!isDownloadable(request.url, extension)) return;
 
-    if (!downloadableExtensions.includes(extension)) {
-        return;
-    }
-
-    const language = originalFilename.match(/^cv-(es|pt)-/)?.[1] ?? 'en';
-    let monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-    if (language === 'es') {
-        monthNames = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'];
-    } else if (language === 'pt') {
-        monthNames = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
-    }
-
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = monthNames[now.getMonth()];
-    const formattedDate = `${month}${year}`;
-
-    // Clone the response
+    const formattedDate = getFormattedDate(getLanguageFromFilename(filename));
+    const downloadFilename = getFormattedFilename(filename, formattedDate, extension);
     const clonedResponse = response.clone();
-
-    const filename = `${basename}-${formattedDate}.${extension}`;
     const headers = new Headers(clonedResponse.headers);
-    headers.append('Content-Disposition', `attachment; filename="${filename}"`);
+    headers.append('Content-Disposition', `attachment; filename="${downloadFilename}"`);
 
     return new Response(clonedResponse.body, {
         status: clonedResponse.status,
         statusText: clonedResponse.statusText,
         headers: headers
     });
+}
+
+function isResponseValidToCache(response) {
+    return response && response.status === 200 && response.type === 'basic';
+}
+
+function isDownloadable(url, extension) {
+    const downloadableExtensions = ['pdf', 'txt', 'docx', 'odt'];
+
+    return url.endsWith('?download') && downloadableExtensions.includes(extension);
+}
+
+function getBasenameFromFilename(filename) {
+    return filename.pathname.split('/').pop();
+}
+
+function getExtensionFromFilename(filename) {
+    return filename.split('.').pop();
+}
+
+function getLanguageFromFilename(filename) {
+    return filename.match(/^cv-(es|pt)-/)?.[1] ?? 'en';
+}
+
+function getFormattedDate(language) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+
+    return `${year}-${month}`;
+}
+
+function getFormattedFilename(filename, formattedDate, extension) {
+    const basename = filename.slice(0, filename.lastIndexOf('.'));
+
+    return `${basename}-${formattedDate}.${extension}`;
 }
