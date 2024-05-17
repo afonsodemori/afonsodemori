@@ -32,11 +32,10 @@ function eventsToDownloadResume() {
     selectElements.forEach(select => {
         select.addEventListener('change', event => {
             const [language, format] = event.target.value.split('-');
-            const fileUrl = `/docs/cv-${language}-afonso_de_mori.${format}`;
+            const fileUrl = `/docs/cv-${language}-afonso_de_mori.${format}?download`;
 
             const tempLink = document.createElement('a');
             tempLink.href = fileUrl;
-            tempLink.download = '';
 
             document.body.appendChild(tempLink);
             tempLink.click();
