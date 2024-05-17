@@ -91,8 +91,10 @@ function getDownloadResponse(request, response, cacheKey) {
 
     if (!isDownloadable(request.url, extension)) return;
 
-    const formattedDate = getFormattedDate(getLanguageFromFilename(filename));
-    const downloadFilename = getFormattedFilename(filename, formattedDate, extension);
+    const language = getLanguageFromFilename(filename);
+    const formattedDate = getFormattedDate(language);
+    const downloadFilename = getFormattedFilename(language, formattedDate, extension);
+
     const clonedResponse = response.clone();
     const headers = new Headers(clonedResponse.headers);
     headers.append('Content-Disposition', `attachment; filename="${downloadFilename}"`);
@@ -126,16 +128,25 @@ function getLanguageFromFilename(filename) {
     return filename.match(/^cv-(es|pt)-/)?.[1] ?? 'en';
 }
 
+function getTranslatedMonthsNames(language) {
+    if (language === 'es')
+        return ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+    if (language === 'pt')
+        return ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+    return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+}
+
 function getFormattedDate(language) {
     const now = new Date();
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const monthNames = getTranslatedMonthsNames(language);
+    const month = monthNames[now.getMonth()];
 
-    return `${year}-${month}`;
+    return `${month} ${year}`;
 }
 
-function getFormattedFilename(filename, formattedDate, extension) {
-    const basename = filename.slice(0, filename.lastIndexOf('.'));
-
-    return `${basename}-${formattedDate}.${extension}`;
+function getFormattedFilename(language, formattedDate, extension) {
+    return `CV Afonso de Mori - ${language.toUpperCase()} - ${formattedDate}.${extension}`;
 }
