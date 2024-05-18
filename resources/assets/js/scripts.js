@@ -1,6 +1,17 @@
-const availableLanguages = ['en', 'es', 'pt'];
+const host = new URL(window.location).host;
+if (['afonso.dev', 'afonsodemori.com'].includes(host)) {
+    console.debug = () => {
+    };
+    console.info = () => {
+    };
+    console.log = () => {
+    };
+    console.error = () => {
+    };
+}
 
 function updateDefaultLocale() {
+    const availableLanguages = ['en', 'es', 'pt'];
     const documentLang = document.documentElement.lang ?? null;
     if (availableLanguages.indexOf(documentLang) >= 0) {
         localStorage.setItem('locale', documentLang);
@@ -13,7 +24,7 @@ function registerServiceWorker() {
     }
 }
 
-function replaceLowQualityResume() {
+function replaceLowQualityResumes() {
     document.querySelectorAll('picture[class^="page-"]').forEach(picture => {
         const source = picture.children[0];
         const img = picture.children[1];
@@ -27,22 +38,30 @@ function replaceLowQualityResume() {
     });
 }
 
-function eventsToDownloadResume() {
-    const selectElements = document.querySelectorAll('select.download-cv');
-    selectElements.forEach(select => {
-        select.addEventListener('change', event => {
-            const [language, format] = event.target.value.split('-');
-            const fileUrl = `/docs/cv-${language}-afonso_de_mori.${format}`;
+function addEventsToResumesSelects() {
+    document.querySelectorAll('.selected-option').forEach(element => {
+        element.addEventListener('click', event => {
+            const active = document.querySelector('.selected-option.active');
 
-            const tempLink = document.createElement('a');
-            tempLink.href = fileUrl;
-            tempLink.download = '';
+            if (active) {
+                active.classList.remove('active')
+            } else {
+                const select = event.target;
+                select.classList.add('active');
+                select.addEventListener('mouseleave', () => {
+                    select.classList.remove('active');
+                });
+            }
+        });
+    });
+}
 
-            document.body.appendChild(tempLink);
-            tempLink.click();
-            document.body.removeChild(tempLink);
-
-            event.target.value = '';
+function addEventsToDownloadResumes() {
+    const selectElements = document.querySelectorAll('ul.download-cv a');
+    selectElements.forEach(anchor => {
+        anchor.addEventListener('click', event => {
+            event.preventDefault();
+            window.location.href = event.target.href + '?download';
         });
     });
 }
@@ -50,6 +69,7 @@ function eventsToDownloadResume() {
 window.addEventListener('load', () => {
     updateDefaultLocale();
     registerServiceWorker();
-    replaceLowQualityResume();
-    eventsToDownloadResume();
+    replaceLowQualityResumes();
+    addEventsToResumesSelects();
+    addEventsToDownloadResumes();
 });

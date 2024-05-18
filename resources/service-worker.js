@@ -1,9 +1,10 @@
 const cacheName = 'offline-access';
 
 self.addEventListener('install', event => {
-    console.debug('SW: Install');
+    console.debug('[fns] new service worker found');
     event.waitUntil(
-        caches.open(cacheName)
+        caches
+            .open(cacheName)
             .then(cache => {
                 const urls = [
                     '/',
@@ -33,59 +34,119 @@ self.addEventListener('install', event => {
                     });
                 });
 
-                return cache.addAll(urls);
+                return cache.addAll(urls)
+                    .then(() => console.debug('[fns] service worker installed, pending activation'))
+                    .catch(() => console.debug('[fns] service worker installation failed'))
             })
     );
 });
 
-self.addEventListener('activate', function (event) {
-    console.debug('SW: Activate');
+self.addEventListener('activate', () => {
+    console.debug('[fns] new service worker activated');
 });
 
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', event => {
     const request = event.request;
-    const urlWithoutQuery = new URL(request.url.split('?')[0]);
-
-    function updateCache(urlWithoutQuery) {
-        return fetch(request)
-            .then(response => {
-                if (!response || response.status !== 200 || response.type !== 'basic') {
-                    // invalid response
-                    return response;
-                }
-
-                // clone the response since it can only be read once
-                const responseToCache = response.clone();
-
-                // cache the fetched response for offline use
-                caches
-                    .open(cacheName)
-                    .then(cache => {
-                        cache.put(urlWithoutQuery, responseToCache).then();
-                    })
-                    .catch(() => {
-                    });
-
-                return response;
-            })
-            .catch(() => {
-                // TODO: Offline?
-            });
-    }
+    const cacheKey = new URL(request.url.split('?')[0]);
 
     event.respondWith(
         caches
-            .match(urlWithoutQuery)
-            .then(cachedResponse => {
-
+            .match(cacheKey)
+            .then(async cachedResponse => {
                 if (!cachedResponse) {
-                    return updateCache(urlWithoutQuery);
+                    return refreshCache(request, cacheKey);
                 }
 
-                updateCache(urlWithoutQuery).then(() => {
-                });
+                refreshCache(request, cacheKey).then();
 
                 return cachedResponse;
             })
+            .then(response => {
+                return getDownloadResponse(request, response, cacheKey) || response;
+            })
     );
 });
+
+function refreshCache(request, cacheKey) {
+    return fetch(request, cacheKey)
+        .then(response => {
+            if (!isResponseValidToCache(response)) return response;
+
+            const responseToCache = response.clone();
+            caches
+                .open(cacheName)
+                .then(cache => cache.put(cacheKey, responseToCache))
+                .catch(() => {
+                });
+
+            return response;
+        })
+        .catch(() => {
+        });
+}
+
+function getDownloadResponse(request, response, cacheKey) {
+    const filename = getBasenameFromFilename(cacheKey);
+    const extension = getExtensionFromFilename(filename);
+
+    if (!isDownloadable(request.url, extension)) return;
+
+    const language = getLanguageFromFilename(filename);
+    const formattedDate = getFormattedDate(language);
+    const downloadFilename = getFormattedFilename(language, formattedDate, extension);
+
+    const clonedResponse = response.clone();
+    const headers = new Headers(clonedResponse.headers);
+    headers.append('Content-Disposition', `attachment; filename="${downloadFilename}"`);
+
+    return new Response(clonedResponse.body, {
+        status: clonedResponse.status,
+        statusText: clonedResponse.statusText,
+        headers: headers
+    });
+}
+
+function isResponseValidToCache(response) {
+    return response && response.status === 200 && response.type === 'basic';
+}
+
+function isDownloadable(url, extension) {
+    const downloadableExtensions = ['pdf', 'txt', 'docx', 'odt'];
+
+    return url.endsWith('?download') && downloadableExtensions.includes(extension);
+}
+
+function getBasenameFromFilename(filename) {
+    return filename.pathname.split('/').pop();
+}
+
+function getExtensionFromFilename(filename) {
+    return filename.split('.').pop();
+}
+
+function getLanguageFromFilename(filename) {
+    return filename.match(/^cv-(es|pt)-/)?.[1] ?? 'en';
+}
+
+function getTranslatedMonthsNames(language) {
+    if (language === 'es')
+        return ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+    if (language === 'pt')
+        return ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+    return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+}
+
+function getFormattedDate(language) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const monthNames = getTranslatedMonthsNames(language);
+    const month = monthNames[now.getMonth()];
+
+    return `${month} ${year}`;
+}
+
+function getFormattedFilename(language, formattedDate, extension) {
+    return `CV Afonso de Mori - ${language.toUpperCase()} - ${formattedDate}.${extension}`;
+}
