@@ -228,7 +228,6 @@ div.language a:hover {
     list-style: none;
     position: relative;
     display: inline-flex;
-    z-index: 1;
 }
 
 .selected-option {
@@ -262,6 +261,10 @@ div.language a:hover {
 
 .selected-option.primary ul a:hover {
     background: var(--primary);
+}
+
+.selected-option.active {
+    z-index: 1;
 }
 
 .selected-option.active ul {
