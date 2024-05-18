@@ -1,6 +1,17 @@
-const availableLanguages = ['en', 'es', 'pt'];
+const host = new URL(window.location).host;
+if (['afonso.dev', 'afonsodemori.com'].includes(host)) {
+    console.debug = () => {
+    };
+    console.info = () => {
+    };
+    console.log = () => {
+    };
+    console.error = () => {
+    };
+}
 
 function updateDefaultLocale() {
+    const availableLanguages = ['en', 'es', 'pt'];
     const documentLang = document.documentElement.lang ?? null;
     if (availableLanguages.indexOf(documentLang) >= 0) {
         localStorage.setItem('locale', documentLang);
