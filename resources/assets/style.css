@@ -7,10 +7,13 @@
 }
 
 :root {
-    --color: rgba(0, 0, 0, 0.8);
+    /*--color: rgba(0, 0, 0, 0.8);*/
+    --color: #303031;
     --bg: #eff1f5;
-    --primary: #40a02b;
-    --secondary: #09a4e5;
+    /*--primary: #40a02b;*/
+    --primary: #277F09;
+    /*--secondary: #09a4e5;*/
+    --secondary: #0573B5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -199,7 +202,8 @@ div.language {
 div.language a {
     display: inline-block;
     padding: .5em;
-    color: rgba(0, 0, 0, 0.4);
+    /*color: rgba(0, 0, 0, 0.4);*/
+    color: #676F79;
     text-decoration: underline;
 }
 
