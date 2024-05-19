@@ -129,6 +129,10 @@ header h1 {
     font-size: 4em;
 }
 
+header h1 a {
+    --underline-block-width: 40px;
+}
+
 header h2 {
     margin: 0;
     font-size: 1.5em;
@@ -212,14 +216,15 @@ div.language {
 
 div.language a {
     display: inline-block;
-    padding: .25em;
-    margin: .25em;
+    padding: .5em;
     color: #676F79;
-    border: none;
+    text-decoration: underline;
+    background-image: none;
 }
 
 div.language a:hover {
     color: #000;
+    text-decoration-thickness: 2px;
 }
 
 @media (prefers-color-scheme: dark) {
