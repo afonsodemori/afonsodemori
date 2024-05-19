@@ -11,5 +11,10 @@
   "language.second.link": "/contact/pt",
   "language.second.title": "Ler em Português",
 
-  "about.title": "Desarrollador <span class=\"nowrap\">de Software</span>"
+  "about.title": "Desarrollador <span class=\"nowrap\">de Software</span>",
+
+  "nav.home.text": "Inicio",
+  "nav.home.title": "Ir a la página de incio",
+  "social_links.linkedin.title": "Visita mi perfil en LinkedIn",
+  "social_links.github.title": "Visita mi perfil en GitHub"
 }
