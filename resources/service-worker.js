@@ -8,7 +8,8 @@ self.addEventListener('install', event => {
             .then(cache => {
                 const urls = [
                     '/',
-                    '/cv',
+                    '/cv/',
+                    '/contact/',
                     '/assets/style.css',
                     '/assets/js/scripts.js',
                     '/assets/inter-variable.woff2',
