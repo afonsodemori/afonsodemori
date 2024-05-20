@@ -15,6 +15,7 @@ self.addEventListener('install', event => {
                     '/favicon.ico',
                     '/app.manifest',
                     '/assets/icons/favicon-192.png',
+                    '/offline',
                 ];
 
                 ['en', 'es', 'pt'].forEach(locale => {
@@ -82,6 +83,33 @@ function refreshCache(request, cacheKey) {
             return response;
         })
         .catch(() => {
+            let redirectionUrl;
+
+            if (['/in', '/linkedin'].includes(cacheKey.pathname)) {
+                redirectionUrl = 'https://www.linkedin.com/in/afonsodemori';
+            }
+
+            if (['/gh', '/github'].includes(cacheKey.pathname)) {
+                redirectionUrl = 'https://www.github.com/afonsodemori';
+            }
+
+            if (redirectionUrl) {
+                return new Response(null, {
+                    status: 301, headers: {
+                        'Location': redirectionUrl
+                    }
+                });
+            }
+
+            return caches.match('/offline')
+                .then(response => {
+                    return new Response(response.body, {
+                        status: 503,
+                        headers: {
+                            'Content-Type': 'text/html'
+                        }
+                    });
+                });
         });
 }
 
