@@ -21,14 +21,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Set CACHE_HASH
+        run: echo "CACHE_HASH=$(echo ${GITHUB_SHA} | head -c7)" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: make ci
 
       - name: Install assets
         run: make assets
+        env:
+          CACHE_HASH: ${{ env.CACHE_HASH }}
 
       - name: Generate pages
         run: make pages
+        env:
+          CACHE_HASH: ${{ env.CACHE_HASH }}
 
       - name: Generate shortcuts
         run: make shortcuts
@@ -43,7 +50,7 @@ jobs:
             echo '<head><meta name="viewport" content="width=device-width, initial-scale=1"><title></title></head>'
             echo '<body>'
             echo '<h1>OK</h1>'
-            echo "<p>${GITHUB_REF##*/}@$(echo ${GITHUB_SHA} | head -c7)</p>"
+            echo "<p>${GITHUB_REF##*/}@${CACHE_HASH}</p>"
             echo "<address>$(date)</address>"
             echo '</body></html>'
           } > dist/health-check.html
