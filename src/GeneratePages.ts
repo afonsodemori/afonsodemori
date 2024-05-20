@@ -16,7 +16,7 @@ class GeneratePages {
             { name: 'curriculum', url: '/cv' },
         ];
 
-        const hash = Math.round(Math.random() * 1000000).toString();
+        const hash = process.env.CACHE_HASH || 'CACHE_HASH'
 
         pages.forEach(page => {
             console.log('Generating Page', page);
@@ -29,7 +29,7 @@ class GeneratePages {
                     // load page
                     const html = fs.readFileSync(path.join(__dirname, `../templates/${page.name}.html`), 'utf-8');
 
-                    let outputHtml = html.replace(/{([a-z_0-9.]+)}/g, (match, key) => {
+                    let outputHtml = html.replace(/{{([a-z_0-9.]+)}}/g, (match, key) => {
                         const value = translation[key];
                         if (key === 'hash') return hash;
                         if (value === undefined) throw new Error(`Missing translation: ${page.name} / ${language} / ${key}`);

@@ -5,6 +5,12 @@ import path from 'path';
 const app = express();
 const BASE_DIR = path.join(__dirname, '../dist');
 
+app.use('/assets', express.static(BASE_DIR + '/assets', {
+    setHeaders: (res, path) => {
+        res.set('Cache-Control', 'public, max-age=2592000'); // 30 days in seconds
+    }
+}));
+
 app.use(express.static(BASE_DIR));
 
 app.get('*', (req, res) => {

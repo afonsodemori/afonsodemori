@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="{locale}">
+<html lang="{{locale}}">
 <head>
-    <title>{metas.title}</title>
+    <title>{{metas.title}}</title>
 
     <!-- le meta-tags -->
     <meta charset="utf-8">
-    <meta name="description" content="{metas.description}">
-    <meta name="keywords" content="{metas.keywords}">
-    <link rel="canonical" href="https://afonso.dev/{locale}">
+    <meta name="description" content="{{metas.description}}">
+    <meta name="keywords" content="{{metas.keywords}}">
+    <link rel="canonical" href="https://afonso.dev/{{locale}}">
 
     <!-- le opengraph tags -->
-    <meta property="og:title" content="{metas.title}">
-    <meta property="og:description" content="{metas.description}">
+    <meta property="og:title" content="{{metas.title}}">
+    <meta property="og:description" content="{{metas.description}}">
     <meta property="og:image" content="https://afonso.dev/me.jpg">
 
     <!-- le languages -->
@@ -20,7 +20,7 @@
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/pt">
 
     <!-- le stylesheets -->
-    <link rel="stylesheet" href="/assets/style.css?v={hash}" media="screen">
+    <link rel="stylesheet" href="/assets/style.css?v={{hash}}" media="screen">
 
     <!-- le mobile -->
     <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">
@@ -68,34 +68,34 @@
     }
 </script>
 <div class="language">
-    <a href="{language.first.link}" title="{language.first.title}">{language.first.text}</a>
-    <a href="{language.second.link}" title="{language.second.title}">{language.second.text}</a>
+    <a href="{{language.first.link}}" title="{{language.first.title}}">{{language.first.text}}</a>
+    <a href="{{language.second.link}}" title="{{language.second.title}}">{{language.second.text}}</a>
 </div>
 
 <header>
     <div class="container">
         <div class="code"><span class="open">&lt;</span><span class="close">/&gt;</span></div>
         <h1>Afonso <span class="nowrap">de Mori</span></h1>
-        <h2>{about.title}</h2>
+        <h2>{{about.title}}</h2>
     </div>
 </header>
 
 <article>
     <div class="container">
-        <p>{about.bio}</p>
+        <p>{{about.bio}}</p>
     </div>
 </article>
 
 <footer>
     <div class="container">
         <ul>
-            <li><a href="/cv/{locale}" title="{links.resume.title}">{links.resume.text}</a></li>
-            <li><a target="_blank" href="/linkedin" title="{links.linkedin.title}">{links.linkedin.text}</a></li>
-            <li><a target="_blank" href="/github" title="{links.github.title}">{links.github.text}</a></li>
+            <li><a href="/cv/{{locale}}" title="{{links.resume.title}}">{{links.resume.text}}</a></li>
+            <li><a target="_blank" href="/linkedin" title="{{links.linkedin.title}}">{{links.linkedin.text}}</a></li>
+            <li><a target="_blank" href="/github" title="{{links.github.title}}">{{links.github.text}}</a></li>
         </ul>
     </div>
 </footer>
 
-<script src="/assets/js/scripts.js?v={hash}"></script>
+<script src="/assets/js/scripts.js?v={{hash}}"></script>
 </body>
 </html>
