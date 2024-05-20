@@ -16,7 +16,7 @@ class GeneratePages {
             { name: 'curriculum', url: '/cv' },
         ];
 
-        const hash = Math.round(Math.random() * 1000000).toString();
+        const hash = process.env.CACHE_HASH || 'CACHE_HASH'
 
         pages.forEach(page => {
             console.log('Generating Page', page);

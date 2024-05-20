@@ -1,7 +1,7 @@
 const cacheName = 'offline-access';
 
 self.addEventListener('install', event => {
-    console.debug('[fns] new service worker found');
+    console.debug('new service worker found');
     event.waitUntil(
         caches
             .open(cacheName)
@@ -10,8 +10,8 @@ self.addEventListener('install', event => {
                     '/',
                     '/cv/',
                     '/contact/',
-                    '/assets/style.css',
-                    '/assets/js/scripts.js',
+                    '/assets/style.css?v={{hash}}',
+                    '/assets/js/scripts.js?v={{hash}}',
                     '/assets/inter-variable.woff2',
                     '/favicon.ico',
                     '/app.manifest',
@@ -36,61 +36,47 @@ self.addEventListener('install', event => {
                     });
                 });
 
-                return cache.addAll(urls)
-                    .then(() => console.debug('[fns] service worker installed, pending activation'))
-                    .catch(() => console.debug('[fns] service worker installation failed'))
+                urls.forEach(url => {
+                    cache.add(url)
+                        .then(() => console.debug(`cache: ${url}`))
+                        .catch(() => console.error(`cache: ${url}`));
+                })
             })
     );
 });
 
 self.addEventListener('activate', () => {
-    console.debug('[fns] new service worker activated');
+    console.debug('new service worker activated');
 });
 
 self.addEventListener('fetch', event => {
     const request = event.request;
-    const cacheKey = new URL(request.url.split('?')[0]);
+    const cacheKey = new URL(request.url);
 
     event.respondWith(
         caches
             .match(cacheKey)
             .then(async cachedResponse => {
-                if (!cachedResponse) {
-                    return refreshCache(request, cacheKey);
-                }
-
-                refreshCache(request, cacheKey).then();
-
-                return cachedResponse;
+                return cachedResponse || fetchOnline(request);
             })
             .then(response => {
+                if (response.status !== 200) return response;
                 return getDownloadResponse(request, response, cacheKey) || response;
             })
     );
 });
 
-function refreshCache(request, cacheKey) {
-    return fetch(request, cacheKey)
-        .then(response => {
-            if (!isResponseValidToCache(response)) return response;
-
-            const responseToCache = response.clone();
-            caches
-                .open(cacheName)
-                .then(cache => cache.put(cacheKey, responseToCache))
-                .catch(() => {
-                });
-
-            return response;
-        })
-        .catch(() => {
+function fetchOnline(request) {
+    return fetch(request)
+        .catch(async () => {
+            const requestPathname = new URL(request.url).pathname;
             let redirectionUrl;
 
-            if (['/in', '/linkedin'].includes(cacheKey.pathname)) {
+            if (['/in', '/linkedin'].includes(requestPathname)) {
                 redirectionUrl = 'https://www.linkedin.com/in/afonsodemori';
             }
 
-            if (['/gh', '/github'].includes(cacheKey.pathname)) {
+            if (['/gh', '/github'].includes(requestPathname)) {
                 redirectionUrl = 'https://www.github.com/afonsodemori';
             }
 
@@ -101,6 +87,9 @@ function refreshCache(request, cacheKey) {
                     }
                 });
             }
+
+            const noQueryResponse = await caches.match(requestPathname);
+            if (noQueryResponse) return noQueryResponse;
 
             return caches.match('/offline')
                 .then(response => {
@@ -133,10 +122,6 @@ function getDownloadResponse(request, response, cacheKey) {
         statusText: clonedResponse.statusText,
         headers: headers
     });
-}
-
-function isResponseValidToCache(response) {
-    return response && response.status === 200 && response.type === 'basic';
 }
 
 function isDownloadable(url, extension) {
