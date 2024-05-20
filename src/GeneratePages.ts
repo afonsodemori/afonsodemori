@@ -29,7 +29,7 @@ class GeneratePages {
                     // load page
                     const html = fs.readFileSync(path.join(__dirname, `../templates/${page.name}.html`), 'utf-8');
 
-                    let outputHtml = html.replace(/{([a-z_0-9.]+)}/g, (match, key) => {
+                    let outputHtml = html.replace(/{{([a-z_0-9.]+)}}/g, (match, key) => {
                         const value = translation[key];
                         if (key === 'hash') return hash;
                         if (value === undefined) throw new Error(`Missing translation: ${page.name} / ${language} / ${key}`);
