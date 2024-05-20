@@ -28,5 +28,11 @@
   "language3.action": "Versão em Português",
   "language3.locale": "pt",
   "language3.format": "Formato",
-  "language3.option3.text": "Texto simples (.txt)"
+  "language3.option3.text": "Texto simples (.txt)",
+
+  "nav.home.text": "Inicio",
+  "nav.home.title": "Ir a la página de incio",
+  "social_links.see_also": "Véase también",
+  "social_links.linkedin.title": "Visita mi perfil en LinkedIn",
+  "social_links.github.title": "Visita mi perfil en GitHub"
 }

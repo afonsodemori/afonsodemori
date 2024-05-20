@@ -7,21 +7,22 @@
 }
 
 :root {
-    /*--color: rgba(0, 0, 0, 0.8);*/
-    --color: #303031;
-    --bg: #eff1f5;
-    /*--primary: #40a02b;*/
+    --background-color: #eff1f5;
+    --text-color: #303031;
     --primary: #277F09;
-    /*--secondary: #09a4e5;*/
     --secondary: #0573B5;
+    --secondary-fade: #0573B550;
+    --underline-width: 2px;
+    --underline-block-width: 20px;
+    --underline-transition: 0.5s;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --color: rgba(255, 255, 255, 0.75);
-        --bg: #1e1e2e;
-        --primary: #a6e3a1;
-        --secondary: #89b4fb;
+        --background-color: #1e1e2e;
+        --text-color: #c7c7ca;
+        --primary: #56953d;
+        --secondary: #348dc5;
     }
 }
 
@@ -38,12 +39,27 @@ body {
     font: 300 normal 1.0em/1.6 'Inter', sans-serif;
     text-align: center;
     text-rendering: geometricPrecision;
-    color: var(--color);
-    background-color: var(--bg);
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 a {
+    color: var(--secondary);
     font-weight: 500;
+    text-decoration: none;
+    background-image: linear-gradient(90deg, var(--background-color), var(--background-color)),
+    linear-gradient(90deg, var(--secondary-fade), var(--secondary-fade));
+    background-size: var(--underline-block-width) var(--underline-width), 100% var(--underline-width);
+    background-repeat: no-repeat;
+    background-position-x: calc(var(--underline-block-width) * -1), 0;
+    background-position-y: 100%;
+    transition: background-position-x var(--underline-transition);
+}
+
+a:hover {
+    background-image: linear-gradient(90deg, var(--background-color), var(--background-color)),
+    linear-gradient(90deg, var(--secondary), var(--secondary));
+    background-position-x: calc(100% + var(--underline-block-width)), 0;
 }
 
 .container {
@@ -62,7 +78,7 @@ a {
 
 @media screen and (min-width: 1200px) {
     body.home {
-        zoom: 125%;
+        zoom: 130%;
     }
 }
 
@@ -77,14 +93,16 @@ header {
 }
 
 header a {
+    font-weight: 900;
     color: inherit;
-    text-decoration: none;
-    border-bottom: solid 1px inherit;
+    background-color: var(--background-color);
+    --underline-width: 0;
 }
 
 header a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
+    --underline-width: 10px;
+    background-image: linear-gradient(90deg, var(--background-color), var(--background-color)),
+    linear-gradient(90deg, var(--secondary-fade), var(--secondary-fade));
 }
 
 .home header {
@@ -109,6 +127,10 @@ header h1 {
     margin: .1em auto;
     font-weight: 900;
     font-size: 4em;
+}
+
+header h1 a {
+    --underline-block-width: 40px;
 }
 
 header h2 {
@@ -158,10 +180,6 @@ article p {
     overflow: hidden;
 }
 
-#cv-text a {
-    color: var(--secondary);
-}
-
 /* footer */
 
 footer {
@@ -182,9 +200,6 @@ footer li {
 }
 
 footer a {
-    color: var(--secondary);
-    text-decoration: none;
-    border-bottom: 1px solid;
     margin: .5em;
 }
 
@@ -202,13 +217,14 @@ div.language {
 div.language a {
     display: inline-block;
     padding: .5em;
-    /*color: rgba(0, 0, 0, 0.4);*/
     color: #676F79;
     text-decoration: underline;
+    background-image: none;
 }
 
 div.language a:hover {
     color: #000;
+    text-decoration-thickness: 2px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -236,7 +252,7 @@ div.language a:hover {
     color: var(--secondary);
     border-radius: 4px;
     transition: transform 0.2s ease-in-out;
-    background-color: var(--bg);
+    background-color: var(--background-color);
 }
 
 .selected-option ul {
@@ -246,7 +262,7 @@ div.language a:hover {
     border-radius: 4px;
     padding: 5px 0;
     list-style: none;
-    background: var(--bg);
+    background: var(--background-color);
     position: absolute;
     display: none;
 }
@@ -279,11 +295,12 @@ div.language a:hover {
     text-decoration: none;
     font-weight: inherit;
     display: block;
+    background: none;
 }
 
 .selected-option ul a:hover {
     background: var(--secondary);
-    color: var(--bg);
+    color: var(--background-color);
 }
 
 .custom-select:hover .selected-option {
@@ -293,7 +310,7 @@ div.language a:hover {
 .selected-option.primary {
     border-color: var(--primary);
     border-radius: 4px;
-    color: var(--bg);
+    color: var(--background-color);
     font-weight: 400;
     background-color: var(--primary);
 }

@@ -11,5 +11,12 @@
   "language.second.link": "/contact/pt",
   "language.second.title": "Ler em Português",
 
-  "about.title": "Software Developer"
+  "about.title": "Software Developer",
+
+  "nav.home.text": "Home",
+  "nav.home.title": "Go to the home page",
+  "social_links.linkedin.text": "LinkedIn",
+  "social_links.linkedin.title": "See my LinkedIn profile",
+  "social_links.github.text": "GitHub",
+  "social_links.github.title": "See my GitHub profile"
 }
