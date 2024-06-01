@@ -20,36 +20,44 @@ jobs:
       deployments: write
 
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v3
 
       - name: Set CACHE_HASH
         run: echo "CACHE_HASH=$(echo ${GITHUB_SHA} | head -c7)" >> $GITHUB_ENV
 
-      - name: Install dependencies
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache
+          key: ${{ runner.os }}-build-${{ env.CACHE_HASH }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+
+      - name: Install Dependencies
         run: make ci
 
-      - name: Install assets
+      - name: Install Assets
         run: make assets
         env:
           CACHE_HASH: ${{ env.CACHE_HASH }}
 
-      - name: Generate pages
+      - name: Generate Pages
         run: make pages
         env:
           CACHE_HASH: ${{ env.CACHE_HASH }}
 
-      - name: Generate shortcuts
+      - name: Generate Shortcuts
         run: make shortcuts
 
-      - name: Import resumes
+      - name: Import Resumes
         run: make resumes
 
-      - name: Tag with version
+      - name: Create Health Check File
         run: |
           {
             echo '<!DOCTYPE html><html lang="en">'
-            echo '<head><meta name="viewport" content="width=device-width, initial-scale=1"><title></title></head>'
+            echo '<head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Health Check</title></head>'
             echo '<body>'
             echo '<h1>OK</h1>'
             echo "<p>${GITHUB_REF##*/}@${CACHE_HASH}</p>"
@@ -57,7 +65,7 @@ jobs:
             echo '</body></html>'
           } > dist/health-check.html
 
-      - name: Upload build artifacts
+      - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: dist
@@ -68,7 +76,7 @@ jobs:
     needs: build
 
     steps:
-      - name: Download build artifacts
+      - name: Download Build Artifacts
         uses: actions/download-artifact@v2
         with:
           name: dist
