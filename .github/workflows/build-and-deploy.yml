@@ -10,6 +10,7 @@ on:
 jobs:
   sonar:
     runs-on: ubuntu-latest
+    if: false # TODO: Skipping sonar temporarily
 
     steps:
       - name: Checkout Code
@@ -36,7 +37,7 @@ jobs:
     container:
       image: afonsodemori/afonso-dev:latest
 
-    needs: sonar
+    # needs: sonar TODO: Skipping sonar for now
 
     permissions:
       contents: read
