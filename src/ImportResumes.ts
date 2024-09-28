@@ -11,7 +11,7 @@ class ImportResumes {
         {'lang': 'es', 'fileId': '1TT9BpFpy6QBs1sygecTuPAHD8iPMPII1y3Rw7rNuj74'},
         {'lang': 'pt', 'fileId': '1hWho1MfmHPZIXEARbHaZJydXULzVoTqSnMi0Z64dOq8'},
     ];
-    formats = ['pdf', 'docx', 'txt', 'odt'];
+    formats = ['pdf', 'docx', 'txt', 'odt', 'md'];
 
     async execute() {
         for (const urlInfo of this.sourceUrls) {
