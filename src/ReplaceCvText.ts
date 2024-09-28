@@ -6,7 +6,7 @@ interface Page {
     url: string;
 }
 
-class GeneratePages {
+class ReplaceCvText {
     execute() {
         const languages = ['en', 'es', 'pt'];
 
@@ -73,4 +73,4 @@ class GeneratePages {
     }
 }
 
-new GeneratePages().execute();
+new ReplaceCvText().execute();
