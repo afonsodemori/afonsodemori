@@ -65,7 +65,7 @@ class ReplaceCvText {
         // images
         html = html.replace(/!\[([^\]]+)]\[([^\]]+)]/g, (match, altText, imageId) => {
             const base64Image = imageReferences[imageId];
-            return base64Image ? `<br><img src="${base64Image}" alt="${altText}" />` : match;
+            return base64Image ? `<br><span class="icon" style="background-image: url(${base64Image})" title="${altText}"></span>` : match;
         });
 
         // clean up
