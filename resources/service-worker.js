@@ -27,10 +27,10 @@ self.addEventListener('install', event => {
                         '/docs/cv-{locale}-afonso_de_mori.docx',
                         '/docs/cv-{locale}-afonso_de_mori.txt',
                         '/docs/cv-{locale}-afonso_de_mori.odt',
-                        '/docs/cv-{locale}-afonso_de_mori-low-1.webp',
-                        '/docs/cv-{locale}-afonso_de_mori-low-2.webp',
-                        '/docs/cv-{locale}-afonso_de_mori-1.webp',
-                        '/docs/cv-{locale}-afonso_de_mori-2.webp',
+                        // '/docs/cv-{locale}-afonso_de_mori-low-1.webp',
+                        // '/docs/cv-{locale}-afonso_de_mori-low-2.webp',
+                        // '/docs/cv-{locale}-afonso_de_mori-1.webp',
+                        // '/docs/cv-{locale}-afonso_de_mori-2.webp',
                     ].forEach(url => {
                         urls.push(url.replace('{locale}', locale));
                     });

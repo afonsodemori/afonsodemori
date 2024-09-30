@@ -19,28 +19,23 @@ function updateDefaultLocale() {
 }
 
 function registerServiceWorker() {
-    if (navigator && navigator.serviceWorker) {
-        navigator.serviceWorker.register('/service-worker.js');
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((error) => {
+                console.error('Service Worker registration failed:', error);
+            });
     }
-}
-
-function replaceLowQualityResumes() {
-    document.querySelectorAll('picture[class^="page-"]').forEach(picture => {
-        const source = picture.children[0];
-        const img = picture.children[1];
-
-        img.addEventListener('load', () => {
-            img.parentElement.classList.remove('blur');
-        });
-
-        source.srcset = source.srcset.replace('-low', '');
-        img.src = img.src.replace('-low', '');
-    });
 }
 
 function addEventsToResumesSelects() {
     document.querySelectorAll('.selected-option').forEach(element => {
         element.addEventListener('click', event => {
+            event.stopPropagation();
+            const body = document.body;
             const active = document.querySelector('.selected-option.active');
 
             if (active) {
@@ -48,9 +43,9 @@ function addEventsToResumesSelects() {
             } else {
                 const select = event.target;
                 select.classList.add('active');
-                select.addEventListener('mouseleave', () => {
-                    select.classList.remove('active');
-                });
+                const removeActiveClass = () => select.classList.remove('active');
+                select.addEventListener('mouseleave', removeActiveClass, {once: true});
+                body.addEventListener('click', removeActiveClass, {once: true});
             }
         });
     });
@@ -69,7 +64,6 @@ function addEventsToDownloadResumes() {
 window.addEventListener('load', () => {
     updateDefaultLocale();
     registerServiceWorker();
-    replaceLowQualityResumes();
     addEventsToResumesSelects();
     addEventsToDownloadResumes();
 });
