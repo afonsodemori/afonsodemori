@@ -15,7 +15,7 @@
     <link rel="alternate" hreflang="pt" href="https://afonso.dev/cv/pt">
 
     <!-- le stylesheets -->
-    <link rel="stylesheet" href="/assets/style.css?v={{hash}}" media="screen">
+    <link rel="stylesheet" href="/assets/style.css?v={{hash}}" media="screen,print">
 
     <!-- le mobile -->
     <link rel="apple-touch-icon" href="/assets/icons/favicon-192.png">
@@ -42,7 +42,7 @@
     <a href="{{language.second.link}}" title="{{language.second.title}}">{{language.second.text}}</a>
 </div>
 
-<header>
+<header aria-hidden="true">
     <div class="container">
         <div class="code"><span class="open">&lt;</span><span class="close">/&gt;</span></div>
         <h1><a href="/">Afonso <span class="nowrap">de Mori</span></a></h1>
@@ -50,7 +50,7 @@
     </div>
 </header>
 
-<section style="margin-bottom: 0">
+<section style="margin-bottom: 0" aria-hidden="true">
     <div class="container">
         <p style="margin: 0">{{download.text}}:</p>
 
@@ -80,18 +80,18 @@
     </div>
 </section>
 
-<section>
+<section aria-hidden="true">
     {{social_links.see_also}}:
     <a target="_blank" href="/linkedin" title="{{social_links.linkedin.title}}">LinkedIn</a>
     -
     <a target="_blank" href="/github" title="{{social_links.github.title}}">GitHub</a>
 </section>
 
-<main class="container">
+<main class="container cv">
     <article id="cv-text">[[[replace-cv-text]]]</article>
 </main>
 
-<footer>
+<footer aria-hidden="true">
     <div class="container">
         <ul>
             <li><a title="{{nav.home.title}}" href="/{{locale}}">{{nav.home.text}}</a></li>
