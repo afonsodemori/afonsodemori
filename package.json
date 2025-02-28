@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "build:cloudflare": "npm run build:cv-import && npm run build:cv-html && npm run build:shortcuts && nuxt generate && npm run build:artifact",
+    "build:cv-import": "tsc --module nodenext bin/cv-import.ts && node bin/cv-import.js",
+    "build:cv-html": "tsc --module nodenext bin/cv-html.ts && node bin/cv-html.js",
+    "build:shortcuts": "tsc --module nodenext bin/shortcuts.ts && node bin/shortcuts.js",
+    "build:artifact": "rm -f upload.zip && cd .output/public && zip -r ../../upload.zip . -x '*.DS_Store' && cd -",
+    "preview:cloudflare": "nuxt generate && wrangler pages dev",
+    "preview:nitro": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "^9.2.1",
+    "nuxt": "^3.15.4",
+    "vue": "latest",
+    "vue-router": "latest",
+    "wrangler": "^3.112.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250303.0",
+    "typescript": "^5.8.2"
+  }
+}

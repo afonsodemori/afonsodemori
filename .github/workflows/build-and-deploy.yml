@@ -1,0 +1,64 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose an environment to deploy to: <preview|production>'
+        required: true
+        default: 'production'
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Import Resumes
+        run: npm run build:cv-import
+
+      - name: Generate CV HTML Snippet
+        run: npm run build:cv-html
+
+      - name: Generate Shortcuts
+        run: npm run build:shortcuts
+
+      - name: Generate Static Site
+        run: npx nuxt generate
+
+      - name: Create Health Check File
+        run: |
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          {
+            echo '<!DOCTYPE html><html lang="en">'
+            echo '<head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Health Check</title></head>'
+            echo '<body style="text-align: center; font: normal 1.2rem monospace; background: #1e1e2e; color: #c7c7ca;">'
+            echo "<h1>${COMMIT_MESSAGE}</h1>"
+            echo "<p>${{ github.event.inputs.environment || 'preview' }} @ ${COMMIT_HASH}</p>"
+            echo "<p>$(date)</p>"
+            echo '</body></html>'
+          } > dist/health-check.html
+
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/ --branch=${{ github.event_name == 'workflow_dispatch' && github.event.inputs.environment || 'preview' }} --project-name=afonso --commit-dirty=true
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
